@@ -515,34 +515,39 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   border-radius: 12px;
 }
 
-/* ── Solution / Flywheel Section ── */
-.solution {
+/* ── Solution / Flywheel Scroll-Locked Section ── */
+.solution-scroll {
+  /* 7 segments = 7 viewport heights of scroll, plus one for the initial view */
+  height: 800vh;
+  position: relative;
+}
+.solution-scroll__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
   background: var(--bg);
 }
-.solution__intro {
-  text-align: center;
-  margin-bottom: 64px;
-}
-.solution__intro .headline {
-  margin-bottom: 20px;
-}
-.solution__intro .body-text {
-  max-width: 640px;
-  margin: 0 auto;
-}
-.solution__layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-  min-height: 700px;
+
+/* Left side — flywheel bleeds off the left edge */
+.solution-scroll__flywheel-side {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
 }
 
-/* Flywheel */
+/* Flywheel — oversized and shifted left to bleed off-screen */
 .flywheel-wrap {
   position: relative;
-  aspect-ratio: 1;
-  max-width: 560px;
+  width: 110vh;
+  height: 110vh;
+  max-width: none;
+  margin-left: -18vh;
+  flex-shrink: 0;
 }
 .flywheel-wheel {
   width: 100%;
@@ -590,9 +595,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .flywheel-dot.active { width: 36px; }
 
+/* Right side — content panel */
+.solution-scroll__content-side {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  padding: 0 clamp(32px, 4vw, 64px) 0 clamp(24px, 3vw, 48px);
+}
+
 /* Flywheel Content Panel */
 .flywheel-panel {
   position: relative;
+  width: 100%;
   overflow: hidden;
 }
 .flywheel-card {
@@ -601,7 +615,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   left: 0;
   right: 0;
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   pointer-events: none;
 }
@@ -651,6 +665,14 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   font-size: clamp(14px, 1.1vw, 17px);
   color: var(--text-body);
   line-height: 1.45;
+}
+
+/* Larger screenshots in the flywheel cards */
+.flywheel-card .browser-chrome {
+  max-width: 100%;
+}
+.flywheel-card .browser-chrome__body {
+  aspect-ratio: 16 / 10;
 }
 
 /* ── Feature Highlights ── */
@@ -1023,18 +1045,39 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
    ═══════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .solution__layout {
-    grid-template-columns: 1fr;
+  .solution-scroll__flywheel-side {
+    flex: 0 0 45%;
+  }
+  .solution-scroll__content-side {
+    flex: 0 0 55%;
   }
   .flywheel-wrap {
-    max-width: 400px;
-    margin: 0 auto;
+    width: 90vh;
+    height: 90vh;
+    margin-left: -20vh;
   }
 }
 
 @media (max-width: 768px) {
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
+
+  .solution-scroll__sticky {
+    flex-direction: column;
+  }
+  .solution-scroll__flywheel-side {
+    flex: 0 0 40%;
+    justify-content: center;
+  }
+  .solution-scroll__content-side {
+    flex: 0 0 60%;
+    padding: 0 24px;
+  }
+  .flywheel-wrap {
+    width: 50vh;
+    height: 50vh;
+    margin-left: -8vh;
+  }
 
   .problem__grid,
   .feature-highlight__grid,

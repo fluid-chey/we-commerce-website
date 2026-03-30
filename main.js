@@ -197,16 +197,14 @@ function textArcD(i) {
 }
 
 let activeSegment = 0;
-let flywheelTimer;
-let flywheelIdle = 0;
 
 function initFlywheel() {
-  const wheel = document.querySelector('.flywheel-wheel');
   const svg = document.querySelector('.flywheel-svg');
   const panel = document.querySelector('.flywheel-panel');
   const dotsContainer = document.querySelector('.flywheel-dots');
+  const scrollSection = document.querySelector('.solution-scroll');
 
-  if (!svg || !panel) return;
+  if (!svg || !panel || !scrollSection) return;
 
   // Build SVG
   const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
@@ -221,7 +219,6 @@ function initFlywheel() {
 
   // Outline + filled + text layers
   segments.forEach((seg, i) => {
-    // Outline
     const outline = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     outline.setAttribute('d', segShape(i));
     outline.setAttribute('data-seg', i);
@@ -237,7 +234,6 @@ function initFlywheel() {
   });
 
   segments.forEach((seg, i) => {
-    // Filled
     const filled = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     filled.setAttribute('d', segShape(i));
     filled.setAttribute('data-seg-filled', i);
@@ -252,7 +248,6 @@ function initFlywheel() {
   });
 
   segments.forEach((seg, i) => {
-    // Text
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dy', '0.35em');
@@ -329,28 +324,32 @@ function initFlywheel() {
     });
   }
 
-  // Click handlers on SVG
+  // Click handlers on SVG segments
   svg.addEventListener('click', (e) => {
     const seg = e.target.closest('[data-seg]');
     if (seg) {
       setActiveSegment(parseInt(seg.getAttribute('data-seg')));
-      clearInterval(flywheelTimer);
-      flywheelIdle = 0;
     }
   });
 
-  // Hover pause
-  const solutionSection = document.querySelector('.solution');
-  if (solutionSection) {
-    solutionSection.addEventListener('mouseenter', () => clearInterval(flywheelTimer));
-    solutionSection.addEventListener('mouseleave', () => {
-      flywheelTimer = setInterval(advanceFlywheel, 6000);
-    });
+  // Scroll-driven segment switching
+  function onScroll() {
+    const rect = scrollSection.getBoundingClientRect();
+    const sectionHeight = scrollSection.offsetHeight;
+    const scrollableDistance = sectionHeight - window.innerHeight;
+    // How far we've scrolled into the section (0 = top stuck, 1 = about to unstick)
+    const progress = Math.max(0, Math.min(1, -rect.top / scrollableDistance));
+    const segIndex = Math.min(N - 1, Math.floor(progress * N));
+
+    if (segIndex !== activeSegment) {
+      setActiveSegment(segIndex);
+    }
   }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
 
   // Initialize
   setActiveSegment(0);
-  flywheelTimer = setInterval(advanceFlywheel, 6000);
 }
 
 function setActiveSegment(index) {
@@ -389,10 +388,6 @@ function setActiveSegment(index) {
     dot.classList.toggle('active', active);
     dot.style.background = active ? segments[i].color : 'rgba(255,255,255,0.15)';
   });
-}
-
-function advanceFlywheel() {
-  setActiveSegment((activeSegment + 1) % N);
 }
 
 // ── AI Catchup Cards stagger ──
