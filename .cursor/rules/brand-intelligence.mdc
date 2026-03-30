@@ -1,0 +1,52 @@
+---
+description: "Fluid brand intelligence for the We-Commerce website. Overrides the user-level brand-intelligence rule — brand data lives in flat files, NOT a database."
+alwaysApply: true
+---
+
+# Brand Intelligence (Project Override)
+
+**IMPORTANT:** This project stores brand data as flat files in the repo, NOT in a SQLite database. Do NOT call `list_brand_sections`, `read_brand_section`, `list_brand_assets`, or `run_brand_check` MCP tools — they do not apply here.
+
+## Where Brand Data Lives
+
+All brand rules are documented in `BRAND.md` (the primary reference). Read it first for any styling, layout, or content work.
+
+For deeper brand knowledge, read from `brand/`:
+
+| Need | Read |
+|------|------|
+| Color rules | `brand/patterns/color-palette.md` |
+| Font rules | `brand/patterns/typography.md` |
+| Brushstroke rules | `brand/patterns/brushstroke-textures.md` |
+| Circle/underline emphasis | `brand/patterns/circles-underlines.md` |
+| Footer structure | `brand/patterns/footer-structure.md` |
+| Decorative minimums | `brand/patterns/decorative-minimums.md` |
+| FLFont tagline patterns | `brand/patterns/flfont-tagline-patterns.md` |
+| Layout archetypes | `brand/patterns/layout-archetypes.md` |
+| Opacity system | `brand/patterns/opacity-patterns.md` |
+| Photo/mockup rules | `brand/patterns/photos-mockups.md` |
+| Typographic treatments | `brand/patterns/typographic-treatments.md` |
+| **All hard rules (weight 81+)** | `brand/hard-rules.md` |
+| Voice & style guide | `brand/voice-guide/voice-and-style.md` |
+| Product copy (per product) | `brand/voice-guide/products/*.md` |
+
+## Weight System
+
+Brand rules carry weights 1-100:
+- **81-100** = must follow (brand-critical, blocking)
+- **51-80** = should follow (strong preference)
+- **21-50** = recommended (flexible)
+- **1-20** = nice-to-have
+
+## Layout Archetypes
+
+Social post and one-pager layout skeletons are in `archetypes/social/`. Each archetype has `index.html` (skeleton), `schema.json` (slot definitions), and `README.md` (usage guide).
+
+## Validation Tools
+
+- `node tools/brand-compliance.cjs <file> --context web|social` — check brand rule compliance
+- `node tools/dimension-check.cjs <file> --target instagram|linkedin_landscape|letter|slides` — check output dimensions
+
+## Quick Reference
+
+Read `BRAND.md` for the complete summary of fonts, colors, components, and rules. It is the single source of truth.

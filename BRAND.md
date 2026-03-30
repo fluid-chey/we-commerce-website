@@ -364,6 +364,7 @@ wecommerce-photo-style-guide.md   — Photo style analysis + Gemini prompting st
 BRAND.md                          — This file (source of truth)
 CLAUDE.md                         — Symlink -> BRAND.md (Claude Code reads this)
 .cursorrules                      — Symlink -> BRAND.md (Cursor reads this)
-.claude/commands/                 — Project-level slash commands (site + Fluid Brand Intelligence)
+.claude/commands/                 — Slash commands for Claude Code (site + FBI pipelines)
 .claude/agents/                   — Subagent definitions (copy, layout, styling, spec-check)
+.cursor/rules/                    — Cursor-specific rules (.mdc) that mirror Claude setup
 ```

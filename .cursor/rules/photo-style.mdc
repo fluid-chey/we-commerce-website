@@ -1,0 +1,31 @@
+---
+description: "We-Commerce photo style guide. Activates when generating images, creating photo prompts, or selecting photography for the site."
+globs: ["**/*.html", "wecommerce-photo-style-guide.md"]
+---
+
+# Photo Style
+
+When generating or selecting photos for this project, follow the We-Commerce photo style.
+
+Read `wecommerce-photo-style-guide.md` for the full analysis and ready-to-use Gemini prompts.
+
+## Quick Reference
+
+> Warm Portra 400 film look — muted amber tones, soft natural light, shallow depth of field, candid diverse people using phones in casual lifestyle settings, with lifted milky shadows and subtle grain.
+
+### Always
+- Warm muted desaturated colors, amber-golden tones
+- Soft natural light (window light, golden hour), no flash
+- Shallow depth of field, creamy bokeh
+- Lifted milky shadows, subtle film grain
+- Candid authentic moments, not posed
+- Earth-toned wardrobe: cream, beige, olive, rust, sage
+- Casual settings: cafes, home offices, city streets, couches
+
+### Never
+- Saturated/neon/vibrant colors
+- Studio lighting, flash, ring lights
+- High contrast, HDR, smooth digital look
+- Corporate settings, boardrooms, gyms
+- Posed/editorial/formal aesthetic
+- Bright wardrobe, suits, formal wear

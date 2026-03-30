@@ -1,0 +1,65 @@
+---
+description: "Fluid Brand Intelligence skill reference for generating branded content. Activates when creating social posts, web sections, one-pagers, slides, or reskinning files."
+globs: ["**/*.html", "**/*.css"]
+---
+
+# Fluid Brand Intelligence Skills
+
+This project includes the full Fluid Brand Intelligence pipeline for generating and validating branded content. The skills are defined as Claude Code commands in `.claude/commands/` but the underlying agent logic applies to any AI tool working in this project.
+
+## Available Pipelines
+
+### Generate (create new branded content)
+Each pipeline chains 4 agents: copy -> layout -> styling -> spec-check.
+
+| Pipeline | Use When | Output |
+|----------|----------|--------|
+| **fluid-generate-web** | Creating new web pages or sections | Responsive HTML/CSS |
+| **fluid-generate-social** | Creating Instagram (1080x1080) or LinkedIn (1200x627) posts | Fixed-dimension HTML |
+| **fluid-generate-onepager** | Creating letter-size (8.5x11in) one-pagers | Print-ready HTML |
+| **fluid-generate-slides** | Creating 16:9 slide decks | Multi-slide HTML |
+
+### Transform (modify existing content)
+| Pipeline | Use When | Agents |
+|----------|----------|--------|
+| **fluid-brand** | Reskin existing HTML with Fluid visuals (preserve layout) | styling -> spec-check |
+| **fluid-redesign** | Redesign layout AND apply brand | layout -> styling -> spec-check |
+| **fluid-rewrite** | Rewrite copy to match Fluid voice (no visual changes) | copy -> spec-check (voice mode) |
+
+## Agent Definitions
+
+Full agent specs are in `.claude/agents/`. When generating or validating content, follow these roles:
+
+### Copy Agent (`.claude/agents/copy-agent.md`)
+- Reads `brand/voice-guide/` for voice rules
+- Reads `brand/voice-guide/products/*.md` for product-specific messaging
+- Writes pain-first, scenario-specific copy
+- Never uses banned words (see `brand/hard-rules.md`)
+- FLFont tagline follows `[benefit]. [contrast].` pattern
+
+### Layout Agent (`.claude/agents/layout-agent.md`)
+- Selects from archetypes in `archetypes/social/`
+- Matches content shape to best archetype
+- Fills structural HTML slots
+
+### Styling Agent (`.claude/agents/styling-agent.md`)
+- Reads `brand/patterns/*.md` for all visual rules
+- Uses assets from `assets/` (fonts, brushstrokes, circles, logos)
+- Applies: colors, fonts, brushstrokes, circle emphasis, footer
+- All asset paths must be RELATIVE (e.g., `assets/fonts/flfontbold.ttf`)
+
+### Spec-Check Agent (`.claude/agents/spec-check-agent.md`)
+- Validates against `brand/hard-rules.md`
+- Checks: font usage, accent color consistency, brushstroke rules, footer structure, visual hierarchy, copy tone
+- Produces JSON report with blocking issues (severity >= 81) and warnings
+- Fix loop: up to 3 iterations for blocking issues
+
+## Key Rules for Any Agent
+
+1. **Read `BRAND.md` first** — it has the complete brand summary
+2. **One accent color per design** — pick from: `#FF8B58` (orange), `#42b1ff` (blue), `#44b574` (green), `#c985e5` (purple)
+3. **Font system is closed** — NeueHaas (headlines, weight 900), Inter (body, weight 300-400), flfontbold (taglines only). No other fonts. Only `sans-serif` as fallback.
+4. **Brushstrokes use `mix-blend-mode: screen`** — opacity 0.10-0.25, edges bleed off canvas
+5. **No new colors** — palette is fixed (see BRAND.md)
+6. **Asset paths are relative** — never `/assets/`, always `assets/`
+7. **Problem before solution** — in copy, name the pain first
