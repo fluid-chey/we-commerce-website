@@ -318,6 +318,7 @@ Follow existing patterns:
 
 Available via `/project:command-name` in Claude Code:
 
+### Site-specific commands
 | Command | Purpose |
 |---------|---------|
 | `/project:brand-check` | Audit HTML/CSS files for brand compliance violations |
@@ -325,18 +326,44 @@ Available via `/project:command-name` in Claude Code:
 | `/project:photo-prompt` | Generate AI image prompts matching We-Commerce photo style |
 | `/project:brand-reskin` | Apply Fluid brand visuals to an external HTML file |
 
+### Fluid Brand Intelligence commands
+| Command | Purpose |
+|---------|---------|
+| `/project:fluid-brand` | Full brand reskin pipeline (styling + spec-check agents) |
+| `/project:fluid-generate-web` | Generate Fluid-branded web pages/sections from a prompt |
+| `/project:fluid-generate-social` | Generate Fluid-branded social posts (Instagram/LinkedIn) |
+| `/project:fluid-generate-onepager` | Generate Fluid-branded one-pagers (letter size) |
+| `/project:fluid-generate-slides` | Generate Fluid-branded slide decks (16:9) |
+| `/project:fluid-redesign` | Redesign an existing page with Fluid layout + brand |
+| `/project:fluid-rewrite` | Rewrite copy to match Fluid voice (no visual changes) |
+
+These use subagents in `.claude/agents/` and read from `brand/`, `archetypes/`, and `tools/`.
+
+### Updating from upstream
+Skills were copied from `~/Fluid-Brand-Intelligence`. To sync updates:
+```bash
+cp -r ~/Fluid-Brand-Intelligence/.claude/agents .claude/
+cp ~/Fluid-Brand-Intelligence/.claude/commands/fluid-*.md .claude/commands/
+cp -r ~/Fluid-Brand-Intelligence/{brand,tools,archetypes} .
+# Fix REPO_ROOT in .claude/commands/fluid-*.md: should be "." not "$HOME/Fluid-Brand-Intelligence"
+```
+
 ---
 
 ## File Structure
 
 ```
-index.html                    — Full page markup
-styles.css                    — All styles (design system + components + responsive)
-main.js                       — Interactivity (flywheel, testimonials, scroll reveal, counters, nav)
-assets/                       — Fonts, images, logos, icons, brushstrokes
-wecommerce-photo-style-guide.md — Photo style analysis + Gemini prompting strategy
-BRAND.md                      — This file (source of truth)
-CLAUDE.md                     — Symlink -> BRAND.md (Claude Code reads this)
-.cursorrules                  — Symlink -> BRAND.md (Cursor reads this)
-.claude/commands/             — Project-level slash commands for Claude Code
+index.html                        — Full page markup
+styles.css                        — All styles (design system + components + responsive)
+main.js                           — Interactivity (flywheel, testimonials, scroll, counters, nav)
+assets/                           — Fonts, images, logos, icons, brushstrokes
+brand/                            — Brand knowledge (color, typography, decorative rules, voice guide, products)
+archetypes/                       — Layout skeletons for social posts and one-pagers
+tools/                            — CLI validation (brand-compliance.cjs, dimension-check.cjs)
+wecommerce-photo-style-guide.md   — Photo style analysis + Gemini prompting strategy
+BRAND.md                          — This file (source of truth)
+CLAUDE.md                         — Symlink -> BRAND.md (Claude Code reads this)
+.cursorrules                      — Symlink -> BRAND.md (Cursor reads this)
+.claude/commands/                 — Project-level slash commands (site + Fluid Brand Intelligence)
+.claude/agents/                   — Subagent definitions (copy, layout, styling, spec-check)
 ```
