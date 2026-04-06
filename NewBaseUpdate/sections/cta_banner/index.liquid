@@ -1,0 +1,146 @@
+{%- style -%}
+  .cta-banner-section-{{ section.id }} {
+    background-color: {{ section.settings.background_color | default: '#444444' }};
+  }
+{%- endstyle -%}
+
+<section class="cta-section cta-banner-section-{{ section.id }} relative placeholde-bg-color">
+  <!-- <div class="overlay-red absolute top-0 left-0 w-full h-full z-1"></div> -->
+  <!-- <img src="images/cta-desktop.png" alt="cta-image" class="absolute top-0 left-0 image-cover variation image-position-top hidden xl-phone-block"> -->
+  <!-- <img src="images/cta.jpeg" alt="cta-image" class="absolute top-0 left-0 image-cover variation xl-phone-hidden"> -->
+  <div class="container relative z-2">
+    <div class="wrapper text-white">
+      <h2 class="{{ section.settings.heading_font_size }} {{ section.settings.heading_font_weight }} title">{{ section.settings.heading }}</h2>
+      <p class="{{ section.settings.text_font_size }} {{ section.settings.text_font_weight }} xl-phone-text-lg leading-6 pt-2xl">
+        {{ section.settings.intro_text }}
+      </p>
+      <div class="btn-section flex flex-wrap space-lg pt-lg">
+        <a href="{{ section.settings.button_link }}" class="btn btn-bg-white">{{ section.settings.button_text }}</a>
+        <a href="{{ section.settings.button_link_secondary }}" class="btn btn-border-white">{{ section.settings.button_text_secondary }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Medium length heading goes here",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "label": "Intro Text"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-bold"
+    },
+    {
+      "type": "select",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "options": [
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-4xl", "label": "4XL" },
+        { "value": "text-5xl", "label": "5XL" }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "#",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_text_secondary",
+      "default": "Button",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_secondary",
+      "default": "#",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Layout & Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "default": "#444444",
+      "label": "Background Color"
+    }
+  ]
+}
+{% endschema %}

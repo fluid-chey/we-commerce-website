@@ -1,0 +1,77 @@
+<section class="fl-section fl-feature" id="checkout">
+  <div class="fl-container">
+    <div class="fl-feature__grid fl-reveal">
+      <div class="fl-feature__text">
+        <div class="fl-feature__label" style="color:var(--seg-checkout)">{{ section.settings.label }}</div>
+        <h3 class="fl-feature__headline">{{ section.settings.headline }}</h3>
+        <p class="fl-feature__body">{{ section.settings.body }}</p>
+        <a href="{{ section.settings.link_url }}" class="fl-feature__link" style="color:var(--seg-checkout)">{{ section.settings.link_text }}</a>
+      </div>
+      <div class="fl-feature__visual">
+        <div class="fl-browser-chrome">
+          <div class="fl-browser-chrome__bar">
+            <div class="fl-browser-chrome__dots"><span></span><span></span><span></span></div>
+            <div class="fl-browser-chrome__tab">{{ section.settings.tab_title }}</div>
+          </div>
+          <div class="fl-browser-chrome__addr">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.79 1 2 2.79 2 5v2c0 .55.45 1 1 1h1V5c0-1.1.9-2 2-2s2 .9 2 2v3h1c.55 0 1-.45 1-1V5c0-2.21-1.79-4-4-4z" fill="rgba(255,255,255,0.25)"/><rect x="4" y="7" width="4" height="4" rx="1" fill="rgba(255,255,255,0.25)"/></svg>
+            <span>{{ section.settings.address }}</span>
+          </div>
+          <div class="fl-browser-chrome__body">
+            <img src="{{ 'screen-checkout.png' | asset_url }}" alt="Fluid Checkout">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fluid Feature Checkout",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Checkout"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Built for the full complexity of direct selling commerce."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "Most e-commerce platforms were built for guest checkout. About half of your transactions aren't that. Enrollments, subscriptions, logged-in orders, multi-market pricing, Order on Behalf Of — Fluid Checkout handles all of it natively. No plugins, no custom code, no workarounds."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Learn about Checkout →"
+    },
+    {
+      "type": "text",
+      "id": "link_url",
+      "label": "Link URL",
+      "default": "/checkout"
+    },
+    {
+      "type": "text",
+      "id": "tab_title",
+      "label": "Tab Title",
+      "default": "Fluid Checkout"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address Bar",
+      "default": "fluid.app/checkout"
+    }
+  ]
+}
+{% endschema %}

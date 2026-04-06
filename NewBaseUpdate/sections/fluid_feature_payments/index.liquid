@@ -1,0 +1,77 @@
+<section class="fl-section fl-feature" id="payments">
+  <div class="fl-container">
+    <div class="fl-feature__grid fl-reveal">
+      <div class="fl-feature__text">
+        <div class="fl-feature__label" style="color:var(--seg-payments)">{{ section.settings.label }}</div>
+        <h3 class="fl-feature__headline">{{ section.settings.headline }}</h3>
+        <p class="fl-feature__body">{{ section.settings.body }}</p>
+        <a href="{{ section.settings.link_url }}" class="fl-feature__link" style="color:var(--seg-payments)">{{ section.settings.link_text }}</a>
+      </div>
+      <div class="fl-feature__visual">
+        <div class="fl-browser-chrome">
+          <div class="fl-browser-chrome__bar">
+            <div class="fl-browser-chrome__dots"><span></span><span></span><span></span></div>
+            <div class="fl-browser-chrome__tab">{{ section.settings.tab_title }}</div>
+          </div>
+          <div class="fl-browser-chrome__addr">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.79 1 2 2.79 2 5v2c0 .55.45 1 1 1h1V5c0-1.1.9-2 2-2s2 .9 2 2v3h1c.55 0 1-.45 1-1V5c0-2.21-1.79-4-4-4z" fill="rgba(255,255,255,0.25)"/><rect x="4" y="7" width="4" height="4" rx="1" fill="rgba(255,255,255,0.25)"/></svg>
+            <span>{{ section.settings.address }}</span>
+          </div>
+          <div class="fl-browser-chrome__body">
+            <video src="{{ 'screen-payments.mp4' | asset_url }}" autoplay loop muted playsinline></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fluid Feature Payments",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Payments"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Every transaction deserves to go through."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "When a transaction fails in direct selling, it isn't a stranger shrugging and buying elsewhere. It's your rep's sister. The customer she spent three months nurturing. Fluid Payments is built so that transaction goes through — with cascading retries across multiple processors, decline recovery, network tokens, and a full suite of alternative payment methods for global markets."
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "Learn about Fluid Payments →"
+    },
+    {
+      "type": "text",
+      "id": "link_url",
+      "label": "Link URL",
+      "default": "/payments"
+    },
+    {
+      "type": "text",
+      "id": "tab_title",
+      "label": "Tab Title",
+      "default": "Fluid Payments"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address Bar",
+      "default": "fluid.app/payments"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+<section class="fl-section fl-problem" id="problem">
+  <div class="fl-container">
+    <div class="fl-problem__grid fl-reveal">
+      <div class="fl-problem__text">
+        <div class="fl-label fl-problem__label">{{ section.settings.label }}</div>
+        <h2 class="fl-problem__headline">{{ section.settings.headline }}</h2>
+        <div class="fl-problem__body">{{ section.settings.body }}</div>
+      </div>
+      <div class="fl-problem__visual">
+        <img
+          src="{{ section.settings.image | default: 'commerce-broken-dark.png' | asset_url }}"
+          alt="Broken vendor stack vs unified platform"
+          loading="lazy"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "The Problem"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The problem isn't one thing. It's everything not connecting."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>You know what this feels like. The payment processor doesn't talk to the commission engine. Attribution breaks and the wrong rep gets credit. A sync drops and suddenly commissions are wrong. A promo code doesn't fire because two systems have conflicting data.</p><p>Your team spends its week keeping this Frankenstein alive.</p><p>Your reps — the people your entire model depends on — quietly stop trusting the system. They share a link, someone else gets credit, and they learn a hard lesson: using the corporate platform is a risk. So they stop.</p><p>When reps stop sharing, traffic dies. When traffic dies, growth stalls. The technology was supposed to help. Instead it became the obstacle.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Illustration"
+    }
+  ]
+}
+{% endschema %}

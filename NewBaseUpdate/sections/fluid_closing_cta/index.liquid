@@ -1,0 +1,48 @@
+<section class="fl-closing-cta" id="book-demo">
+  <img src="{{ 'brush-texture-06.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-15%;right:-20%;width:60%;opacity:0.10;">
+  <img src="{{ 'brush-texture-08.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-10%;left:-15%;width:55%;opacity:0.10;">
+  <div class="fl-closing-cta__content fl-reveal">
+    <img src="{{ 'fluid-logo.png' | asset_url }}" alt="Fluid" style="height:36px;filter:brightness(0) invert(1);opacity:0.6;margin:0 auto 32px;display:block;">
+    <h2 class="fl-closing-cta__headline">One platform. <span class="fl-brand-accent">Every transaction.</span></h2>
+    <p class="fl-closing-cta__subtext">{{ section.settings.subtext }}</p>
+    <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_text }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Closing CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "One platform. Every transaction."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Your reps have an advantage most brands spend millions trying to manufacture. Real people. Real relationships. Real trust. Fluid exists to unlock that advantage."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Book a Demo"
+    },
+    {
+      "type": "text",
+      "id": "cta_url",
+      "label": "CTA URL",
+      "default": "#"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Closing CTA"
+    }
+  ]
+}
+{% endschema %}

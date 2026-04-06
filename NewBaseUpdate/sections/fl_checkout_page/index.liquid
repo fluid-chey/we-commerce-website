@@ -1,0 +1,753 @@
+{%- style -%}
+  .fl-checkout-page { --accent: #8AC8AE; }
+
+  /* ── Hero ── */
+  .fl-checkout-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-checkout-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-checkout-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-checkout-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-checkout-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-checkout-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-checkout-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Browser Chrome Mockup ── */
+  .fl-checkout-page__browser {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-checkout-page__browser-frame {
+    background: #1a1a1a;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .fl-checkout-page__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #111;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .fl-checkout-page__browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .fl-checkout-page__browser-dot:first-child { background: #ff5f57; }
+  .fl-checkout-page__browser-dot:nth-child(2) { background: #febc2e; }
+  .fl-checkout-page__browser-dot:nth-child(3) { background: #28c840; }
+  .fl-checkout-page__browser-url {
+    flex: 1;
+    margin-left: 12px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: var(--ff-body);
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+  .fl-checkout-page__browser-screen {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .fl-checkout-page__browser-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  /* ── Section Base ── */
+  .fl-checkout-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-checkout-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-checkout-page__section--cream .fl-checkout-page__s-headline { color: #0a0a0a; }
+  .fl-checkout-page__section--cream .fl-checkout-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-checkout-page__section--cream .fl-checkout-page__s-body strong { color: #0a0a0a; }
+  .fl-checkout-page__section--cream .fl-checkout-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-checkout-page__section--cream .fl-checkout-page__card-title { color: #0a0a0a; }
+  .fl-checkout-page__section--cream .fl-checkout-page__card-body { color: #3a3a3a; }
+  .fl-checkout-page__section--cream .fl-checkout-page__step { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-checkout-page__section--cream .fl-checkout-page__step-number { color: #0a0a0a; }
+  .fl-checkout-page__section--cream .fl-checkout-page__step-label { color: #3a3a3a; }
+
+  .fl-checkout-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-checkout-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-checkout-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-checkout-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-checkout-page__s-body p { margin-bottom: 20px; }
+  .fl-checkout-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Callout Card ── */
+  .fl-checkout-page__callout {
+    margin-top: 40px;
+    max-width: 720px;
+    padding: clamp(28px, 3vw, 40px);
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    background: rgba(138,200,174,0.04);
+  }
+  .fl-checkout-page__callout p {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  /* ── Feature Cards Grid ── */
+  .fl-checkout-page__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(138,200,174,0.1);
+  }
+  .fl-checkout-page__cards--2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fl-checkout-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-checkout-page__card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent);
+    opacity: 0.8;
+  }
+  .fl-checkout-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-checkout-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Step Sequence ── */
+  .fl-checkout-page__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(138,200,174,0.1);
+  }
+  .fl-checkout-page__step {
+    background: var(--clr-bg, #050505);
+    padding: clamp(24px, 2.5vw, 36px);
+    text-align: center;
+    position: relative;
+  }
+  .fl-checkout-page__step-number {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--clr-text-primary);
+    opacity: 0.12;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .fl-checkout-page__step-label {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-checkout-page__step-arrow {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--accent);
+    z-index: 2;
+  }
+
+  /* ── CTA ── */
+  .fl-checkout-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-checkout-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-checkout-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-checkout-page__cards { grid-template-columns: 1fr; }
+    .fl-checkout-page__cards--2col { grid-template-columns: 1fr; }
+    .fl-checkout-page__steps { grid-template-columns: repeat(2, 1fr); }
+    .fl-checkout-page__step-arrow { display: none; }
+    .fl-checkout-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+    .fl-checkout-page__browser { padding: 0 16px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-checkout-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-checkout-page__hero">
+    <img src="{{ 'brush-texture-02.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-10.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-checkout-page__hero-ghost">CHECKOUT</div>
+    <div class="fl-checkout-page__hero-content">
+      <div class="fl-checkout-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-checkout-page__hero-headline">Shopify was built for <span class="fl-brand-accent">guest checkout.</span></h1>
+      <p class="fl-checkout-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-checkout-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ BROWSER MOCKUP ═══ -->
+  <section class="fl-checkout-page__section">
+    <div class="fl-checkout-page__browser fl-reveal">
+      <div class="fl-checkout-page__browser-frame">
+        <div class="fl-checkout-page__browser-bar">
+          <span class="fl-checkout-page__browser-dot"></span>
+          <span class="fl-checkout-page__browser-dot"></span>
+          <span class="fl-checkout-page__browser-dot"></span>
+          <span class="fl-checkout-page__browser-url">{{ section.settings.browser_url }}</span>
+        </div>
+        <div class="fl-checkout-page__browser-screen">
+          <img src="{{ 'screen-checkout.png' | asset_url }}" alt="Fluid Checkout" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUCTS ═══ -->
+  <section class="fl-checkout-page__section">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.products_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.products_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.products_body }}</div>
+      <div class="fl-checkout-page__callout">
+        <p>{{ section.settings.products_callout }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SUBSCRIPTIONS ═══ -->
+  <section class="fl-checkout-page__section fl-checkout-page__section--cream">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.subscriptions_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.subscriptions_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.subscriptions_body }}</div>
+      <div class="fl-checkout-page__cards">
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.sub_card_1_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.sub_card_1_body }}</div>
+        </div>
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.sub_card_2_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.sub_card_2_body }}</div>
+        </div>
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.sub_card_3_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.sub_card_3_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ENROLLMENTS ═══ -->
+  <section class="fl-checkout-page__section">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.enrollments_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.enrollments_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.enrollments_body }}</div>
+      <div class="fl-checkout-page__steps">
+        <div class="fl-checkout-page__step">
+          <div class="fl-checkout-page__step-number">01</div>
+          <div class="fl-checkout-page__step-label">{{ section.settings.step_1 }}</div>
+          <span class="fl-checkout-page__step-arrow">→</span>
+        </div>
+        <div class="fl-checkout-page__step">
+          <div class="fl-checkout-page__step-number">02</div>
+          <div class="fl-checkout-page__step-label">{{ section.settings.step_2 }}</div>
+          <span class="fl-checkout-page__step-arrow">→</span>
+        </div>
+        <div class="fl-checkout-page__step">
+          <div class="fl-checkout-page__step-number">03</div>
+          <div class="fl-checkout-page__step-label">{{ section.settings.step_3 }}</div>
+          <span class="fl-checkout-page__step-arrow">→</span>
+        </div>
+        <div class="fl-checkout-page__step">
+          <div class="fl-checkout-page__step-number">04</div>
+          <div class="fl-checkout-page__step-label">{{ section.settings.step_4 }}</div>
+        </div>
+      </div>
+      <div class="fl-checkout-page__cards" style="margin-top:2px;">
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.enroll_card_1_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.enroll_card_1_body }}</div>
+        </div>
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.enroll_card_2_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.enroll_card_2_body }}</div>
+        </div>
+        <div class="fl-checkout-page__card">
+          <div class="fl-checkout-page__card-icon"></div>
+          <div class="fl-checkout-page__card-title">{{ section.settings.enroll_card_3_title }}</div>
+          <div class="fl-checkout-page__card-body">{{ section.settings.enroll_card_3_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PROMO CODES ═══ -->
+  <section class="fl-checkout-page__section fl-checkout-page__section--cream">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.promo_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.promo_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.promo_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ ORDER ON BEHALF OF ═══ -->
+  <section class="fl-checkout-page__section">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.oobo_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.oobo_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.oobo_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ ORDER MANAGEMENT ═══ -->
+  <section class="fl-checkout-page__section fl-checkout-page__section--cream">
+    <div class="fl-checkout-page__s-inner fl-reveal">
+      <div class="fl-checkout-page__s-label">{{ section.settings.orders_label }}</div>
+      <h2 class="fl-checkout-page__s-headline">{{ section.settings.orders_headline }}</h2>
+      <div class="fl-checkout-page__s-body">{{ section.settings.orders_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-checkout-page__cta">
+    <img src="{{ 'brush-texture-10.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-checkout-page__cta-content fl-reveal">
+      <h2 class="fl-checkout-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Checkout Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Checkout"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "Fluid Checkout was purpose-built for direct selling — where orders involve reps, subscriptions, enrollments, promo codes, and multi-country pricing. Not a patched Shopify checkout. A different system entirely."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction matters."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "See Checkout in action →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "text",
+      "id": "browser_url",
+      "label": "Browser bar URL text",
+      "default": "yourcompany.fluidcommerce.co/checkout"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "text",
+      "id": "products_label",
+      "label": "Section label",
+      "default": "Products"
+    },
+    {
+      "type": "text",
+      "id": "products_headline",
+      "label": "Headline",
+      "default": "Product and catalog management"
+    },
+    {
+      "type": "textarea",
+      "id": "products_body",
+      "label": "Body",
+      "default": "<p>Your catalog is not simple. Fluid doesn't pretend it is.</p><p>Full variant management — size, flavor, format — with bundles, collections, and category structures that display natively across the web experience. SEO optimization and translation support for international markets.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "products_callout",
+      "label": "Country-level pricing callout",
+      "default": "And one capability that Shopify does not offer natively: country-level variant pricing. Not currency conversion. Actual different prices, at the variant level, per country. For direct selling companies operating across multiple markets — where pricing strategy genuinely differs by region — this is not a nice-to-have. It is a requirement."
+    },
+    {
+      "type": "header",
+      "content": "Subscriptions"
+    },
+    {
+      "type": "text",
+      "id": "subscriptions_label",
+      "label": "Section label",
+      "default": "Subscriptions"
+    },
+    {
+      "type": "text",
+      "id": "subscriptions_headline",
+      "label": "Headline",
+      "default": "Subscription management"
+    },
+    {
+      "type": "textarea",
+      "id": "subscriptions_body",
+      "label": "Body",
+      "default": "<p>Subscriptions are first-class in Fluid — not bolted on. Customers can subscribe to individual products or bundles, manage their subscriptions directly from their account, and modify upcoming orders before they process.</p>"
+    },
+    {
+      "type": "text",
+      "id": "sub_card_1_title",
+      "label": "Card 1 title",
+      "default": "Plan flexibility"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_card_1_body",
+      "label": "Card 1 body",
+      "default": "Customers can swap products, skip shipments, change frequency, and adjust quantities — all self-serve, all before the next processing date."
+    },
+    {
+      "type": "text",
+      "id": "sub_card_2_title",
+      "label": "Card 2 title",
+      "default": "Subscription bundling"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_card_2_body",
+      "label": "Card 2 body",
+      "default": "Customers build custom subscription bundles from a company-defined product pool. Not a fixed kit — a configurable recurring order."
+    },
+    {
+      "type": "text",
+      "id": "sub_card_3_title",
+      "label": "Card 3 title",
+      "default": "Subscription recovery"
+    },
+    {
+      "type": "textarea",
+      "id": "sub_card_3_body",
+      "label": "Card 3 body",
+      "default": "Automated retry logic for failed payments. Dunning workflows including email notifications and grace periods before cancellation."
+    },
+    {
+      "type": "header",
+      "content": "Enrollments"
+    },
+    {
+      "type": "text",
+      "id": "enrollments_label",
+      "label": "Section label",
+      "default": "Enrollments"
+    },
+    {
+      "type": "text",
+      "id": "enrollments_headline",
+      "label": "Headline",
+      "default": "Enrollment and join flow"
+    },
+    {
+      "type": "textarea",
+      "id": "enrollments_body",
+      "label": "Body",
+      "default": "<p>Enrollment is not a standard e-commerce concept. It is the process by which a new rep joins the organization — selects a starter pack, fills out required information, pays, and is placed in the genealogy.</p><p>Fluid handles this natively. The entire flow is configurable by market.</p>"
+    },
+    {
+      "type": "text",
+      "id": "step_1",
+      "label": "Step 1 label",
+      "default": "Select pack"
+    },
+    {
+      "type": "text",
+      "id": "step_2",
+      "label": "Step 2 label",
+      "default": "Complete form"
+    },
+    {
+      "type": "text",
+      "id": "step_3",
+      "label": "Step 3 label",
+      "default": "Payment"
+    },
+    {
+      "type": "text",
+      "id": "step_4",
+      "label": "Step 4 label",
+      "default": "Confirmation"
+    },
+    {
+      "type": "text",
+      "id": "enroll_card_1_title",
+      "label": "Feature card 1 title",
+      "default": "Pack flexibility"
+    },
+    {
+      "type": "textarea",
+      "id": "enroll_card_1_body",
+      "label": "Feature card 1 body",
+      "default": "Multiple enrollment packs per market with different price points and product configurations. Companies define the options — reps and prospects choose."
+    },
+    {
+      "type": "text",
+      "id": "enroll_card_2_title",
+      "label": "Feature card 2 title",
+      "default": "Customizable forms"
+    },
+    {
+      "type": "textarea",
+      "id": "enroll_card_2_body",
+      "label": "Feature card 2 body",
+      "default": "Country-specific enrollment forms with configurable required fields — tax IDs, government documents, agreements — as needed by market."
+    },
+    {
+      "type": "text",
+      "id": "enroll_card_3_title",
+      "label": "Feature card 3 title",
+      "default": "International enrollment"
+    },
+    {
+      "type": "textarea",
+      "id": "enroll_card_3_body",
+      "label": "Feature card 3 body",
+      "default": "Full multi-country enrollment support with localized packs, currencies, and compliance requirements handled per market."
+    },
+    {
+      "type": "header",
+      "content": "Promo Codes"
+    },
+    {
+      "type": "text",
+      "id": "promo_label",
+      "label": "Section label",
+      "default": "Promo Codes"
+    },
+    {
+      "type": "text",
+      "id": "promo_headline",
+      "label": "Headline",
+      "default": "Promotional codes"
+    },
+    {
+      "type": "textarea",
+      "id": "promo_body",
+      "label": "Body",
+      "default": "<p>A full promotional engine with genuine configurability:</p><p>Discount types include percentage off, fixed dollar amount, free products, and free shipping. Availability controls by country, by customer type (retail customer, distributor, or new enrollment), by product, and by collection. Configurable start and end dates. Manual customer entry or automatic triggering based on cart conditions. Multiple codes can be applied to a single order.</p><p>This is not a basic coupon field. It is a promotional engine that reflects how direct selling actually runs promotions.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Order On Behalf Of"
+    },
+    {
+      "type": "text",
+      "id": "oobo_label",
+      "label": "Section label",
+      "default": "Order On Behalf Of"
+    },
+    {
+      "type": "text",
+      "id": "oobo_headline",
+      "label": "Headline",
+      "default": "Order on behalf of"
+    },
+    {
+      "type": "textarea",
+      "id": "oobo_body",
+      "label": "Body",
+      "default": "<p>In many international markets, reps place orders directly on behalf of customers as standard practice. Fluid supports this natively.</p><p>Reps can place orders for a customer and assign credit to any rep — including themselves, or another rep if appropriate. This applies to both one-time orders and subscription orders. When credit is assigned to a rep on a subscription order, all subsequent recurring orders from that subscription continue to carry that attribution. The relationship stays intact across the life of the customer.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Order Management"
+    },
+    {
+      "type": "text",
+      "id": "orders_label",
+      "label": "Section label",
+      "default": "Order Management"
+    },
+    {
+      "type": "text",
+      "id": "orders_headline",
+      "label": "Headline",
+      "default": "Order management"
+    },
+    {
+      "type": "textarea",
+      "id": "orders_body",
+      "label": "Body",
+      "default": "<p>Full order history, filtering, and statistics in the admin. Refunds calculated automatically, applicable item by item or as a manual amount. Fulfillment management including split and held fulfillment for multi-item orders. Configurable shipping notification emails and tracking information. Inventory management with bulk edit and warehouse support.</p><p>The Order Journey — FairShare's attribution audit trail — is attached to every order in the admin. Every interaction. Every touchpoint. Every rep. The complete picture.</p><p><strong>Returns are in development.</strong> The capability is not yet live.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "Fluid Checkout was built for the complexity of direct selling — not adapted to tolerate it."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Book a demo →"
+    }
+  ]
+}
+{% endschema %}

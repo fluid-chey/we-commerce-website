@@ -1,0 +1,827 @@
+{%- style -%}
+  .fl-connect-page { --accent: #F0B088; }
+
+  /* ── Hero ── */
+  .fl-connect-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-connect-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-connect-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-connect-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-connect-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-connect-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-connect-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Section Base ── */
+  .fl-connect-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-connect-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-connect-page__section--cream .fl-connect-page__s-headline { color: #0a0a0a; }
+  .fl-connect-page__section--cream .fl-connect-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-connect-page__section--cream .fl-connect-page__s-body strong { color: #0a0a0a; }
+  .fl-connect-page__section--cream .fl-connect-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-connect-page__section--cream .fl-connect-page__card-title { color: #0a0a0a; }
+  .fl-connect-page__section--cream .fl-connect-page__card-body { color: #3a3a3a; }
+  .fl-connect-page__section--cream .fl-connect-page__step { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-connect-page__section--cream .fl-connect-page__step-title { color: #0a0a0a; }
+  .fl-connect-page__section--cream .fl-connect-page__step-detail { color: #3a3a3a; }
+  .fl-connect-page__section--cream .fl-connect-page__dash-row { background: #fff; border-color: rgba(0,0,0,0.06); }
+  .fl-connect-page__section--cream .fl-connect-page__dash-label { color: #3a3a3a; }
+  .fl-connect-page__section--cream .fl-connect-page__dash-type { color: #5a5a5a; }
+  .fl-connect-page__section--cream .fl-connect-page__dash-time { color: #5a5a5a; }
+
+  .fl-connect-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-connect-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-connect-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-connect-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-connect-page__s-body p { margin-bottom: 20px; }
+  .fl-connect-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Two-up Layout ── */
+  .fl-connect-page__two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
+  }
+
+  /* ── Steps Row (How It Works) ── */
+  .fl-connect-page__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    margin-bottom: 32px;
+    background: rgba(240,176,136,0.1);
+  }
+  .fl-connect-page__step {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+  .fl-connect-page__step-num {
+    font-family: var(--ff-brand);
+    font-size: clamp(2rem, 3vw, 2.5rem);
+    color: var(--accent);
+    line-height: 1;
+  }
+  .fl-connect-page__step-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-connect-page__step-detail {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Bi-directional Diagram ── */
+  .fl-connect-page__diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 24px 0;
+  }
+  .fl-connect-page__diagram-box {
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 28px;
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    min-width: 160px;
+    background: rgba(240,176,136,0.06);
+  }
+  .fl-connect-page__section--cream .fl-connect-page__diagram-box {
+    background: rgba(240,176,136,0.08);
+    color: #0a0a0a;
+  }
+  .fl-connect-page__diagram-arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    min-width: 80px;
+  }
+  .fl-connect-page__diagram-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    color: var(--accent);
+    font-size: 13px;
+    font-family: var(--ff-body);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .fl-connect-page__diagram-arrow span {
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ── Dashboard Strip ── */
+  .fl-connect-page__dashboard {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(240,176,136,0.1);
+    max-width: 720px;
+  }
+  .fl-connect-page__dash-row {
+    background: var(--clr-bg, #050505);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+  .fl-connect-page__dash-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .fl-connect-page__dash-dot--ok { background: #4ade80; }
+  .fl-connect-page__dash-dot--running { background: var(--accent); }
+  .fl-connect-page__dash-label {
+    font-family: var(--ff-body);
+    font-weight: 600;
+    color: var(--clr-text-primary);
+    min-width: 180px;
+  }
+  .fl-connect-page__dash-type {
+    color: var(--clr-text-body);
+    min-width: 120px;
+  }
+  .fl-connect-page__dash-time {
+    color: var(--clr-text-body);
+    margin-left: auto;
+  }
+
+  /* ── Feature Cards Grid ── */
+  .fl-connect-page__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(240,176,136,0.1);
+  }
+  .fl-connect-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-connect-page__card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+  .fl-connect-page__card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent);
+    opacity: 0.8;
+  }
+  .fl-connect-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-connect-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── CTA ── */
+  .fl-connect-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-connect-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-connect-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .fl-connect-page__cta-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--clr-text-body);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-connect-page__two-up {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .fl-connect-page__steps { grid-template-columns: 1fr; }
+    .fl-connect-page__cards { grid-template-columns: 1fr; }
+    .fl-connect-page__card:last-child:nth-child(odd) { grid-column: auto; }
+    .fl-connect-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+    .fl-connect-page__diagram { flex-direction: column; gap: 12px; }
+    .fl-connect-page__diagram-arrows { flex-direction: row; padding: 0; min-width: auto; }
+    .fl-connect-page__diagram-arrow { flex-direction: column; }
+    .fl-connect-page__diagram-arrow span { width: 1px; height: 32px; }
+    .fl-connect-page__dash-row { flex-wrap: wrap; }
+    .fl-connect-page__dash-label { min-width: auto; }
+    .fl-connect-page__dash-type { min-width: auto; }
+    .fl-connect-page__dash-time { margin-left: 24px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-connect-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-connect-page__hero">
+    <img src="{{ 'brush-texture-01.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-08.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-connect-page__hero-ghost">CONNECT</div>
+    <div class="fl-connect-page__hero-content">
+      <div class="fl-connect-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-connect-page__hero-headline">Your commission engine and your commerce platform <span class="fl-brand-accent">should agree.</span></h1>
+      <p class="fl-connect-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-connect-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="fl-connect-page__section">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.how_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.how_headline }}</h2>
+      <div class="fl-connect-page__steps">
+        <div class="fl-connect-page__step">
+          <div class="fl-connect-page__step-num">1</div>
+          <div class="fl-connect-page__step-title">{{ section.settings.step1_title }}</div>
+          <div class="fl-connect-page__step-detail">{{ section.settings.step1_detail }}</div>
+        </div>
+        <div class="fl-connect-page__step">
+          <div class="fl-connect-page__step-num">2</div>
+          <div class="fl-connect-page__step-title">{{ section.settings.step2_title }}</div>
+          <div class="fl-connect-page__step-detail">{{ section.settings.step2_detail }}</div>
+        </div>
+        <div class="fl-connect-page__step">
+          <div class="fl-connect-page__step-num">3</div>
+          <div class="fl-connect-page__step-title">{{ section.settings.step3_title }}</div>
+          <div class="fl-connect-page__step-detail">{{ section.settings.step3_detail }}</div>
+        </div>
+      </div>
+      <div class="fl-connect-page__s-body">{{ section.settings.how_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ BI-DIRECTIONAL ═══ -->
+  <section class="fl-connect-page__section fl-connect-page__section--cream">
+    <div class="fl-connect-page__s-inner">
+      <div class="fl-connect-page__two-up fl-reveal">
+        <div class="fl-connect-page__two-up-text">
+          <div class="fl-connect-page__s-label">{{ section.settings.bidi_label }}</div>
+          <h2 class="fl-connect-page__s-headline">{{ section.settings.bidi_headline }}</h2>
+          <div class="fl-connect-page__s-body">{{ section.settings.bidi_body }}</div>
+        </div>
+        <div class="fl-connect-page__two-up-visual">
+          <div class="fl-connect-page__diagram">
+            <div class="fl-connect-page__diagram-box">Fluid Platform</div>
+            <div class="fl-connect-page__diagram-arrows">
+              <div class="fl-connect-page__diagram-arrow"><span></span>&nbsp;→</div>
+              <div class="fl-connect-page__diagram-arrow">←&nbsp;<span></span></div>
+            </div>
+            <div class="fl-connect-page__diagram-box">Commission Engine</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AUTO SYNCING ═══ -->
+  <section class="fl-connect-page__section">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.sync_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.sync_headline }}</h2>
+      <div class="fl-connect-page__s-body">{{ section.settings.sync_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ DATA MAPPING ═══ -->
+  <section class="fl-connect-page__section fl-connect-page__section--cream">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.mapping_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.mapping_headline }}</h2>
+      <div class="fl-connect-page__s-body">{{ section.settings.mapping_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ VISIBILITY ═══ -->
+  <section class="fl-connect-page__section">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.visibility_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.visibility_headline }}</h2>
+      <div class="fl-connect-page__s-body">{{ section.settings.visibility_body }}</div>
+      <div class="fl-connect-page__dashboard">
+        <div class="fl-connect-page__dash-row">
+          <div class="fl-connect-page__dash-dot fl-connect-page__dash-dot--ok"></div>
+          <div class="fl-connect-page__dash-label">Order sync</div>
+          <div class="fl-connect-page__dash-type">Automatic</div>
+          <div class="fl-connect-page__dash-time">Completed 2m ago</div>
+        </div>
+        <div class="fl-connect-page__dash-row">
+          <div class="fl-connect-page__dash-dot fl-connect-page__dash-dot--ok"></div>
+          <div class="fl-connect-page__dash-label">Product catalog</div>
+          <div class="fl-connect-page__dash-type">Scheduled</div>
+          <div class="fl-connect-page__dash-time">Completed 18m ago</div>
+        </div>
+        <div class="fl-connect-page__dash-row">
+          <div class="fl-connect-page__dash-dot fl-connect-page__dash-dot--running"></div>
+          <div class="fl-connect-page__dash-label">Distributor tree</div>
+          <div class="fl-connect-page__dash-type">Manual</div>
+          <div class="fl-connect-page__dash-time">Running…</div>
+        </div>
+        <div class="fl-connect-page__dash-row">
+          <div class="fl-connect-page__dash-dot fl-connect-page__dash-dot--ok"></div>
+          <div class="fl-connect-page__dash-label">Pricing update</div>
+          <div class="fl-connect-page__dash-type">Automatic</div>
+          <div class="fl-connect-page__dash-time">Completed 1h ago</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KEY CAPABILITIES ═══ -->
+  <section class="fl-connect-page__section fl-connect-page__section--cream">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.caps_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.caps_headline }}</h2>
+      <div class="fl-connect-page__cards">
+        <div class="fl-connect-page__card">
+          <div class="fl-connect-page__card-icon"></div>
+          <div class="fl-connect-page__card-title">{{ section.settings.cap1_title }}</div>
+          <div class="fl-connect-page__card-body">{{ section.settings.cap1_body }}</div>
+        </div>
+        <div class="fl-connect-page__card">
+          <div class="fl-connect-page__card-icon"></div>
+          <div class="fl-connect-page__card-title">{{ section.settings.cap2_title }}</div>
+          <div class="fl-connect-page__card-body">{{ section.settings.cap2_body }}</div>
+        </div>
+        <div class="fl-connect-page__card">
+          <div class="fl-connect-page__card-icon"></div>
+          <div class="fl-connect-page__card-title">{{ section.settings.cap3_title }}</div>
+          <div class="fl-connect-page__card-body">{{ section.settings.cap3_body }}</div>
+        </div>
+        <div class="fl-connect-page__card">
+          <div class="fl-connect-page__card-icon"></div>
+          <div class="fl-connect-page__card-title">{{ section.settings.cap4_title }}</div>
+          <div class="fl-connect-page__card-body">{{ section.settings.cap4_body }}</div>
+        </div>
+        <div class="fl-connect-page__card">
+          <div class="fl-connect-page__card-icon"></div>
+          <div class="fl-connect-page__card-title">{{ section.settings.cap5_title }}</div>
+          <div class="fl-connect-page__card-body">{{ section.settings.cap5_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TECHNICAL NOTES ═══ -->
+  <section class="fl-connect-page__section">
+    <div class="fl-connect-page__s-inner fl-reveal">
+      <div class="fl-connect-page__s-label">{{ section.settings.tech_label }}</div>
+      <h2 class="fl-connect-page__s-headline">{{ section.settings.tech_headline }}</h2>
+      <div class="fl-connect-page__s-body">{{ section.settings.tech_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-connect-page__cta">
+    <img src="{{ 'brush-texture-08.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-connect-page__cta-content fl-reveal">
+      <h2 class="fl-connect-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <p class="fl-connect-page__cta-sub">{{ section.settings.cta_subtext }}</p>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Fluid Connect Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Fluid Connect"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "They usually don't. Most direct selling companies running their business across multiple systems are held together by custom sync scripts, SFTP folders, and scheduled exports — infrastructure built by someone who may have left years ago."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "One connection. Zero 3am calls."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "See Fluid Connect in action →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "How It Works"
+    },
+    {
+      "type": "text",
+      "id": "how_label",
+      "label": "Section label",
+      "default": "Integration"
+    },
+    {
+      "type": "text",
+      "id": "how_headline",
+      "label": "Headline",
+      "default": "One-click connection"
+    },
+    {
+      "type": "text",
+      "id": "step1_title",
+      "label": "Step 1 title",
+      "default": "Select commission engine"
+    },
+    {
+      "type": "text",
+      "id": "step1_detail",
+      "label": "Step 1 detail",
+      "default": "Exigo, ByDesign, Pillars"
+    },
+    {
+      "type": "text",
+      "id": "step2_title",
+      "label": "Step 2 title",
+      "default": "Enter credentials"
+    },
+    {
+      "type": "text",
+      "id": "step2_detail",
+      "label": "Step 2 detail",
+      "default": "API key or back office login"
+    },
+    {
+      "type": "text",
+      "id": "step3_title",
+      "label": "Step 3 title",
+      "default": "Connection active"
+    },
+    {
+      "type": "text",
+      "id": "step3_detail",
+      "label": "Step 3 detail",
+      "default": "Data flows in both directions"
+    },
+    {
+      "type": "textarea",
+      "id": "how_body",
+      "label": "Body",
+      "default": "Fluid Connect uses Droplets — Fluid's extensibility layer — to establish the integration. A client provides back office credentials, selects the appropriate Droplet, and the connection is live."
+    },
+    {
+      "type": "header",
+      "content": "Bi-directional"
+    },
+    {
+      "type": "text",
+      "id": "bidi_label",
+      "label": "Section label",
+      "default": "Data flow"
+    },
+    {
+      "type": "text",
+      "id": "bidi_headline",
+      "label": "Headline",
+      "default": "Two-way data, one source of truth"
+    },
+    {
+      "type": "textarea",
+      "id": "bidi_body",
+      "label": "Body",
+      "default": "<p>Connect moves data in both directions.</p><p>Orders and customer activity generated on Fluid flow downstream into the commission engine. Product data, pricing, distributor trees, and compensation logic flow upstream into the Fluid platform.</p><p>You configure which system is the source of truth for each data type, and whether syncs run automatically on a schedule or are triggered manually.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Auto Syncing"
+    },
+    {
+      "type": "text",
+      "id": "sync_label",
+      "label": "Section label",
+      "default": "Real-time"
+    },
+    {
+      "type": "text",
+      "id": "sync_headline",
+      "label": "Headline",
+      "default": "Automatic syncing across the ecosystem"
+    },
+    {
+      "type": "textarea",
+      "id": "sync_body",
+      "label": "Body",
+      "default": "<p>Changes made in either system are reflected across the We-Commerce ecosystem without delay. Pricing updates go live. Product availability changes are reflected. New distributor enrollments stay consistent across web, mobile, live shopping, and rep-shared experiences.</p><p>No manual export. No IT ticket. No hoping the scheduled script ran.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Data Mapping"
+    },
+    {
+      "type": "text",
+      "id": "mapping_label",
+      "label": "Section label",
+      "default": "Complexity"
+    },
+    {
+      "type": "text",
+      "id": "mapping_headline",
+      "label": "Headline",
+      "default": "Your data structure, not ours"
+    },
+    {
+      "type": "textarea",
+      "id": "mapping_body",
+      "label": "Body",
+      "default": "<p>Direct selling back office data structures are often highly customized — years of configuration, non-standard field names, compensation plan logic that exists only in that particular system.</p><p>Fluid Connect handles that complexity. It maps a client's existing data structure — however non-standard — to the Fluid platform without requiring a system rebuild.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "text",
+      "id": "visibility_label",
+      "label": "Section label",
+      "default": "Transparency"
+    },
+    {
+      "type": "text",
+      "id": "visibility_headline",
+      "label": "Headline",
+      "default": "Full visibility into every sync"
+    },
+    {
+      "type": "textarea",
+      "id": "visibility_body",
+      "label": "Body",
+      "default": "<p>Every sync job is surfaced in a clean dashboard. What ran. What succeeded. What failed and why. If something breaks, the team knows immediately and can act on it.</p><p>This replaces what most direct selling companies are currently running: hidden server scripts, command-line tools, and institutional knowledge held by one or two IT team members.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Key Capabilities"
+    },
+    {
+      "type": "text",
+      "id": "caps_label",
+      "label": "Section label",
+      "default": "Capabilities"
+    },
+    {
+      "type": "text",
+      "id": "caps_headline",
+      "label": "Headline",
+      "default": "What Fluid Connect handles"
+    },
+    {
+      "type": "text",
+      "id": "cap1_title",
+      "label": "Capability 1 title",
+      "default": "Automatic & manual sync"
+    },
+    {
+      "type": "text",
+      "id": "cap1_body",
+      "label": "Capability 1 body",
+      "default": "Schedule syncs to run continuously or trigger them manually when your team needs control over timing."
+    },
+    {
+      "type": "text",
+      "id": "cap2_title",
+      "label": "Capability 2 title",
+      "default": "Two-way conflict resolution"
+    },
+    {
+      "type": "text",
+      "id": "cap2_body",
+      "label": "Capability 2 body",
+      "default": "Per-field rules determine which system wins when data conflicts. No blanket overwrites."
+    },
+    {
+      "type": "text",
+      "id": "cap3_title",
+      "label": "Capability 3 title",
+      "default": "Commission engine support"
+    },
+    {
+      "type": "text",
+      "id": "cap3_body",
+      "label": "Capability 3 body",
+      "default": "Pre-built Droplets for Exigo, ByDesign, and Pillars — with extensibility for additional engines."
+    },
+    {
+      "type": "text",
+      "id": "cap4_title",
+      "label": "Capability 4 title",
+      "default": "Attribution preserved"
+    },
+    {
+      "type": "text",
+      "id": "cap4_body",
+      "label": "Capability 4 body",
+      "default": "FairShare attribution data flows through every synced transaction — so commission credit is never lost in translation."
+    },
+    {
+      "type": "text",
+      "id": "cap5_title",
+      "label": "Capability 5 title",
+      "default": "Reduced operational drag"
+    },
+    {
+      "type": "text",
+      "id": "cap5_body",
+      "label": "Capability 5 body",
+      "default": "Fewer manual processes, fewer IT tickets, fewer late-night sync failures. Connect replaces fragile infrastructure with a managed integration layer."
+    },
+    {
+      "type": "header",
+      "content": "Technical Notes"
+    },
+    {
+      "type": "text",
+      "id": "tech_label",
+      "label": "Section label",
+      "default": "For CTOs"
+    },
+    {
+      "type": "text",
+      "id": "tech_headline",
+      "label": "Headline",
+      "default": "Technical notes"
+    },
+    {
+      "type": "textarea",
+      "id": "tech_body",
+      "label": "Body",
+      "default": "<p>For CTOs and IT leaders: Fluid Connect is built to handle the reality of direct selling data structures — non-standard schemas, custom compensation fields, deeply nested distributor tree logic. The visual data mapper allows your team to map your existing data model to the Fluid platform without code, and to validate the mapping before enabling live sync.</p><p>Sync jobs run with configurable retry logic. Failed jobs are logged with detailed error context. Conflict resolution rules are set per-field, not per-sync, giving your team fine-grained control without constant oversight.</p><p>Connect stages data locally when the downstream commission engine is unavailable — so a commission engine outage does not cause data loss or missed records. When the engine comes back online, staged data syncs automatically.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "When systems agree, people trust them."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "Fluid Connect is not trying to be impressive. It is trying to be dependable."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Talk to our team →"
+    }
+  ]
+}
+{% endschema %}

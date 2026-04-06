@@ -1,0 +1,80 @@
+{%- assign bg_class = '' -%}
+{%- if section.settings.background == 'cream' -%}
+  {%- assign bg_class = 'fl-content-block--cream' -%}
+{%- endif -%}
+<section class="fl-section fl-content-block {{ bg_class }}" id="{{ section.settings.anchor }}">
+  <div class="fl-container">
+    <div class="fl-content-block__inner fl-reveal">
+      {% if section.settings.label != blank %}
+        <div class="fl-label" style="color:{{ section.settings.label_color | default: 'var(--clr-blue)' }}">{{ section.settings.label }}</div>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h2 class="fl-content-block__headline">{{ section.settings.headline }}</h2>
+      {% endif %}
+      <div class="fl-content-block__body">{{ section.settings.body }}</div>
+      {% if section.settings.link_text != blank %}
+        <a href="{{ section.settings.link_url }}" class="fl-btn-text" style="color:{{ section.settings.label_color | default: 'var(--clr-blue)' }}">{{ section.settings.link_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content Block",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "dark", "label": "Dark" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "text",
+      "id": "label_color",
+      "label": "Label Color",
+      "default": "#42b1ff"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Block"
+    }
+  ]
+}
+{% endschema %}

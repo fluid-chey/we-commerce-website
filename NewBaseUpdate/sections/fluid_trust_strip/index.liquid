@@ -1,0 +1,124 @@
+<section class="fl-trust-strip">
+  <div class="fl-trust-strip__inner">
+    <div class="fl-trust-strip__label">{{ section.settings.eyebrow }}</div>
+    <div class="fl-trust-strip__scroller">
+      <div class="fl-trust-strip__track">
+        <div class="fl-trust-strip__set">
+          {% for block in section.blocks %}
+            <img
+              src="{{ block.settings.logo | default: block.settings.logo_filename | asset_url }}"
+              alt="{{ block.settings.alt }}"
+              class="fl-trust-strip__logo"
+              data-logo="{{ block.settings.alt | handleize }}"
+              {{ block.shopify_attributes }}
+            >
+          {% endfor %}
+        </div>
+        <div class="fl-trust-strip__set" aria-hidden="true">
+          {% for block in section.blocks %}
+            <img
+              src="{{ block.settings.logo | default: block.settings.logo_filename | asset_url }}"
+              alt="{{ block.settings.alt }}"
+              class="fl-trust-strip__logo"
+              data-logo="{{ block.settings.alt | handleize }}"
+            >
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Trusted by direct selling leaders"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "logo_filename",
+          "label": "Logo filename (fallback)",
+          "info": "Used when no image is uploaded. Must match a file in assets/."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Strip",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "thermomix-logo.png",
+            "alt": "Thermomix"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "asea-logo.png",
+            "alt": "ASEA"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "yoli-logo.png",
+            "alt": "Yoli"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "rain-logo.png",
+            "alt": "Rain"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "newulife-logo.png",
+            "alt": "NewULife"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "make-logo.png",
+            "alt": "MAKE"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "logo_filename": "teqnavi-logo.png",
+            "alt": "Teqnavi"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

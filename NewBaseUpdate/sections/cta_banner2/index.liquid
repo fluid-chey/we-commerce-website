@@ -1,0 +1,383 @@
+<section class="cta-banner2-section" 
+         style="background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
+                {% if section.settings.background_image != blank %}
+                background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                {% endif %}">
+  
+  {% if section.settings.background_image != blank %}
+    <div class="cta-banner2-overlay" 
+         style="background-color: {{ section.settings.overlay_color | default: '#000000' }}; 
+                opacity: {{ section.settings.overlay_opacity | default: 40 | divided_by: 100.0 }}; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                z-index: 1;"></div>
+  {% endif %}
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="cta-banner2-wrapper grid grid-cols-1 sm-desktop-grid-cols-2 space-x-7xl space-y-4xl py-9xl">
+      
+      <!-- Content Column -->
+      <div class="cta-banner2-content flex flex-col justify-center">
+        <h2 class="{{ section.settings.heading_font_size }} {{ section.settings.heading_font_weight }} mb-2xl" style="color: {{ section.settings.heading_color | default: '#000000' }};">
+          {{ section.settings.heading }}
+        </h2>
+        
+        <p class="{{ section.settings.text_font_size }} {{ section.settings.text_font_weight }} mb-4xl" style="color: {{ section.settings.text_color | default: '#666666' }};">
+          {{ section.settings.intro_text }}
+        </p>
+        
+        {% if section.settings.show_primary_button or section.settings.show_secondary_button %}
+          <div class="cta-banner2-buttons flex space-lg">
+            {% if section.settings.show_primary_button and section.settings.button_text != blank %}
+              <a href="{{ section.settings.button_link }}" 
+                 class="btn {{ section.settings.button_style | default: 'btn-bg-primary' }} {{ section.settings.button_border_radius | default: '' }}"
+                 >
+                {{ section.settings.button_text }}
+              </a>
+            {% endif %}
+            
+            {% if section.settings.show_secondary_button and section.settings.button_text_secondary != blank %}
+              <a href="{{ section.settings.button_link_secondary }}" 
+                 class="btn {{ section.settings.button_secondary_style | default: 'btn-border-black' }} {{ section.settings.button_secondary_border_radius | default: '' }}">
+                {{ section.settings.button_text_secondary }}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+      
+      <!-- Image Column -->
+      <div class="cta-banner2-image">
+        
+        {% assign section_image = section.settings.image %}
+        {% assign section_image_fluid_media_id = '' %}
+        
+        {% if section_image.fluid_media_id %}
+          {% assign section_image_fluid_media_id = section_image.fluid_media_id %}
+          {% assign section_image_embed_type = section_image.embed_type %}
+        {% endif %}
+
+        {% assign use_section_image_fluid_image_widget = false %}
+        
+        {% if section_image_fluid_media_id != blank %}
+          {% assign use_fluid_image_widget = true %}
+        {% endif %}
+
+        {% if use_fluid_image_widget %}
+          <div class="image-wrapper">
+            <fluid-media-widget class="fluid-media-widget-image" media-id="{{ section_image_fluid_media_id }}" responsive="true" embed-type="{{ section_image_embed_type | default:'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+          </div>
+        {% else %}
+          {% if section_image != blank %}
+            <div class="image-wrapper">
+              <img src="{{ section_image | image_url }}" 
+                alt="{{ block.settings.image_alt | default: section.settings.heading }}" 
+                class="image-cover w-full" loading="lazy" width="" height=""/>
+              </div>
+          {% else %}
+            
+            <div class="image-placeholder" style="background-color: #e5e5e5; border-radius: 8px; height: 300px; display: flex; align-items: center; justify-content: center;">
+              <div class="placeholder-content text-center" style="color: #999;">
+                <svg width="64" height="64" fill="currentColor" viewBox="0 0 20 20" style="margin: 0 auto 16px;">
+                  <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                </svg>
+                <p style="margin: 0; font-size: 14px; font-weight: 500;">Upload an image</p>
+              </div>
+            </div>
+            
+          {% endif %}
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-banner2-section {
+  padding: 64px 0;
+  position: relative;
+}
+
+.cta-banner2-section .cta-banner2-content h2 {
+  margin-bottom: 24px;
+}
+
+.cta-banner2-section .cta-banner2-content p {
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.cta-banner2-section .cta-banner2-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-banner2-section .cta-banner2-buttons .btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cta-banner2-section .cta-banner2-buttons .btn:hover {
+  opacity: 0.8;
+}
+
+.cta-banner2-section .image-wrapper {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .cta-banner2-section .cta-banner2-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-banner2-section .cta-banner2-buttons .btn {
+    text-align: center;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CTA Banner 2",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Medium length heading goes here",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "label": "Intro Text"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-bold"
+    },
+    {
+      "type": "select",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "options": [
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-4xl", "label": "4XL" },
+        { "value": "text-5xl", "label": "5XL" }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_primary_button",
+      "default": true,
+      "label": "Show Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "#",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_button",
+      "default": true,
+      "label": "Show Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text_secondary",
+      "default": "Button",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_secondary",
+      "default": "#",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "CTA Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "default": "#f8f8f8",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Optional background image (will override background color)"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_color",
+      "default": "#000000",
+      "label": "Background Overlay Color",
+      "info": "Color overlay on top of background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Overlay Opacity",
+      "default": 40,
+      "info": "0% = transparent, 100% = solid color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color",
+      "default": "#000000",
+      "label": "Heading Color"
+    },
+    {
+      "type": "color_background",
+      "id": "text_color",
+      "default": "#666666",
+      "label": "Text Color"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "btn-bg-white", "label": "White" },
+        { "value": "btn-bg-primary", "label": "Primary" },
+        { "value": "btn-border-white", "label": "White Border" },
+        { "value": "btn-border-black", "label": "Black Border" },
+        { "value": "btn-border-primary", "label": "Primary Border" }
+      ],
+      "default": "btn-bg-primary"
+    },
+    {
+      "type": "select",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "rounded", "label": "XS" },
+        { "value": "rounded-sm", "label": "SM" },
+        { "value": "rounded-md", "label": "MD" },
+        { "value": "rounded-lg", "label": "LG" },
+        { "value": "rounded-xl", "label": "XL" },
+        { "value": "rounded-2xl", "label": "2XL" },
+        { "value": "rounded-3xl", "label": "3XL" },
+        { "value": "rounded-4xl", "label": "4XL" },
+        { "value": "rounded-5xl", "label": "5XL" },
+        { "value": "rounded-full", "label": "Full" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_secondary_style",
+      "label": "Secondary Button Style",
+      "options": [
+        { "value": "btn-bg-white", "label": "White" },
+        { "value": "btn-bg-primary", "label": "Primary" },
+        { "value": "btn-border-white", "label": "White Border" },
+        { "value": "btn-border-black", "label": "Black Border" },
+        { "value": "btn-border-primary", "label": "Primary Border" }
+      ],
+      "default": "btn-border-black"
+    },
+    {
+      "type": "select",
+      "id": "button_secondary_border_radius",
+      "label": "Secondary Button Border Radius",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "rounded", "label": "XS" },
+        { "value": "rounded-sm", "label": "SM" },
+        { "value": "rounded-md", "label": "MD" },
+        { "value": "rounded-lg", "label": "LG" },
+        { "value": "rounded-xl", "label": "XL" },
+        { "value": "rounded-2xl", "label": "2XL" },
+        { "value": "rounded-3xl", "label": "3XL" },
+        { "value": "rounded-4xl", "label": "4XL" },
+        { "value": "rounded-5xl", "label": "5XL" },
+        { "value": "rounded-full", "label": "Full" }
+      ],
+      "default": ""
+    }
+  ]
+}
+{% endschema %} 

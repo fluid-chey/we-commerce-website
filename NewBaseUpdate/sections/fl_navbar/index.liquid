@@ -1,0 +1,287 @@
+{%- style -%}
+  .fl-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .fl-nav__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 64px;
+  }
+
+  .fl-nav__logo img {
+    height: 28px;
+    width: auto;
+    display: block;
+  }
+
+  .fl-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .fl-nav__link {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: color 0.2s, background 0.2s;
+    white-space: nowrap;
+  }
+
+  .fl-nav__link:hover,
+  .fl-nav__link:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .fl-nav__item--dropdown {
+    position: relative;
+  }
+
+  .fl-nav__item--dropdown > .fl-nav__link::after {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    margin-left: 6px;
+    transition: transform 0.2s;
+  }
+
+  .fl-nav__item--dropdown:hover > .fl-nav__link::after,
+  .fl-nav__item--dropdown:focus-within > .fl-nav__link::after {
+    transform: rotate(-135deg) translateY(-2px);
+  }
+
+  .fl-nav__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 220px;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    transform: translateX(-50%) translateY(4px);
+  }
+
+  .fl-nav__item--dropdown:hover .fl-nav__dropdown,
+  .fl-nav__item--dropdown:focus-within .fl-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .fl-nav__dropdown-link {
+    display: block;
+    padding: 10px 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+
+  .fl-nav__dropdown-link:hover,
+  .fl-nav__dropdown-link:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .fl-nav__cta {
+    display: flex;
+    align-items: center;
+  }
+
+  .fl-btn-primary {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #42b1ff;
+    color: #050505;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .fl-btn-primary:hover {
+    background: #5abfff;
+    transform: translateY(-1px);
+  }
+
+  .fl-nav__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .fl-nav__hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  .fl-nav__mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background: rgba(5, 5, 5, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+    flex-direction: column;
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  .fl-nav__mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: color 0.15s;
+  }
+
+  .fl-nav__mobile-menu a:hover {
+    color: #42b1ff;
+  }
+
+  @media (max-width: 960px) {
+    .fl-nav__links,
+    .fl-nav__cta {
+      display: none;
+    }
+
+    .fl-nav__hamburger {
+      display: flex;
+    }
+
+    .fl-nav__mobile-menu.is-open {
+      display: flex;
+    }
+  }
+{%- endstyle -%}
+
+<nav class="fl-nav" id="fl-nav">
+  <div class="fl-nav__inner">
+    <a href="/" class="fl-nav__logo">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url }}" alt="Fluid" style="height:28px;width:auto;">
+      {%- else -%}
+        <img src="{{ 'fluid-logo.png' | asset_url }}" alt="Fluid">
+      {%- endif -%}
+    </a>
+    <ul class="fl-nav__links">
+      <li class="fl-nav__item fl-nav__item--dropdown">
+        <a href="#" class="fl-nav__link">Platform</a>
+        <div class="fl-nav__dropdown">
+          <a href="/home/pages/payments" class="fl-nav__dropdown-link">Fluid Payments</a>
+          <a href="/home/pages/fairshare" class="fl-nav__dropdown-link">FairShare</a>
+          <a href="/home/pages/checkout" class="fl-nav__dropdown-link">Checkout</a>
+          <a href="/home/pages/builder" class="fl-nav__dropdown-link">Builder</a>
+          <a href="/home/pages/app" class="fl-nav__dropdown-link">App & Rep Tools</a>
+          <a href="/home/pages/connect" class="fl-nav__dropdown-link">Fluid Connect</a>
+          <a href="/home/pages/droplets" class="fl-nav__dropdown-link">Droplets</a>
+        </div>
+      </li>
+      <li class="fl-nav__item"><a href="/home/pages/blitz-week" class="fl-nav__link">Blitz Week</a></li>
+      <li class="fl-nav__item"><a href="/home/pages/customer-stories" class="fl-nav__link">Customer Stories</a></li>
+      <li class="fl-nav__item"><a href="/home/pages/resources" class="fl-nav__link">Resources</a></li>
+      <li class="fl-nav__item"><a href="/home/pages/contact" class="fl-nav__link">Contact</a></li>
+    </ul>
+    <div class="fl-nav__cta">
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+    <button class="fl-nav__hamburger" aria-label="Menu" onclick="document.querySelector('.fl-nav__mobile-menu').classList.toggle('is-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="fl-nav__mobile-menu">
+  <a href="/home/pages/payments">Fluid Payments</a>
+  <a href="/home/pages/fairshare">FairShare</a>
+  <a href="/home/pages/checkout">Checkout</a>
+  <a href="/home/pages/builder">Builder</a>
+  <a href="/home/pages/app">App & Rep Tools</a>
+  <a href="/home/pages/connect">Fluid Connect</a>
+  <a href="/home/pages/droplets">Droplets</a>
+  <a href="/home/pages/blitz-week">Blitz Week</a>
+  <a href="/home/pages/customer-stories">Customer Stories</a>
+  <a href="/home/pages/contact">Contact</a>
+  <a href="{{ section.settings.cta_url }}" class="fl-btn-primary" style="margin-top:20px;text-align:center;">{{ section.settings.cta_text }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "fl_navbar",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Book a Demo"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL",
+      "default": "/home/pages/contact"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+<section class="fl-hero" id="hero">
+  <div class="fl-hero__data-cards">
+    <div class="fl-hero__card" style="top:8%;left:4%;--drift-x:12px;--drift-y:-8px;--drift-duration:6s">
+      $142.50 &mdash; order confirmed
+    </div>
+    <div class="fl-hero__card" style="top:18%;right:6%;--drift-x:-10px;--drift-y:10px;--drift-duration:7s">
+      Rep: Sarah M.
+    </div>
+    <div class="fl-hero__card" style="top:35%;left:2%;--drift-x:8px;--drift-y:14px;--drift-duration:8s">
+      Commission: $28.50
+    </div>
+    <div class="fl-hero__card" style="top:55%;right:3%;--drift-x:-14px;--drift-y:-6px;--drift-duration:5.5s">
+      Apple Pay
+    </div>
+    <div class="fl-hero__card" style="top:70%;left:6%;--drift-x:10px;--drift-y:8px;--drift-duration:7.5s">
+      Network token saved
+    </div>
+    <div class="fl-hero__card" style="bottom:25%;right:8%;--drift-x:-8px;--drift-y:12px;--drift-duration:6.5s">
+      Subscription renewed
+    </div>
+    <div class="fl-hero__card" style="top:12%;left:35%;--drift-x:6px;--drift-y:-10px;--drift-duration:9s">
+      FairShare: attributed
+    </div>
+    <div class="fl-hero__card" style="bottom:18%;left:20%;--drift-x:-12px;--drift-y:-8px;--drift-duration:5s">
+      Enrollment complete
+    </div>
+    <div class="fl-hero__card" style="top:42%;right:15%;--drift-x:10px;--drift-y:6px;--drift-duration:8.5s">
+      3 retries &rarr; approved
+    </div>
+    <div class="fl-hero__card" style="bottom:10%;right:25%;--drift-x:-6px;--drift-y:14px;--drift-duration:7s">
+      Sync: real-time
+    </div>
+  </div>
+
+  <img src="{{ 'brush-texture-01.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-10%;left:-15%;width:60%;opacity:0.10;">
+  <img src="{{ 'brush-texture-03.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-15%;right:-10%;width:50%;opacity:0.10;">
+
+  <div class="fl-hero__content">
+    <div class="fl-hero__eyebrow">{{ section.settings.eyebrow }}</div>
+    <h1 class="fl-hero__headline">The only e-commerce platform built specifically for <span class="fl-brand-accent">direct selling.</span></h1>
+    <p class="fl-hero__subtext">{{ section.settings.subtext }}</p>
+    <div class="fl-hero__ctas">
+      <a href="{{ section.settings.cta_primary_url }}" class="fl-btn-primary">{{ section.settings.cta_primary_text }}</a>
+      <a href="{{ section.settings.cta_secondary_url }}" class="fl-btn-text">{{ section.settings.cta_secondary_text }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fluid Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "We-Commerce"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The only e-commerce platform built specifically for direct selling."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Every e-commerce platform was built for a stranger clicking buy and leaving. Your business isn't that. It's a rep who spent three months building a relationship. A customer who finally clicked the link. A transaction that isn't just a sale — it's proof that someone's effort mattered."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary_text",
+      "label": "Primary CTA text",
+      "default": "Book a Demo"
+    },
+    {
+      "type": "url",
+      "id": "cta_primary_url",
+      "label": "Primary CTA link",
+      "default": "#book-demo"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary_text",
+      "label": "Secondary CTA text",
+      "default": "See how it works →"
+    },
+    {
+      "type": "url",
+      "id": "cta_secondary_url",
+      "label": "Secondary CTA link",
+      "default": "#solution"
+    }
+  ]
+}
+{% endschema %}

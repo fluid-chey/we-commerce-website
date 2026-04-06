@@ -1,0 +1,44 @@
+{% section 'fl_page_hero', id: 'resources_hero' %}
+{% section 'fl_content_block', id: 'resources_topics' %}
+{% section 'fl_content_block', id: 'resources_guides' %}
+{% section 'fl_content_block', id: 'resources_current' %}
+
+{% schema %}
+{
+  "name": "Resources",
+  "sections": {
+    "resources_hero": {
+      "type": "fl_page_hero",
+      "settings": {
+        "eyebrow": "Resources",
+        "headline": "The We-Commerce Blog",
+        "subtext": "Insight for the people building direct selling companies.\n\nNot general e-commerce advice. Not platform features dressed up as thought leadership. Real thinking about attribution, field enablement, payments, and what it actually takes to run a direct selling company in 2026."
+      }
+    },
+    "resources_topics": {
+      "type": "fl_content_block",
+      "settings": {
+        "background": "dark",
+        "headline": "Browse by topic",
+        "body": "<p><strong>Attribution and Rep Trust</strong> — Why reps stop sharing — and how to fix it. The mechanics of FairShare. What accurate attribution actually does for a field organization.</p><p><strong>Payments and Revenue Recovery</strong> — The real cost of declined transactions in direct selling. How cascade retries work. What network tokens mean for approval rates.</p><p><strong>Field Enablement</strong> — Rep tools that get used. The difference between an app reps love and one they avoid. How Catchups changes follow-up behavior.</p><p><strong>Platform and Technology</strong> — Shopify vs. purpose-built direct selling infrastructure. What commission engine sync actually requires. The case for Droplets.</p><p><strong>International Expansion</strong> — Launching in new markets without rebuilding. Country-level variant pricing explained.</p><p><strong>We-Commerce</strong> — The category, explained. Why relationship commerce is the future.</p>"
+      }
+    },
+    "resources_guides": {
+      "type": "fl_content_block",
+      "settings": {
+        "background": "cream",
+        "headline": "Resources",
+        "body": "<p><strong>The We-Commerce Platform Overview</strong> — A complete look at how all seven platform features work together.</p><p><strong>Blitz Week Guide</strong> — What to expect, how to prepare, and what you'll have at the end of four days.</p><p><strong>FairShare Attribution: The Definitive Guide</strong> — How the five attribution settings work, how to configure them, and what the Order Journey tells you.</p><p><strong>Direct Selling and Payments: What Generic Infrastructure Gets Wrong</strong> — For CTOs and operations leaders evaluating payment infrastructure.</p>"
+      }
+    },
+    "resources_current": {
+      "type": "fl_content_block",
+      "settings": {
+        "background": "dark",
+        "headline": "Stay current",
+        "body": "<p>Get the We-Commerce Brief — insight for direct selling leaders, delivered when it's worth your time.</p>"
+      }
+    }
+  }
+}
+{% endschema %}

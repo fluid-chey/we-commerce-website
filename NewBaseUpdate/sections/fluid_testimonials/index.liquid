@@ -1,0 +1,92 @@
+<section class="fl-section fl-testimonials" id="testimonials">
+  <div class="fl-container">
+    <div class="fl-testimonials__wrap fl-reveal">
+      <div class="fl-testimonials__quote-mark">"</div>
+      {% for block in section.blocks %}
+        <div class="fl-testimonial-card{% if forloop.first %} active{% endif %}" {{ block.fluid_attributes }}>
+          <p class="fl-testimonial-card__text">{{ block.settings.quote }}</p>
+          <div class="fl-testimonial-card__attribution">
+            {% if block.settings.avatar != blank %}
+              <img src="{{ block.settings.avatar | image_url }}" alt="{{ block.settings.name }}" class="fl-testimonial-card__avatar">
+            {% endif %}
+            <div class="fl-testimonial-card__info">
+              <div class="fl-testimonial-card__name">{{ block.settings.name }}</div>
+              <div class="fl-testimonial-card__title">{{ block.settings.title }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="fl-testimonials__dots">
+        {% for block in section.blocks %}
+          <div class="fl-testimonial-dot{% if forloop.first %} active{% endif %}"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Our reps finally <span class=\"fl-highlight\">trust the system</span>. They share links again because they know FairShare will get the attribution right. That changes everything downstream.\"",
+            "name": "Mike Kendall",
+            "title": "CEO, Yoli"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"We went from signed agreement to <span class=\"fl-highlight\">live in four days</span> through Blitz Week. No other platform vendor has ever come close to that kind of speed.\"",
+            "name": "Holly McKinney",
+            "title": "CEO, Teqnavi"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "\"Our <span class=\"fl-highlight\">payment approval rates jumped</span> immediately after migrating to Fluid Payments. Cascading retries and network tokens recovered transactions we were just losing before.\"",
+            "name": "Felipe Lee",
+            "title": "VP Operations"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

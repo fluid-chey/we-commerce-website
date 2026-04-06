@@ -1,0 +1,379 @@
+{%- style -%}
+  .fl-contact-page { --accent: #42b1ff; }
+
+  /* ── Hero ── */
+  .fl-contact-page__hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-contact-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(100px, 14vw, 220px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-contact-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+  }
+  .fl-contact-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-contact-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── Section Base ── */
+  .fl-contact-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-contact-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-contact-page__section--cream .fl-contact-page__s-headline { color: #0a0a0a; }
+  .fl-contact-page__section--cream .fl-contact-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-contact-page__section--cream .fl-contact-page__s-body strong { color: #0a0a0a; }
+  .fl-contact-page__section--cream .fl-contact-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-contact-page__section--cream .fl-contact-page__card-title { color: #0a0a0a; }
+  .fl-contact-page__section--cream .fl-contact-page__card-body { color: #3a3a3a; }
+  .fl-contact-page__section--cream .fl-contact-page__card-body a { color: #0a0a0a; }
+
+  .fl-contact-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-contact-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-contact-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-contact-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-contact-page__s-body p { margin-bottom: 20px; }
+  .fl-contact-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Info Card ── */
+  .fl-contact-page__info-card {
+    margin-top: 40px;
+    border: 1px solid rgba(66,177,255,0.2);
+    border-radius: 12px;
+    padding: clamp(28px, 3vw, 40px);
+    max-width: 720px;
+    font-family: var(--ff-body);
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+  }
+  .fl-contact-page__section--cream .fl-contact-page__info-card {
+    background: #fff;
+    border-color: rgba(0,0,0,0.08);
+    color: #3a3a3a;
+  }
+
+  /* ── Contact Cards Grid ── */
+  .fl-contact-page__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(66,177,255,0.1);
+  }
+  .fl-contact-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-contact-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-contact-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+  .fl-contact-page__card-body a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(66,177,255,0.3);
+    transition: border-color 0.2s ease;
+  }
+  .fl-contact-page__card-body a:hover {
+    border-color: var(--accent);
+  }
+
+  /* ── Location ── */
+  .fl-contact-page__location {
+    font-family: var(--ff-body);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    margin-top: 8px;
+  }
+  .fl-contact-page__section--cream .fl-contact-page__location { color: #3a3a3a; }
+
+  @media (max-width: 768px) {
+    .fl-contact-page__cards { grid-template-columns: 1fr; }
+    .fl-contact-page__hero { min-height: 60vh; padding: 120px 24px 80px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-contact-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-contact-page__hero">
+    <img src="{{ 'brush-texture-03.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-10%;right:-14%;width:42%;opacity:0.10;">
+    <div class="fl-contact-page__hero-ghost">LET'S TALK</div>
+    <div class="fl-contact-page__hero-content">
+      <h1 class="fl-contact-page__hero-headline">{{ section.settings.hero_headline }}</h1>
+      <p class="fl-contact-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+    </div>
+  </section>
+
+  <!-- ═══ BOOK A DEMO ═══ -->
+  <section class="fl-contact-page__section fl-contact-page__section--cream">
+    <div class="fl-contact-page__s-inner fl-reveal">
+      <div class="fl-contact-page__s-label">Schedule</div>
+      <h2 class="fl-contact-page__s-headline">{{ section.settings.demo_headline }}</h2>
+      <div class="fl-contact-page__s-body">{{ section.settings.demo_body }}</div>
+      <div class="fl-contact-page__info-card">{{ section.settings.demo_info }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT INFO ═══ -->
+  <section class="fl-contact-page__section">
+    <div class="fl-contact-page__s-inner fl-reveal">
+      <div class="fl-contact-page__s-label">Get in touch</div>
+      <h2 class="fl-contact-page__s-headline">{{ section.settings.contact_headline }}</h2>
+      <div class="fl-contact-page__cards">
+        <div class="fl-contact-page__card">
+          <div class="fl-contact-page__card-title">{{ section.settings.contact_card_1_title }}</div>
+          <div class="fl-contact-page__card-body"><a href="mailto:{{ section.settings.contact_card_1_email }}">{{ section.settings.contact_card_1_email }}</a></div>
+        </div>
+        <div class="fl-contact-page__card">
+          <div class="fl-contact-page__card-title">{{ section.settings.contact_card_2_title }}</div>
+          <div class="fl-contact-page__card-body"><a href="mailto:{{ section.settings.contact_card_2_email }}">{{ section.settings.contact_card_2_email }}</a></div>
+        </div>
+        <div class="fl-contact-page__card">
+          <div class="fl-contact-page__card-title">{{ section.settings.contact_card_3_title }}</div>
+          <div class="fl-contact-page__card-body"><a href="mailto:{{ section.settings.contact_card_3_email }}">{{ section.settings.contact_card_3_email }}</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HEADQUARTERS ═══ -->
+  <section class="fl-contact-page__section fl-contact-page__section--cream">
+    <div class="fl-contact-page__s-inner fl-reveal">
+      <div class="fl-contact-page__s-label">Location</div>
+      <h2 class="fl-contact-page__s-headline">{{ section.settings.hq_headline }}</h2>
+      <div class="fl-contact-page__location">{{ section.settings.hq_address }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ BLITZ WEEK READY ═══ -->
+  <section class="fl-contact-page__section">
+    <div class="fl-contact-page__s-inner fl-reveal">
+      <div class="fl-contact-page__s-label">Next step</div>
+      <h2 class="fl-contact-page__s-headline">{{ section.settings.blitz_headline }}</h2>
+      <div class="fl-contact-page__s-body">{{ section.settings.blitz_body }}</div>
+      <div style="margin-top:36px;">
+        <a href="{{ section.settings.blitz_cta_url }}" class="fl-btn-primary">{{ section.settings.blitz_cta_text }}</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_headline",
+      "label": "Headline",
+      "default": "Let's talk."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "You've been running your business on a platform that wasn't built for it. Or you're evaluating whether there's a better way. Either way, the best next step is a real conversation — not a gated PDF."
+    },
+    {
+      "type": "header",
+      "content": "Book a Demo"
+    },
+    {
+      "type": "text",
+      "id": "demo_headline",
+      "label": "Headline",
+      "default": "Book a demo"
+    },
+    {
+      "type": "textarea",
+      "id": "demo_body",
+      "label": "Body",
+      "default": "<p>See the platform in context. We'll walk through the features most relevant to your business and answer every question live.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "demo_info",
+      "label": "Info card text",
+      "default": "A live, 45-minute walkthrough of the Fluid platform — focused on the features most relevant to your business. Reach out to schedule at the email below."
+    },
+    {
+      "type": "header",
+      "content": "Contact Info"
+    },
+    {
+      "type": "text",
+      "id": "contact_headline",
+      "label": "Headline",
+      "default": "Reach the right team"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_1_title",
+      "label": "Card 1 title",
+      "default": "General inquiries"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_1_email",
+      "label": "Card 1 email",
+      "default": "hello@fluidcommerce.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_2_title",
+      "label": "Card 2 title",
+      "default": "Partnerships"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_2_email",
+      "label": "Card 2 email",
+      "default": "partners@fluidcommerce.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_3_title",
+      "label": "Card 3 title",
+      "default": "Press"
+    },
+    {
+      "type": "text",
+      "id": "contact_card_3_email",
+      "label": "Card 3 email",
+      "default": "press@fluidcommerce.com"
+    },
+    {
+      "type": "header",
+      "content": "Headquarters"
+    },
+    {
+      "type": "text",
+      "id": "hq_headline",
+      "label": "Headline",
+      "default": "Headquarters"
+    },
+    {
+      "type": "text",
+      "id": "hq_address",
+      "label": "Address",
+      "default": "Fluid / Lehi, Utah 84043"
+    },
+    {
+      "type": "header",
+      "content": "Blitz Week Ready"
+    },
+    {
+      "type": "text",
+      "id": "blitz_headline",
+      "label": "Headline",
+      "default": "Ready to see Blitz Week on the calendar?"
+    },
+    {
+      "type": "textarea",
+      "id": "blitz_body",
+      "label": "Body",
+      "default": "<p>If you're past the demo stage and want to talk about a term agreement and Blitz Week timeline, tell us that directly and we'll make sure the right people are on the call.</p>"
+    },
+    {
+      "type": "text",
+      "id": "blitz_cta_text",
+      "label": "CTA text",
+      "default": "Tell us you're ready →"
+    },
+    {
+      "type": "url",
+      "id": "blitz_cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,707 @@
+{%- style -%}
+  @media (min-width: 1280px) {
+    .enrollment-product-{{ section.id }} {
+      padding-top: {{ section.settings.section_padding_top_desktop | default: 100 }}px !important;
+      padding-bottom: {{ section.settings.section_padding_bottom_desktop | default: 100 }}px !important;
+    }
+  }
+  
+  {% if section.settings.tagline_color != blank %}
+  .enrollment-product-{{ section.id }} .section-tagline {
+    color: {{ section.settings.tagline_color }};
+  }
+  {% endif %}
+  
+  {% if section.settings.heading_color != blank %}
+  .enrollment-product-{{ section.id }} .section-heading {
+    color: {{ section.settings.heading_color }};
+  }
+  {% endif %}
+  
+  {% if section.settings.description_color != blank %}
+  .enrollment-product-{{ section.id }} .section-description {
+    color: {{ section.settings.description_color }};
+  }
+  {% endif %}
+  
+  {% if section.settings.product_title_color != blank %}
+  .enrollment-product-{{ section.id }} .product-title {
+    color: {{ section.settings.product_title_color }};
+  }
+  {% endif %}
+  
+  {% if section.settings.product_price_color != blank %}
+  .enrollment-product-{{ section.id }} .product-price {
+    color: {{ section.settings.product_price_color }};
+  }
+  {% endif %}
+{%- endstyle -%}
+
+<section class="product-collection-section enrollment-product-{{ section.id }} {{ section.settings.section_padding_top_mobile | default: 'pt-5xl' }} {{ section.settings.section_padding_bottom_mobile | default: 'pb-5xl' }}" style="background-color: {{ section.settings.background_color | default: '#ffffff' }};">
+  <div class="container">
+    <div class="header-section">
+      <div class="wrapper lg:flex flex-wrap align-end">
+        <div class="desc">
+          {% if section.settings.show_tagline %}
+            <h6 class="section-tagline {{ section.settings.tagline_font_size | default: 'text-base' }} {{ section.settings.tagline_font_size_desktop | default: 'lg:text-base' }} {{ section.settings.tagline_font_weight | default: 'font-normal' }}">
+              {% if section.settings.tagline contains 'shop_page.' or section.settings.tagline contains 'shared.' %}
+                {{ section.settings.tagline | t }}
+              {% else %}
+                {{ section.settings.tagline }}
+              {% endif %}
+            </h6>
+          {% endif %}
+
+          <div class="section-heading {{ section.settings.heading_spacing_mobile | default: 'py-md' }} {{ section.settings.heading_spacing_desktop | default: 'lg:py-lg' }} {{ section.settings.heading_font_size | default: 'text-h2' }} {{ section.settings.heading_font_size_desktop | default: 'text-h1' }} {{ section.settings.heading_font_weight | default: 'font-bold' }}">
+            {% if section.settings.heading contains 'shop_page.' or section.settings.heading contains 'shared.' %}
+              {{ section.settings.heading | t }}
+            {% else %}
+              {{ section.settings.heading }}
+            {% endif %}
+          </div>
+
+          {% if section.settings.show_description %}
+            <p class="section-description {{ section.settings.description_font_size | default: 'text-base' }} {{ section.settings.description_font_size_desktop | default: 'lg:text-lg' }} {{ section.settings.description_font_weight | default: 'font-normal' }}">
+              {% if section.settings.description contains 'shop_page.' or section.settings.description contains 'shared.' %}
+                {{ section.settings.description | t }}
+              {% else %}
+                {{ section.settings.description }}
+              {% endif %}
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {%- paginate collection.enrollment_packs by 10 -%}
+      <div class="product-list-section {{ section.settings.product_list_spacing_mobile | default: 'mt-5xl' }} {{ section.settings.product_list_spacing_desktop | default: 'lg:mt-7xl' }}">
+        <ul class="grid grid-cols-1 xl-phone-grid-cols-2 lg-tab-grid-cols-3 {{ section.settings.grid_gap_x_mobile | default: 'space-x-4xl' }} {{ section.settings.grid_gap_x_desktop | default: 'lg:space-x-7xl' }} {{ section.settings.grid_gap_y_mobile | default: 'space-y-7xl' }} {{ section.settings.grid_gap_y_desktop | default: 'lg:space-y-9xl' }}">
+          {% assign enrollment_packs_array = collection.enrollment_packs | parse_json %}
+          {% for enrollment_pack in enrollment_packs_array %}
+            {% if enrollment_pack.images_array.size > 0 %}
+              {% assign image_url = enrollment_pack.images_array[0] %}
+            {% elsif enrollment_pack.subscription_products and enrollment_pack.subscription_products[0].image %}
+              {% assign image_url = enrollment_pack.subscription_products[0].image %}
+            {% else %}
+              {% assign image_url = '' %}
+            {% endif %}
+
+            <li>
+              <a href="{{ enrollment_pack.url }}" class="product">
+                <div class="image-section product-image-height image-hover-effect">
+                  <img
+                    src="{{ image_url }}"
+                    alt="{{ enrollment_pack.title }}"
+                    class="image-cover"
+                  />
+                </div>
+                <div class="desc {{ section.settings.product_content_spacing_mobile | default: 'pt-lg' }} {{ section.settings.product_content_spacing_desktop | default: 'lg:pt-lg' }}">
+                  <div class="product-title text-hover-effect {{ section.settings.product_title_font_size | default: 'text-base' }} {{ section.settings.product_title_font_size_desktop | default: 'lg:text-lg' }} {{ section.settings.product_title_font_weight | default: 'font-semibold' }}">
+                    {{ enrollment_pack.title }}
+                  </div>
+                  <div class="product-price {{ section.settings.product_price_font_size | default: 'text-base' }} {{ section.settings.product_price_font_size_desktop | default: 'lg:text-xl' }} {{ section.settings.product_price_font_weight | default: 'font-bold' }} pt-md">
+                    {{ enrollment_pack.price }}
+                  </div>
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {%- if paginate.pages > 1 -%}
+        {% render 'pagination', paginate: paginate, anchor: '' %}
+      {%- endif -%}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Enrollment Pack List",
+  "tag": "section",
+  "enabled_on": {
+    "templates": ["join_page"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tagline",
+      "label": "Show Tagline",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Our Collection"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Enrollments"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "Show Description",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover our handpicked selection of premium enrollment products that combine quality, style, and functionality."
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_top_mobile",
+      "label": "Section Padding Top (Mobile)",
+      "options": [
+        { "value": "pt-0", "label": "0" },
+        { "value": "pt-xs", "label": "XS" },
+        { "value": "pt-sm", "label": "SM" },
+        { "value": "pt-md", "label": "MD" },
+        { "value": "pt-lg", "label": "LG" },
+        { "value": "pt-xl", "label": "XL" },
+        { "value": "pt-2xl", "label": "2XL" },
+        { "value": "pt-3xl", "label": "3XL" },
+        { "value": "pt-4xl", "label": "4XL" },
+        { "value": "pt-5xl", "label": "5XL" },
+        { "value": "pt-6xl", "label": "6XL" },
+        { "value": "pt-7xl", "label": "7XL" },
+        { "value": "pt-8xl", "label": "8XL" },
+        { "value": "pt-9xl", "label": "9XL" },
+        { "value": "pt-10xl", "label": "10XL" }
+      ],
+      "default": "pt-5xl"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_bottom_mobile",
+      "label": "Section Padding Bottom (Mobile)",
+      "options": [
+        { "value": "pb-0", "label": "0" },
+        { "value": "pb-xs", "label": "XS" },
+        { "value": "pb-sm", "label": "SM" },
+        { "value": "pb-md", "label": "MD" },
+        { "value": "pb-lg", "label": "LG" },
+        { "value": "pb-xl", "label": "XL" },
+        { "value": "pb-2xl", "label": "2XL" },
+        { "value": "pb-3xl", "label": "3XL" },
+        { "value": "pb-4xl", "label": "4XL" },
+        { "value": "pb-5xl", "label": "5XL" },
+        { "value": "pb-6xl", "label": "6XL" },
+        { "value": "pb-7xl", "label": "7XL" },
+        { "value": "pb-8xl", "label": "8XL" },
+        { "value": "pb-9xl", "label": "9XL" },
+        { "value": "pb-10xl", "label": "10XL" }
+      ],
+      "default": "pb-5xl"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top (Desktop)",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom (Desktop)",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Content Spacing"
+    },
+    {
+      "type": "select",
+      "id": "heading_spacing_mobile",
+      "label": "Heading Padding Y (Mobile)",
+      "options": [
+        { "value": "py-0", "label": "0" },
+        { "value": "py-xs", "label": "XS" },
+        { "value": "py-sm", "label": "SM" },
+        { "value": "py-md", "label": "MD" },
+        { "value": "py-lg", "label": "LG" },
+        { "value": "py-xl", "label": "XL" },
+        { "value": "py-2xl", "label": "2XL" },
+        { "value": "py-3xl", "label": "3XL" }
+      ],
+      "default": "py-md"
+    },
+    {
+      "type": "select",
+      "id": "heading_spacing_desktop",
+      "label": "Heading Padding Y (Desktop)",
+      "options": [
+        { "value": "lg:py-0", "label": "0" },
+        { "value": "lg:py-xs", "label": "XS" },
+        { "value": "lg:py-sm", "label": "SM" },
+        { "value": "lg:py-md", "label": "MD" },
+        { "value": "lg:py-lg", "label": "LG" },
+        { "value": "lg:py-xl", "label": "XL" },
+        { "value": "lg:py-2xl", "label": "2XL" },
+        { "value": "lg:py-3xl", "label": "3XL" }
+      ],
+      "default": "lg:py-lg"
+    },
+    {
+      "type": "select",
+      "id": "product_list_spacing_mobile",
+      "label": "Product List Margin Top (Mobile)",
+      "options": [
+        { "value": "mt-0", "label": "0" },
+        { "value": "mt-xs", "label": "XS" },
+        { "value": "mt-sm", "label": "SM" },
+        { "value": "mt-md", "label": "MD" },
+        { "value": "mt-lg", "label": "LG" },
+        { "value": "mt-xl", "label": "XL" },
+        { "value": "mt-2xl", "label": "2XL" },
+        { "value": "mt-3xl", "label": "3XL" },
+        { "value": "mt-4xl", "label": "4XL" },
+        { "value": "mt-5xl", "label": "5XL" },
+        { "value": "mt-6xl", "label": "6XL" },
+        { "value": "mt-7xl", "label": "7XL" },
+        { "value": "mt-8xl", "label": "8XL" },
+        { "value": "mt-9xl", "label": "9XL" },
+        { "value": "mt-10xl", "label": "10XL" }
+      ],
+      "default": "mt-5xl"
+    },
+    {
+      "type": "select",
+      "id": "product_list_spacing_desktop",
+      "label": "Product List Margin Top (Desktop)",
+      "options": [
+        { "value": "lg:mt-0", "label": "0" },
+        { "value": "lg:mt-xs", "label": "XS" },
+        { "value": "lg:mt-sm", "label": "SM" },
+        { "value": "lg:mt-md", "label": "MD" },
+        { "value": "lg:mt-lg", "label": "LG" },
+        { "value": "lg:mt-xl", "label": "XL" },
+        { "value": "lg:mt-2xl", "label": "2XL" },
+        { "value": "lg:mt-3xl", "label": "3XL" },
+        { "value": "lg:mt-4xl", "label": "4XL" },
+        { "value": "lg:mt-5xl", "label": "5XL" },
+        { "value": "lg:mt-6xl", "label": "6XL" },
+        { "value": "lg:mt-7xl", "label": "7XL" },
+        { "value": "lg:mt-8xl", "label": "8XL" },
+        { "value": "lg:mt-9xl", "label": "9XL" },
+        { "value": "lg:mt-10xl", "label": "10XL" }
+      ],
+      "default": "lg:mt-7xl"
+    },
+    {
+      "type": "select",
+      "id": "grid_gap_x_mobile",
+      "label": "Grid Gap X (Mobile)",
+      "options": [
+        { "value": "space-x-0", "label": "0" },
+        { "value": "space-x-xs", "label": "XS" },
+        { "value": "space-x-sm", "label": "SM" },
+        { "value": "space-x-md", "label": "MD" },
+        { "value": "space-x-lg", "label": "LG" },
+        { "value": "space-x-xl", "label": "XL" },
+        { "value": "space-x-2xl", "label": "2XL" },
+        { "value": "space-x-3xl", "label": "3XL" },
+        { "value": "space-x-4xl", "label": "4XL" },
+        { "value": "space-x-5xl", "label": "5XL" },
+        { "value": "space-x-6xl", "label": "6XL" },
+        { "value": "space-x-7xl", "label": "7XL" },
+        { "value": "space-x-8xl", "label": "8XL" },
+        { "value": "space-x-9xl", "label": "9XL" },
+        { "value": "space-x-10xl", "label": "10XL" }
+      ],
+      "default": "space-x-4xl"
+    },
+    {
+      "type": "select",
+      "id": "grid_gap_x_desktop",
+      "label": "Grid Gap X (Desktop)",
+      "options": [
+        { "value": "lg:space-x-0", "label": "0" },
+        { "value": "lg:space-x-xs", "label": "XS" },
+        { "value": "lg:space-x-sm", "label": "SM" },
+        { "value": "lg:space-x-md", "label": "MD" },
+        { "value": "lg:space-x-lg", "label": "LG" },
+        { "value": "lg:space-x-xl", "label": "XL" },
+        { "value": "lg:space-x-2xl", "label": "2XL" },
+        { "value": "lg:space-x-3xl", "label": "3XL" },
+        { "value": "lg:space-x-4xl", "label": "4XL" },
+        { "value": "lg:space-x-5xl", "label": "5XL" },
+        { "value": "lg:space-x-6xl", "label": "6XL" },
+        { "value": "lg:space-x-7xl", "label": "7XL" },
+        { "value": "lg:space-x-8xl", "label": "8XL" },
+        { "value": "lg:space-x-9xl", "label": "9XL" },
+        { "value": "lg:space-x-10xl", "label": "10XL" }
+      ],
+      "default": "lg:space-x-7xl"
+    },
+    {
+      "type": "select",
+      "id": "grid_gap_y_mobile",
+      "label": "Grid Gap Y (Mobile)",
+      "options": [
+        { "value": "space-y-0", "label": "0" },
+        { "value": "space-y-xs", "label": "XS" },
+        { "value": "space-y-sm", "label": "SM" },
+        { "value": "space-y-md", "label": "MD" },
+        { "value": "space-y-lg", "label": "LG" },
+        { "value": "space-y-xl", "label": "XL" },
+        { "value": "space-y-2xl", "label": "2XL" },
+        { "value": "space-y-3xl", "label": "3XL" },
+        { "value": "space-y-4xl", "label": "4XL" },
+        { "value": "space-y-5xl", "label": "5XL" },
+        { "value": "space-y-6xl", "label": "6XL" },
+        { "value": "space-y-7xl", "label": "7XL" },
+        { "value": "space-y-8xl", "label": "8XL" },
+        { "value": "space-y-9xl", "label": "9XL" },
+        { "value": "space-y-10xl", "label": "10XL" }
+      ],
+      "default": "space-y-7xl"
+    },
+    {
+      "type": "select",
+      "id": "grid_gap_y_desktop",
+      "label": "Grid Gap Y (Desktop)",
+      "options": [
+        { "value": "lg:space-y-0", "label": "0" },
+        { "value": "lg:space-y-xs", "label": "XS" },
+        { "value": "lg:space-y-sm", "label": "SM" },
+        { "value": "lg:space-y-md", "label": "MD" },
+        { "value": "lg:space-y-lg", "label": "LG" },
+        { "value": "lg:space-y-xl", "label": "XL" },
+        { "value": "lg:space-y-2xl", "label": "2XL" },
+        { "value": "lg:space-y-3xl", "label": "3XL" },
+        { "value": "lg:space-y-4xl", "label": "4XL" },
+        { "value": "lg:space-y-5xl", "label": "5XL" },
+        { "value": "lg:space-y-6xl", "label": "6XL" },
+        { "value": "lg:space-y-7xl", "label": "7XL" },
+        { "value": "lg:space-y-8xl", "label": "8XL" },
+        { "value": "lg:space-y-9xl", "label": "9XL" },
+        { "value": "lg:space-y-10xl", "label": "10XL" }
+      ],
+      "default": "lg:space-y-9xl"
+    },
+    {
+      "type": "select",
+      "id": "product_content_spacing_mobile",
+      "label": "Product Content Padding Top (Mobile)",
+      "options": [
+        { "value": "pt-0", "label": "0" },
+        { "value": "pt-xs", "label": "XS" },
+        { "value": "pt-sm", "label": "SM" },
+        { "value": "pt-md", "label": "MD" },
+        { "value": "pt-lg", "label": "LG" },
+        { "value": "pt-xl", "label": "XL" },
+        { "value": "pt-2xl", "label": "2XL" },
+        { "value": "pt-3xl", "label": "3XL" }
+      ],
+      "default": "pt-lg"
+    },
+    {
+      "type": "select",
+      "id": "product_content_spacing_desktop",
+      "label": "Product Content Padding Top (Desktop)",
+      "options": [
+        { "value": "lg:pt-0", "label": "0" },
+        { "value": "lg:pt-xs", "label": "XS" },
+        { "value": "lg:pt-sm", "label": "SM" },
+        { "value": "lg:pt-md", "label": "MD" },
+        { "value": "lg:pt-lg", "label": "LG" },
+        { "value": "lg:pt-xl", "label": "XL" },
+        { "value": "lg:pt-2xl", "label": "2XL" },
+        { "value": "lg:pt-3xl", "label": "3XL" }
+      ],
+      "default": "lg:pt-lg"
+    },
+    {
+      "type": "header",
+      "content": "Tagline Typography"
+    },
+    {
+      "type": "select",
+      "id": "tagline_font_size",
+      "label": "Tagline Font Size (Mobile)",
+      "options": [
+        { "value": "text-xs", "label": "XS" },
+        { "value": "text-sm", "label": "SM" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "tagline_font_size_desktop",
+      "label": "Tagline Font Size (Desktop)",
+      "options": [
+        { "value": "lg:text-xs", "label": "XS" },
+        { "value": "lg:text-sm", "label": "SM" },
+        { "value": "lg:text-base", "label": "Base" },
+        { "value": "lg:text-lg", "label": "LG" },
+        { "value": "lg:text-xl", "label": "XL" },
+        { "value": "lg:text-2xl", "label": "2XL" },
+        { "value": "lg:text-3xl", "label": "3XL" }
+      ],
+      "default": "lg:text-base"
+    },
+    {
+      "type": "select",
+      "id": "tagline_font_weight",
+      "label": "Tagline Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "color_background",
+      "id": "tagline_color",
+      "label": "Tagline Color",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Heading Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size",
+      "label": "Heading Font Size (Mobile)",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size_desktop",
+      "label": "Heading Font Size (Desktop)",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h1"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-bold"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Description Typography"
+    },
+    {
+      "type": "select",
+      "id": "description_font_size",
+      "label": "Description Font Size (Mobile)",
+      "options": [
+        { "value": "text-sm", "label": "SM" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-4xl", "label": "4XL" },
+        { "value": "text-5xl", "label": "5XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "description_font_size_desktop",
+      "label": "Description Font Size (Desktop)",
+      "options": [
+        { "value": "lg:text-sm", "label": "SM" },
+        { "value": "lg:text-base", "label": "Base" },
+        { "value": "lg:text-lg", "label": "LG" },
+        { "value": "lg:text-xl", "label": "XL" },
+        { "value": "lg:text-2xl", "label": "2XL" },
+        { "value": "lg:text-3xl", "label": "3XL" },
+        { "value": "lg:text-4xl", "label": "4XL" },
+        { "value": "lg:text-5xl", "label": "5XL" }
+      ],
+      "default": "lg:text-lg"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Description Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "color_background",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Product Title Typography"
+    },
+    {
+      "type": "select",
+      "id": "product_title_font_size",
+      "label": "Product Title Font Size (Mobile)",
+      "options": [
+        { "value": "text-xs", "label": "XS" },
+        { "value": "text-sm", "label": "SM" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "product_title_font_size_desktop",
+      "label": "Product Title Font Size (Desktop)",
+      "options": [
+        { "value": "lg:text-xs", "label": "XS" },
+        { "value": "lg:text-sm", "label": "SM" },
+        { "value": "lg:text-base", "label": "Base" },
+        { "value": "lg:text-lg", "label": "LG" },
+        { "value": "lg:text-xl", "label": "XL" },
+        { "value": "lg:text-2xl", "label": "2XL" }
+      ],
+      "default": "lg:text-lg"
+    },
+    {
+      "type": "select",
+      "id": "product_title_font_weight",
+      "label": "Product Title Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" }
+      ],
+      "default": "font-semibold"
+    },
+    {
+      "type": "color_background",
+      "id": "product_title_color",
+      "label": "Product Title Color",
+      "default": ""
+    },
+    {
+      "type": "header",
+      "content": "Product Price Typography"
+    },
+    {
+      "type": "select",
+      "id": "product_price_font_size",
+      "label": "Product Price Font Size (Mobile)",
+      "options": [
+        { "value": "text-xs", "label": "XS" },
+        { "value": "text-sm", "label": "SM" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "product_price_font_size_desktop",
+      "label": "Product Price Font Size (Desktop)",
+      "options": [
+        { "value": "lg:text-xs", "label": "XS" },
+        { "value": "lg:text-sm", "label": "SM" },
+        { "value": "lg:text-base", "label": "Base" },
+        { "value": "lg:text-lg", "label": "LG" },
+        { "value": "lg:text-xl", "label": "XL" },
+        { "value": "lg:text-2xl", "label": "2XL" },
+        { "value": "lg:text-3xl", "label": "3XL" }
+      ],
+      "default": "lg:text-xl"
+    },
+    {
+      "type": "select",
+      "id": "product_price_font_weight",
+      "label": "Product Price Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "color_background",
+      "id": "product_price_color",
+      "label": "Product Price Color",
+      "default": ""
+    }
+  ]
+}
+{% endschema %}

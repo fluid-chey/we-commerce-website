@@ -1,0 +1,547 @@
+{%- style -%}
+  .fl-blitz-page {
+    --accent: #44b574;
+  }
+
+  .fl-blitz-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-blitz-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(140px, 18vw, 260px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255, 255, 255, 0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .fl-blitz-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+  .fl-blitz-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-blitz-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    text-transform: uppercase;
+    color: var(--clr-text-primary);
+    margin-bottom: 28px;
+  }
+  .fl-blitz-page__hero-headline .fl-brand-accent {
+    color: var(--accent);
+  }
+  .fl-blitz-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 40px;
+  }
+  .fl-blitz-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  .fl-blitz-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-blitz-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-blitz-page__section--cream .fl-blitz-page__section-headline { color: #0a0a0a; }
+  .fl-blitz-page__section--cream .fl-blitz-page__section-body { color: #3a3a3a; font-weight: 400; }
+  .fl-blitz-page__section--cream .fl-blitz-page__section-body strong { color: #0a0a0a; }
+  .fl-blitz-page__section--cream .fl-blitz-page__section-label { color: var(--accent); }
+
+  .fl-blitz-page__section-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-blitz-page__section-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-blitz-page__section-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 28px;
+    max-width: 720px;
+  }
+  .fl-blitz-page__section-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-blitz-page__section-body p { margin-bottom: 20px; }
+  .fl-blitz-page__section-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  .fl-blitz-page__timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: start;
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-blitz-page__timeline {
+    display: flex;
+    flex-direction: column;
+  }
+  .fl-blitz-page__day {
+    display: flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-top: 1px solid rgba(68, 181, 116, 0.2);
+  }
+  .fl-blitz-page__day-num {
+    font-family: var(--ff-brand);
+    font-size: 1.1rem;
+    color: var(--accent);
+    min-width: 64px;
+    flex-shrink: 0;
+  }
+  .fl-blitz-page__day-label {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--clr-text-primary);
+    margin-bottom: 6px;
+  }
+  .fl-blitz-page__day-desc {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.6;
+  }
+
+  .fl-blitz-page__facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(68, 181, 116, 0.1);
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-blitz-page__fact {
+    background: var(--clr-bg, #050505);
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .fl-blitz-page__fact-value {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .fl-blitz-page__fact-label {
+    font-size: 0.85rem;
+    color: var(--clr-text-secondary);
+    line-height: 1.4;
+  }
+
+  .fl-blitz-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-blitz-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .fl-blitz-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-blitz-page__timeline-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .fl-blitz-page__facts {
+      grid-template-columns: 1fr;
+    }
+    .fl-blitz-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-blitz-page">
+
+  <section class="fl-blitz-page__hero">
+    <img src="{{ 'brush-texture-04.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-8%;right:-12%;width:50%;opacity:0.15;">
+    <img src="{{ 'brush-texture-07.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-10%;left:-10%;width:45%;opacity:0.12;">
+    <div class="fl-blitz-page__hero-ghost">4 DAYS</div>
+    <div class="fl-blitz-page__hero-content">
+      <div class="fl-blitz-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-blitz-page__hero-headline">Live in <span class="fl-brand-accent">four days.</span></h1>
+      <p class="fl-blitz-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-blitz-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section">
+    <div class="fl-blitz-page__section-inner fl-reveal">
+      <div class="fl-blitz-page__section-label">The concept</div>
+      <h2 class="fl-blitz-page__section-headline">{{ section.settings.what_headline }}</h2>
+      <div class="fl-blitz-page__section-body">{{ section.settings.what_body }}</div>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section fl-blitz-page__section--cream">
+    <div class="fl-blitz-page__timeline-grid fl-reveal">
+      <div>
+        <div class="fl-blitz-page__section-label">The schedule</div>
+        <h2 class="fl-blitz-page__section-headline">{{ section.settings.schedule_headline }}</h2>
+        <div class="fl-blitz-page__section-body">{{ section.settings.schedule_body }}</div>
+      </div>
+      <div class="fl-blitz-page__timeline">
+        {% for block in section.blocks %}
+          {% if block.type == 'day' %}
+            <div class="fl-blitz-page__day" {{ block.fluid_attributes }}>
+              <div class="fl-blitz-page__day-num">{{ block.settings.day_num }}</div>
+              <div>
+                <div class="fl-blitz-page__day-label">{{ block.settings.day_label }}</div>
+                <div class="fl-blitz-page__day-desc">{{ block.settings.day_desc }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section">
+    <div class="fl-blitz-page__section-inner fl-reveal">
+      <div class="fl-blitz-page__section-label">Why it works</div>
+      <h2 class="fl-blitz-page__section-headline">{{ section.settings.works_headline }}</h2>
+      <div class="fl-blitz-page__section-body">{{ section.settings.works_body }}</div>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section fl-blitz-page__section--cream">
+    <div class="fl-blitz-page__section-inner fl-reveal">
+      <div class="fl-blitz-page__section-label">Preparation</div>
+      <h2 class="fl-blitz-page__section-headline">{{ section.settings.bring_headline }}</h2>
+      <div class="fl-blitz-page__section-body">{{ section.settings.bring_body }}</div>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section">
+    <div class="fl-blitz-page__section-inner fl-reveal">
+      <div class="fl-blitz-page__section-label">Investment</div>
+      <h2 class="fl-blitz-page__section-headline">{{ section.settings.invest_headline }}</h2>
+      <div class="fl-blitz-page__section-body">{{ section.settings.invest_body }}</div>
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__section fl-blitz-page__section--cream">
+    <div class="fl-blitz-page__facts fl-reveal">
+      {% for block in section.blocks %}
+        {% if block.type == 'fact' %}
+          <div class="fl-blitz-page__fact" {{ block.fluid_attributes }}>
+            <div class="fl-blitz-page__fact-value">{{ block.settings.value }}</div>
+            <div class="fl-blitz-page__fact-label">{{ block.settings.label }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="fl-blitz-page__cta">
+    <img src="{{ 'brush-texture-06.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-18%;width:50%;opacity:0.12;">
+    <div class="fl-blitz-page__cta-content fl-reveal">
+      <h2 class="fl-blitz-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Blitz Week Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Blitz Week"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "Not four months. Not six. Four days. We know what you're thinking. You've seen 'fast implementation' claims before. Blitz Week is different. By Thursday afternoon, your platform is live. Production-ready. Not a prototype. A platform."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction matters."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Reserve your Blitz Week →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "What Blitz Week Is"
+    },
+    {
+      "type": "text",
+      "id": "what_headline",
+      "label": "Headline",
+      "default": "What Blitz Week is"
+    },
+    {
+      "type": "textarea",
+      "id": "what_body",
+      "label": "Body",
+      "default": "<p>Blitz Week is an intensive, four-day engagement at Fluid's headquarters in Lehi, Utah. Your leadership team works side-by-side with Fluid's executives, senior developers, and creative team — the people who actually build and run the platform.</p><p>Every section of the platform is configured together. Every customization is built in real time. Every decision gets made in the room, by the people who need to make it.</p><p>This is not a training session. This is not a planning session. This is a build session — and you leave with the output.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Schedule"
+    },
+    {
+      "type": "text",
+      "id": "schedule_headline",
+      "label": "Headline",
+      "default": "Monday through Thursday."
+    },
+    {
+      "type": "textarea",
+      "id": "schedule_body",
+      "label": "Body",
+      "default": "<p><strong>Hours:</strong> 9:30 AM – 3:00 PM daily</p><p><strong>Meals:</strong> Lunch provided each day</p><p><strong>Location:</strong> Fluid HQ, Lehi, Utah</p><p>The week follows a comprehensive checklist covering every section of the platform — FairShare, Checkout, App, Builder, Payments, Fluid Connect, and more.</p>"
+    },
+    {
+      "type": "header",
+      "content": "What Makes It Work"
+    },
+    {
+      "type": "text",
+      "id": "works_headline",
+      "label": "Headline",
+      "default": "What makes it work"
+    },
+    {
+      "type": "textarea",
+      "id": "works_body",
+      "label": "Body",
+      "default": "<p><strong>Direct access to decision-makers.</strong> You're not working with an onboarding coordinator reading from a script. You're working with Fluid executives and senior developers who can make decisions on the spot and build changes in the room.</p><p><strong>Real-time customization.</strong> See something you want changed? It gets built right there. No ticket. No follow-up call.</p><p><strong>Executive alignment.</strong> With your leadership team present, every configuration decision gets made together. You leave without ambiguity about what was agreed.</p><p><strong>A head start.</strong> Before your team arrives, Fluid's team completes an initial pass on your website — so from Day 1, you can see that your business is already understood.</p>"
+    },
+    {
+      "type": "header",
+      "content": "What to Bring"
+    },
+    {
+      "type": "text",
+      "id": "bring_headline",
+      "label": "Headline",
+      "default": "What you need to bring"
+    },
+    {
+      "type": "textarea",
+      "id": "bring_body",
+      "label": "Body",
+      "default": "<p><strong>Fluid Payments Form</strong> — Submit at least 21 days before your scheduled Blitz Week so the team can prepare the payment infrastructure.</p><p><strong>Marketing materials</strong> — UGC, product images, logos, and marketing assets gathered in a shared Google Drive before arrival.</p><p><strong>Back office access</strong> — Credentials and access keys provided ahead of time so Connect configuration begins immediately.</p><p><strong>Executive attendance</strong> — At least one key executive present for the majority of the week. Ideally, the full leadership team.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Investment"
+    },
+    {
+      "type": "text",
+      "id": "invest_headline",
+      "label": "Headline",
+      "default": "The investment"
+    },
+    {
+      "type": "textarea",
+      "id": "invest_body",
+      "label": "Body",
+      "default": "<p>Blitz Week represents <strong>$75,000 in value</strong> — reflecting the senior talent, dedicated resources, and accelerated timeline Fluid brings to the launch.</p><p><strong>For partners who choose a term agreement:</strong> Blitz Week is included at no cost. Discounted rates are locked in, and your partnership begins with a fully deployed platform rather than a drawn-out implementation.</p><p><strong>For partners on a 3-year discounted agreement:</strong> 90 days of the platform are completely free from the date of Blitz Week.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "You don't have to believe us. Come spend four days with us."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "day",
+      "name": "Schedule Day",
+      "settings": [
+        {
+          "type": "text",
+          "id": "day_num",
+          "label": "Day number",
+          "default": "Day 1"
+        },
+        {
+          "type": "text",
+          "id": "day_label",
+          "label": "Day label",
+          "default": "Platform foundations"
+        },
+        {
+          "type": "textarea",
+          "id": "day_desc",
+          "label": "Description"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "name": "Key Fact",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blitz Week Page",
+      "blocks": [
+        {
+          "type": "day",
+          "settings": {
+            "day_num": "Day 1",
+            "day_label": "Discovery & architecture",
+            "day_desc": "Your business model, comp plan, and integration requirements mapped in full."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day_num": "Day 2",
+            "day_label": "Build",
+            "day_desc": "Platform configured, payments connected, commission engine synced, storefront themed."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day_num": "Day 3",
+            "day_label": "Test & polish",
+            "day_desc": "End-to-end transaction testing, rep app setup, content migration, QA."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day_num": "Day 4",
+            "day_label": "Launch",
+            "day_desc": "Production deployment, team training, go-live. You leave with a working platform."
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "value": "4 days",
+            "label": "From agreement to live platform"
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "value": "$75,000",
+            "label": "Value included with term agreements"
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "value": "90 days",
+            "label": "Free platform access on 3-year agreements"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

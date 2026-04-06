@@ -1,0 +1,88 @@
+<section class="fl-section fl-ai" id="ai">
+  <div class="fl-container">
+    <div class="fl-ai__grid fl-reveal">
+      <div class="fl-ai__text">
+        <div class="fl-label fl-ai__label">{{ section.settings.label }}</div>
+        <h2 class="fl-ai__headline">{{ section.settings.headline }}</h2>
+        <div class="fl-ai__body">{{ section.settings.body }}</div>
+      </div>
+      <div class="fl-ai__visual">
+        <div class="fl-phone-mockup">
+          <div class="fl-phone-mockup__frame">
+            <div class="fl-phone-mockup__screen">
+              <div class="fl-phone-mockup__notch"></div>
+              {% for block in section.blocks %}
+                <div class="fl-catchup-card" {{ block.fluid_attributes }}>{{ block.settings.text }}</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "AI Feature",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Artificial Intelligence"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "AI that makes your reps better — not redundant."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>The \"WE\" in We-Commerce is not an accident. Direct selling works because real people share products with other real people they actually know and trust. That relationship is the product. You cannot automate it. You should not try.</p><p>Fluid uses AI to amplify that — not replace it. Catchups, the AI-powered assistant built into the rep App, monitors contact activity across your entire field and surfaces the right signal at the right moment.</p><p>AI-powered people. Not AI-replaced people.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "catchup_card",
+      "name": "Catchup Card",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Card Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AI Feature",
+      "blocks": [
+        {
+          "type": "catchup_card",
+          "settings": {
+            "text": "Marcus viewed the new protein bundle page but hasn't ordered. He ordered last month — good time to follow up."
+          }
+        },
+        {
+          "type": "catchup_card",
+          "settings": {
+            "text": "Sarah's subscription processes in 3 days. She's due for a check-in."
+          }
+        },
+        {
+          "type": "catchup_card",
+          "settings": {
+            "text": "New enrollment: Jamie R. signed up through your Smart Link. Send a welcome message."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

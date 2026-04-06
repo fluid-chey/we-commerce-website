@@ -1,0 +1,755 @@
+{%- style -%}
+  .fl-fairshare-page { --accent: #F2D270; --seg-fairshare: #F2D270; }
+
+  /* ── Hero ── */
+  .fl-fairshare-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-fairshare-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-fairshare-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-fairshare-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-fairshare-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-fairshare-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-fairshare-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Section Base ── */
+  .fl-fairshare-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-fairshare-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__s-headline { color: #0a0a0a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__s-body strong { color: #0a0a0a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__card-title { color: #0a0a0a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__card-body { color: #3a3a3a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__callout { background: #fff; border-color: var(--accent); }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__callout-text { color: #1a1a1a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__flow-step { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.08); }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__flow-title { color: #0a0a0a; }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__flow-arrow { color: rgba(0,0,0,0.2); }
+  .fl-fairshare-page__section--cream .fl-fairshare-page__flow-line { background: rgba(0,0,0,0.1); }
+
+  .fl-fairshare-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-fairshare-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-fairshare-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-fairshare-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-fairshare-page__s-body p { margin-bottom: 20px; }
+  .fl-fairshare-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Flow Visual ── */
+  .fl-fairshare-page__flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 48px;
+  }
+  .fl-fairshare-page__flow-step {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: clamp(20px, 2.5vw, 32px);
+    text-align: center;
+    position: relative;
+  }
+  .fl-fairshare-page__flow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 auto 14px;
+  }
+  .fl-fairshare-page__flow-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-fairshare-page__flow-connector {
+    flex-shrink: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .fl-fairshare-page__flow-line {
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.1);
+  }
+  .fl-fairshare-page__flow-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── Settings Cards ── */
+  .fl-fairshare-page__settings {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(242,210,112,0.1);
+  }
+  .fl-fairshare-page__setting {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    border-left: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .fl-fairshare-page__setting-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-fairshare-page__setting-body {
+    font-family: var(--ff-body);
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Cards Grid ── */
+  .fl-fairshare-page__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(242,210,112,0.1);
+  }
+  .fl-fairshare-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-fairshare-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-fairshare-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Callout ── */
+  .fl-fairshare-page__callout {
+    margin-top: 40px;
+    padding: clamp(28px, 3vw, 40px);
+    border-left: 3px solid var(--accent);
+    background: rgba(242,210,112,0.04);
+    border-radius: 0 12px 12px 0;
+  }
+  .fl-fairshare-page__callout-text {
+    font-family: var(--ff-body);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    font-style: italic;
+    color: var(--clr-text-primary);
+    line-height: 1.65;
+  }
+
+  /* ── CTA ── */
+  .fl-fairshare-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-fairshare-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-fairshare-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .fl-fairshare-page__cta-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--clr-text-body);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-fairshare-page__flow { flex-direction: column; gap: 0; }
+    .fl-fairshare-page__flow-arrow,
+    .fl-fairshare-page__flow-connector { transform: rotate(90deg); width: auto; padding: 8px 0; }
+    .fl-fairshare-page__cards { grid-template-columns: 1fr; }
+    .fl-fairshare-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-fairshare-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-fairshare-page__hero">
+    <img src="{{ 'brush-texture-05.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-07.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-fairshare-page__hero-ghost">FAIRSHARE</div>
+    <div class="fl-fairshare-page__hero-content">
+      <div class="fl-fairshare-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-fairshare-page__hero-headline">She shared the link <span class="fl-brand-accent">three weeks ago.</span></h1>
+      <p class="fl-fairshare-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-fairshare-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST PROBLEM ═══ -->
+  <section class="fl-fairshare-page__section">
+    <img src="{{ 'brush-texture-07.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-10%;right:-14%;width:42%;opacity:0.10;">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.problem_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.problem_headline }}</h2>
+      <div class="fl-fairshare-page__s-body">{{ section.settings.problem_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW ATTRIBUTION WORKS ═══ -->
+  <section class="fl-fairshare-page__section fl-fairshare-page__section--cream">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.system_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.system_headline }}</h2>
+      <div class="fl-fairshare-page__s-body">{{ section.settings.system_body }}</div>
+
+      <div class="fl-fairshare-page__flow">
+        <div class="fl-fairshare-page__flow-step">
+          <div class="fl-fairshare-page__flow-dot"></div>
+          <div class="fl-fairshare-page__flow-title">{{ section.settings.flow_step_1 }}</div>
+        </div>
+        <div class="fl-fairshare-page__flow-arrow">→</div>
+        <div class="fl-fairshare-page__flow-step">
+          <div class="fl-fairshare-page__flow-dot"></div>
+          <div class="fl-fairshare-page__flow-title">{{ section.settings.flow_step_2 }}</div>
+        </div>
+        <div class="fl-fairshare-page__flow-arrow">→</div>
+        <div class="fl-fairshare-page__flow-step">
+          <div class="fl-fairshare-page__flow-dot"></div>
+          <div class="fl-fairshare-page__flow-title">{{ section.settings.flow_step_3 }}</div>
+        </div>
+        <div class="fl-fairshare-page__flow-arrow">→</div>
+        <div class="fl-fairshare-page__flow-step">
+          <div class="fl-fairshare-page__flow-dot"></div>
+          <div class="fl-fairshare-page__flow-title">{{ section.settings.flow_step_4 }}</div>
+        </div>
+        <div class="fl-fairshare-page__flow-arrow">→</div>
+        <div class="fl-fairshare-page__flow-step">
+          <div class="fl-fairshare-page__flow-dot"></div>
+          <div class="fl-fairshare-page__flow-title">{{ section.settings.flow_step_5 }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FIVE SETTINGS ═══ -->
+  <section class="fl-fairshare-page__section">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.config_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.config_headline }}</h2>
+
+      <div class="fl-fairshare-page__settings">
+        <div class="fl-fairshare-page__setting">
+          <div class="fl-fairshare-page__setting-title">{{ section.settings.setting_1_title }}</div>
+          <div class="fl-fairshare-page__setting-body">{{ section.settings.setting_1_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__setting">
+          <div class="fl-fairshare-page__setting-title">{{ section.settings.setting_2_title }}</div>
+          <div class="fl-fairshare-page__setting-body">{{ section.settings.setting_2_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__setting">
+          <div class="fl-fairshare-page__setting-title">{{ section.settings.setting_3_title }}</div>
+          <div class="fl-fairshare-page__setting-body">{{ section.settings.setting_3_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__setting">
+          <div class="fl-fairshare-page__setting-title">{{ section.settings.setting_4_title }}</div>
+          <div class="fl-fairshare-page__setting-body">{{ section.settings.setting_4_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__setting">
+          <div class="fl-fairshare-page__setting-title">{{ section.settings.setting_5_title }}</div>
+          <div class="fl-fairshare-page__setting-body">{{ section.settings.setting_5_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ORDER JOURNEY ═══ -->
+  <section class="fl-fairshare-page__section fl-fairshare-page__section--cream">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.audit_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.audit_headline }}</h2>
+      <div class="fl-fairshare-page__s-body">{{ section.settings.audit_body }}</div>
+
+      <div class="fl-fairshare-page__callout">
+        <div class="fl-fairshare-page__callout-text">{{ section.settings.audit_callout }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ATTRIBUTION ON EVERYTHING ═══ -->
+  <section class="fl-fairshare-page__section">
+    <img src="{{ 'brush-texture-05.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-14%;width:44%;opacity:0.10;">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.everywhere_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.everywhere_headline }}</h2>
+
+      <div class="fl-fairshare-page__cards">
+        <div class="fl-fairshare-page__card">
+          <div class="fl-fairshare-page__card-title">{{ section.settings.everywhere_card1_title }}</div>
+          <div class="fl-fairshare-page__card-body">{{ section.settings.everywhere_card1_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__card">
+          <div class="fl-fairshare-page__card-title">{{ section.settings.everywhere_card2_title }}</div>
+          <div class="fl-fairshare-page__card-body">{{ section.settings.everywhere_card2_body }}</div>
+        </div>
+        <div class="fl-fairshare-page__card">
+          <div class="fl-fairshare-page__card-title">{{ section.settings.everywhere_card3_title }}</div>
+          <div class="fl-fairshare-page__card-body">{{ section.settings.everywhere_card3_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAIRSHARE + PAYMENTS ═══ -->
+  <section class="fl-fairshare-page__section fl-fairshare-page__section--cream">
+    <div class="fl-fairshare-page__s-inner fl-reveal">
+      <div class="fl-fairshare-page__s-label">{{ section.settings.integration_label }}</div>
+      <h2 class="fl-fairshare-page__s-headline">{{ section.settings.integration_headline }}</h2>
+      <div class="fl-fairshare-page__s-body">{{ section.settings.integration_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-fairshare-page__cta">
+    <img src="{{ 'brush-texture-07.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-fairshare-page__cta-content fl-reveal">
+      <h2 class="fl-fairshare-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <p class="fl-fairshare-page__cta-sub">{{ section.settings.cta_subtext }}</p>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "FairShare Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FairShare"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "Answered a question at 9pm the same night. Followed up twice. The customer went quiet. Then bought last Tuesday — through a Google search, not the original link. She still got the credit. Because FairShare tracked the whole thing."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction matters."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "See FairShare in action →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "Trust Problem"
+    },
+    {
+      "type": "text",
+      "id": "problem_label",
+      "label": "Label",
+      "default": "The problem"
+    },
+    {
+      "type": "text",
+      "id": "problem_headline",
+      "label": "Headline",
+      "default": "Attribution isn't a technical problem. It's a trust problem."
+    },
+    {
+      "type": "textarea",
+      "id": "problem_body",
+      "label": "Body",
+      "default": "<p>Here's what actually happens when attribution breaks:</p><p>A rep shares a company page. Someone else gets credit. She figures out a workaround — her own link, her own system, something she can control. The workaround is clunky. It breaks sometimes. She gets frustrated.</p><p>Then she stops using the platform entirely. She shares screenshots instead. She makes her own PDFs. She stops sending customers to the website because she's learned, rationally, that doing so is a risk.</p><p>And when your best reps stop sharing corporate content, your marketing investment — every video, every product page, every campaign — sits in a folder no one opens.</p><p>FairShare exists to fix this permanently.</p>"
+    },
+    {
+      "type": "header",
+      "content": "How Attribution Works"
+    },
+    {
+      "type": "text",
+      "id": "system_label",
+      "label": "Label",
+      "default": "The system"
+    },
+    {
+      "type": "text",
+      "id": "system_headline",
+      "label": "Headline",
+      "default": "How FairShare attribution works"
+    },
+    {
+      "type": "textarea",
+      "id": "system_body",
+      "label": "Body",
+      "default": "<p>FairShare tracks meaningful interactions — shared links, live streams, product views, media engagement, follow-ups — and uses configurable rules to determine who receives credit when a purchase occurs. All attribution happens automatically at checkout.</p>"
+    },
+    {
+      "type": "text",
+      "id": "flow_step_1",
+      "label": "Step 1",
+      "default": "Rep shares"
+    },
+    {
+      "type": "text",
+      "id": "flow_step_2",
+      "label": "Step 2",
+      "default": "Customer engages"
+    },
+    {
+      "type": "text",
+      "id": "flow_step_3",
+      "label": "Step 3",
+      "default": "Customer returns"
+    },
+    {
+      "type": "text",
+      "id": "flow_step_4",
+      "label": "Step 4",
+      "default": "Purchase"
+    },
+    {
+      "type": "text",
+      "id": "flow_step_5",
+      "label": "Step 5",
+      "default": "Rep credited"
+    },
+    {
+      "type": "header",
+      "content": "Five Attribution Settings"
+    },
+    {
+      "type": "text",
+      "id": "config_label",
+      "label": "Label",
+      "default": "Configuration"
+    },
+    {
+      "type": "text",
+      "id": "config_headline",
+      "label": "Headline",
+      "default": "The five attribution settings"
+    },
+    {
+      "type": "text",
+      "id": "setting_1_title",
+      "label": "Setting 1 title",
+      "default": "Shared Links"
+    },
+    {
+      "type": "textarea",
+      "id": "setting_1_body",
+      "label": "Setting 1 body",
+      "default": "When a rep shares a link and a customer purchases, the company determines who gets credit. First Touch, Last Touch, or Most Active. You choose."
+    },
+    {
+      "type": "text",
+      "id": "setting_2_title",
+      "label": "Setting 2 title",
+      "default": "Sponsored Ordering"
+    },
+    {
+      "type": "textarea",
+      "id": "setting_2_body",
+      "label": "Setting 2 body",
+      "default": "When a customer returns to purchase again, FairShare identifies their sponsor from order history. Honor the original sponsor, credit the sharing rep, or replace. All configurable."
+    },
+    {
+      "type": "text",
+      "id": "setting_3_title",
+      "label": "Setting 3 title",
+      "default": "Orphan Orders"
+    },
+    {
+      "type": "textarea",
+      "id": "setting_3_body",
+      "label": "Setting 3 body",
+      "default": "When a customer arrives with no rep interaction, you decide: leave unattributed, assign to one designated rep, or distribute among top-sharing reps."
+    },
+    {
+      "type": "text",
+      "id": "setting_4_title",
+      "label": "Setting 4 title",
+      "default": "Enrollment Credit"
+    },
+    {
+      "type": "textarea",
+      "id": "setting_4_body",
+      "label": "Setting 4 body",
+      "default": "When a new rep enrolls, who gets credit — the new rep, or their sponsor? You decide."
+    },
+    {
+      "type": "text",
+      "id": "setting_5_title",
+      "label": "Setting 5 title",
+      "default": "Manual Selection"
+    },
+    {
+      "type": "textarea",
+      "id": "setting_5_body",
+      "label": "Setting 5 body",
+      "default": "A fifth option allows customers to manually select a rep at checkout. Live but not commonly recommended."
+    },
+    {
+      "type": "header",
+      "content": "Order Journey"
+    },
+    {
+      "type": "text",
+      "id": "audit_label",
+      "label": "Label",
+      "default": "Audit trail"
+    },
+    {
+      "type": "text",
+      "id": "audit_headline",
+      "label": "Headline",
+      "default": "The Order Journey"
+    },
+    {
+      "type": "textarea",
+      "id": "audit_body",
+      "label": "Body",
+      "default": "<p>The Order Journey is FairShare's attribution audit trail. Every rep a customer came into contact with. Every action taken. Every timestamp. When the question arises, the Order Journey is the source of truth. It removes subjectivity from the conversation entirely.</p><p>Corporate teams can view the Order Journey in the admin for any order.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "audit_callout",
+      "label": "Callout",
+      "default": "When attribution is disputed, the answer should not be a conversation. It should be a record."
+    },
+    {
+      "type": "header",
+      "content": "Attribution on Everything"
+    },
+    {
+      "type": "text",
+      "id": "everywhere_label",
+      "label": "Label",
+      "default": "Everywhere"
+    },
+    {
+      "type": "text",
+      "id": "everywhere_headline",
+      "label": "Headline",
+      "default": "Attribution on everything"
+    },
+    {
+      "type": "text",
+      "id": "everywhere_card1_title",
+      "label": "Card 1 title",
+      "default": "Media and playlists"
+    },
+    {
+      "type": "textarea",
+      "id": "everywhere_card1_body",
+      "label": "Card 1 body",
+      "default": "When a rep shares a video, image, or curated playlist, FairShare attribution is attached. Any purchase from that content credits the sharing rep."
+    },
+    {
+      "type": "text",
+      "id": "everywhere_card2_title",
+      "label": "Card 2 title",
+      "default": "Every page on your website"
+    },
+    {
+      "type": "textarea",
+      "id": "everywhere_card2_body",
+      "label": "Card 2 body",
+      "default": "Through a global embed in Builder, FairShare is applied to every page. A rep can share the homepage, a brand story page, a product quiz — credit follows."
+    },
+    {
+      "type": "text",
+      "id": "everywhere_card3_title",
+      "label": "Card 3 title",
+      "default": "The replicated site"
+    },
+    {
+      "type": "textarea",
+      "id": "everywhere_card3_body",
+      "label": "Card 3 body",
+      "default": "Every rep has a FairShare-powered replica of the full company website. A customer who visits is attributed across sessions, devices, even days later."
+    },
+    {
+      "type": "header",
+      "content": "FairShare + Payments"
+    },
+    {
+      "type": "text",
+      "id": "integration_label",
+      "label": "Label",
+      "default": "Integration"
+    },
+    {
+      "type": "text",
+      "id": "integration_headline",
+      "label": "Headline",
+      "default": "FairShare + Payments"
+    },
+    {
+      "type": "textarea",
+      "id": "integration_body",
+      "label": "Body",
+      "default": "<p>Attribution doesn't wait until after the transaction. It resolves at the moment of payment.</p><p>When a transaction completes through Fluid Payments, FairShare has already determined who gets credit. The credit assignment is part of the payment flow itself — so it flows downstream into the commission engine through Fluid Connect without any separate reconciliation step.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "When reps trust the system, they share. When they share, traffic grows."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "FairShare is what makes reps believe it's worth sharing."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Get a live walkthrough →"
+    }
+  ]
+}
+{% endschema %}

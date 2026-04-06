@@ -1,0 +1,119 @@
+<section class="fl-section fl-blitz" id="blitz">
+  <div class="fl-container">
+    <div class="fl-blitz__grid fl-reveal">
+      <div class="fl-blitz__text">
+        <div class="fl-label fl-blitz__label">{{ section.settings.label }}</div>
+        <h2 class="fl-blitz__headline">{{ section.settings.headline }}</h2>
+        <p class="fl-blitz__body">{{ section.settings.body_1 }}</p>
+        <p class="fl-blitz__body">{{ section.settings.body_2 }}</p>
+        <a href="{{ section.settings.link_url }}" class="fl-btn-text" style="color:var(--clr-green)">{{ section.settings.link_text }}</a>
+      </div>
+      <div class="fl-blitz__visual">
+        <div class="fl-blitz__timeline">
+          {% for block in section.blocks %}
+            <div class="fl-blitz-day" {{ block.fluid_attributes }}>
+              <div class="fl-blitz-day__num">{{ block.settings.day }}</div>
+              <div class="fl-blitz-day__desc">{{ block.settings.description }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Blitz Week",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Blitz Week"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Live in four days."
+    },
+    {
+      "type": "textarea",
+      "id": "body_1",
+      "label": "Body Paragraph 1"
+    },
+    {
+      "type": "textarea",
+      "id": "body_2",
+      "label": "Body Paragraph 2"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text",
+      "default": "See how Blitz Week works →"
+    },
+    {
+      "type": "text",
+      "id": "link_url",
+      "label": "Link URL",
+      "default": "#"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "day",
+      "name": "Day",
+      "settings": [
+        {
+          "type": "text",
+          "id": "day",
+          "label": "Day"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blitz Week",
+      "blocks": [
+        {
+          "type": "day",
+          "settings": {
+            "day": "Day 1",
+            "description": "Discovery & architecture. Your business model, comp plan, and integration requirements mapped in full."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day": "Day 2",
+            "description": "Build. Platform configured, payments connected, commission engine synced, storefront themed."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day": "Day 3",
+            "description": "Test & polish. End-to-end transaction testing, rep app setup, content migration, QA."
+          }
+        },
+        {
+          "type": "day",
+          "settings": {
+            "day": "Day 4",
+            "description": "Launch. Production deployment, team training, go-live. You leave with a working platform."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

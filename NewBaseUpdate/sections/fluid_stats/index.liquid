@@ -1,0 +1,113 @@
+<section class="fl-section fl-stats" id="stats">
+  <div class="fl-container">
+    <div class="fl-stats__grid fl-reveal">
+      {% for block in section.blocks %}
+        <div class="fl-stat-card" style="border-color:{{ block.settings.color }}" {{ block.fluid_attributes }}>
+          <div class="fl-stat-card__number" style="color:{{ block.settings.color }}"
+            {% if block.settings.count != blank %} data-count="{{ block.settings.count }}"{% endif %}
+            {% if block.settings.suffix != blank %} data-suffix="{{ block.settings.suffix }}"{% endif %}
+            {% if block.settings.prefix != blank %} data-prefix="{{ block.settings.prefix }}"{% endif %}>
+            {{ block.settings.display_value }}
+          </div>
+          <div class="fl-stat-card__label">{{ block.settings.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats",
+  "tag": "section",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "display_value",
+          "label": "Display Value"
+        },
+        {
+          "type": "text",
+          "id": "count",
+          "label": "Count Target"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix"
+        },
+        {
+          "type": "textarea",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "color",
+          "label": "Color"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "display_value": "0%",
+            "count": "97",
+            "suffix": "%",
+            "prefix": "",
+            "label": "Payment approval rate improvement after migrating to Fluid Payments",
+            "color": "#44b574"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "display_value": "4 days",
+            "count": "",
+            "suffix": "",
+            "prefix": "",
+            "label": "From signed agreement to live platform, via Blitz Week",
+            "color": "#42b1ff"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "display_value": "0",
+            "count": "12",
+            "suffix": "+",
+            "prefix": "",
+            "label": "Vendors replaced by a single Fluid platform, on average",
+            "color": "#c985e5"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "display_value": "0%",
+            "count": "340",
+            "suffix": "%",
+            "prefix": "",
+            "label": "Increase in rep content-sharing activity after FairShare adoption",
+            "color": "#FF8B58"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

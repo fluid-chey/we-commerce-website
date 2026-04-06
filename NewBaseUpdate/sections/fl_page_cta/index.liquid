@@ -1,0 +1,47 @@
+<section class="fl-page-cta">
+  <img src="{{ 'brush-texture-06.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-15%;right:-20%;width:50%;opacity:0.08;">
+  <div class="fl-page-cta__content fl-reveal">
+    <h2 class="fl-page-cta__headline">{{ section.settings.headline }}</h2>
+    {% if section.settings.subtext != blank %}
+      <p class="fl-page-cta__subtext">{{ section.settings.subtext }}</p>
+    {% endif %}
+    <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_text }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page CTA",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "See it for yourself."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Book a Demo"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL",
+      "default": "/home/pages/contact"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page CTA"
+    }
+  ]
+}
+{% endschema %}

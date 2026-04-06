@@ -1,0 +1,42 @@
+{%- assign asset_probe = 'fluid-home.css' | asset_url -%}
+{%- assign asset_base = asset_probe | split: 'fluid-home.css' | first -%}
+<section class="fl-section fl-solution" id="solution" data-asset-base="{{ asset_base }}">
+  <div class="fl-container">
+    <div class="fl-solution__intro fl-reveal">
+      <h2 class="fl-headline">One platform. <span class="fl-brand-accent">Built for all of it.</span></h2>
+      <p class="fl-body-text">{{ section.settings.body }}</p>
+    </div>
+    <div class="fl-solution__layout">
+      <div class="fl-flywheel-wrap">
+        <div class="fl-flywheel-wheel">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" class="fl-flywheel-svg"></svg>
+        </div>
+        <div class="fl-flywheel-center">
+          <img src="{{ 'wecommerce-logos.png' | asset_url }}" alt="We-Commerce">
+          <div class="fl-flywheel-center__label">All-in-one platform</div>
+        </div>
+      </div>
+      <div class="fl-flywheel-panel"></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fluid Solution",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One platform. Built for all of it."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body",
+      "default": "This is not a patchwork of integrations. It is a single, unified platform — designed from the ground up for how direct selling actually works."
+    }
+  ]
+}
+{% endschema %}

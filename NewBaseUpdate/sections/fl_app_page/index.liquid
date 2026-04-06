@@ -1,0 +1,651 @@
+{%- style -%}
+  .fl-app-page { --accent: #E09098; }
+
+  /* ── Hero ── */
+  .fl-app-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-app-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-app-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-app-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-app-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-app-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-app-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Phone Showcase ── */
+  .fl-app-page__phones {
+    padding: clamp(60px, 8vw, 100px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-app-page__phones-inner {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(12px, 2vw, 24px);
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-app-page__phone-img {
+    height: clamp(300px, 40vw, 480px);
+    border-radius: 24px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+  }
+  .fl-app-page__phone-img:nth-child(2) {
+    height: clamp(340px, 44vw, 520px);
+    z-index: 1;
+  }
+
+  /* ── Section Base ── */
+  .fl-app-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-app-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-app-page__section--cream .fl-app-page__s-headline { color: #0a0a0a; }
+  .fl-app-page__section--cream .fl-app-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-app-page__section--cream .fl-app-page__s-body strong { color: #0a0a0a; }
+  .fl-app-page__section--cream .fl-app-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-app-page__section--cream .fl-app-page__card-title { color: #0a0a0a; }
+  .fl-app-page__section--cream .fl-app-page__card-body { color: #3a3a3a; }
+
+  .fl-app-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-app-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-app-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-app-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-app-page__s-body p { margin-bottom: 20px; }
+  .fl-app-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Two-up Layout ── */
+  .fl-app-page__two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
+  }
+  .fl-app-page__two-up--reversed .fl-app-page__two-up-text { order: 2; }
+  .fl-app-page__two-up--reversed .fl-app-page__two-up-visual { order: 1; }
+
+  /* ── Feature Cards Grid ── */
+  .fl-app-page__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(224,144,152,0.1);
+  }
+  .fl-app-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-app-page__card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent);
+    opacity: 0.8;
+  }
+  .fl-app-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-app-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Catchup Preview ── */
+  .fl-app-page__catchup-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: center;
+  }
+  .fl-app-page__catchup-phone {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .fl-app-page__catchup-frame {
+    background: #1a1a1a;
+    border-radius: 36px;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .fl-app-page__catchup-screen {
+    background: var(--clr-bg, #050505);
+    border-radius: 26px;
+    overflow: hidden;
+    aspect-ratio: 9 / 19.5;
+    padding: 44px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fl-app-page__catchup-notch {
+    width: 110px;
+    height: 26px;
+    background: #1a1a1a;
+    border-radius: 0 0 14px 14px;
+    margin: -44px auto 12px;
+  }
+  .fl-app-page__catchup-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 12px;
+    color: var(--clr-text-body);
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fl-app-page__catchup-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fl-app-page__catchup-card:nth-child(2) { transition-delay: 0.15s; }
+  .fl-app-page__catchup-card:nth-child(3) { transition-delay: 0.3s; }
+  .fl-app-page__catchup-card:nth-child(4) { transition-delay: 0.45s; }
+  .fl-app-page__catchup-card:nth-child(5) { transition-delay: 0.6s; }
+
+  /* ── Trigger List ── */
+  .fl-app-page__triggers {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(224,144,152,0.1);
+  }
+  .fl-app-page__trigger {
+    background: var(--clr-bg, #050505);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .fl-app-page__trigger-cat {
+    font-family: var(--ff-body);
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    min-width: 120px;
+    flex-shrink: 0;
+  }
+  .fl-app-page__trigger-items {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── CTA ── */
+  .fl-app-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-app-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-app-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .fl-app-page__cta-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--clr-text-body);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-app-page__two-up,
+    .fl-app-page__catchup-wrap {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .fl-app-page__two-up--reversed .fl-app-page__two-up-text { order: 1; }
+    .fl-app-page__two-up--reversed .fl-app-page__two-up-visual { order: 2; }
+    .fl-app-page__cards { grid-template-columns: 1fr; }
+    .fl-app-page__phones-inner { flex-wrap: wrap; }
+    .fl-app-page__phone-img { height: 280px !important; }
+    .fl-app-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+    .fl-app-page__catchup-phone { max-width: 260px; }
+    .fl-app-page__trigger { flex-direction: column; gap: 8px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-app-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-app-page__hero">
+    <img src="{{ 'brush-texture-05.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-09.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-app-page__hero-ghost">REP TOOLS</div>
+    <div class="fl-app-page__hero-content">
+      <div class="fl-app-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-app-page__hero-headline">Reps don't wake up wanting to use <span class="fl-brand-accent">a platform.</span></h1>
+      <p class="fl-app-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-app-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ PHONE SHOWCASE ═══ -->
+  <section class="fl-app-page__phones">
+    <div class="fl-app-page__phones-inner fl-reveal">
+      <img src="{{ 'screen-app1.png' | asset_url }}" alt="Fluid App" class="fl-app-page__phone-img" loading="lazy">
+      <img src="{{ 'screen-app2.png' | asset_url }}" alt="Fluid App" class="fl-app-page__phone-img" loading="lazy">
+      <img src="{{ 'screen-app3.png' | asset_url }}" alt="Fluid App" class="fl-app-page__phone-img" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ═══ MOBILE + DESKTOP ═══ -->
+  <section class="fl-app-page__section">
+    <div class="fl-app-page__s-inner fl-reveal">
+      <div class="fl-app-page__s-label">Cross-platform</div>
+      <h2 class="fl-app-page__s-headline">{{ section.settings.experience_headline }}</h2>
+      <div class="fl-app-page__s-body">{{ section.settings.experience_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ SHARE WITH CONFIDENCE ═══ -->
+  <section class="fl-app-page__section fl-app-page__section--cream">
+    <div class="fl-app-page__s-inner">
+      <div class="fl-app-page__two-up fl-reveal">
+        <div class="fl-app-page__two-up-text">
+          <div class="fl-app-page__s-label">Attribution</div>
+          <h2 class="fl-app-page__s-headline">{{ section.settings.share_headline }}</h2>
+          <div class="fl-app-page__s-body"><p>{{ section.settings.share_intro }}</p></div>
+        </div>
+        <div class="fl-app-page__two-up-visual">
+          <div class="fl-app-page__cards">
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Replicated site</div>
+              <div class="fl-app-page__card-body">A FairShare-powered replica of the full company website — every page, every product, automatically connected to the rep.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">MySite</div>
+              <div class="fl-app-page__card-body">A rep-curated personal storefront. Hand-picked products, custom CTAs, displayed in the company's brand with attribution attached.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Playlists</div>
+              <div class="fl-app-page__card-body">Curated collections of products and media. Everything in a shared playlist carries FairShare attribution.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Smart Links</div>
+              <div class="fl-app-page__card-body">Contact-specific attribution links. A rep knows exactly who engaged with what — regardless of forwarding.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CRM ═══ -->
+  <section class="fl-app-page__section">
+    <div class="fl-app-page__s-inner">
+      <div class="fl-app-page__two-up fl-app-page__two-up--reversed fl-reveal">
+        <div class="fl-app-page__two-up-text">
+          <div class="fl-app-page__s-label">Contacts</div>
+          <h2 class="fl-app-page__s-headline">{{ section.settings.crm_headline }}</h2>
+          <div class="fl-app-page__s-body">{{ section.settings.crm_body }}</div>
+        </div>
+        <div class="fl-app-page__two-up-visual">
+          <div class="fl-app-page__cards">
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Contact database</div>
+              <div class="fl-app-page__card-body">Full CRM with grouping, segmentation, tags, and import capabilities.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Smart Links</div>
+              <div class="fl-app-page__card-body">Contact-specific attribution links that track engagement regardless of who clicks.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Activity feed</div>
+              <div class="fl-app-page__card-body">Real-time visibility into contact engagement — page views, video starts, product exploration.</div>
+            </div>
+            <div class="fl-app-page__card">
+              <div class="fl-app-page__card-title">Interaction history</div>
+              <div class="fl-app-page__card-body">Full timeline of every message, share, order, and tracked activity per contact.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATCHUPS ═══ -->
+  <section class="fl-app-page__section fl-app-page__section--cream">
+    <div class="fl-app-page__s-inner">
+      <div class="fl-app-page__catchup-wrap fl-reveal">
+        <div>
+          <div class="fl-app-page__s-label">AI assistant</div>
+          <h2 class="fl-app-page__s-headline">{{ section.settings.catchups_headline }}</h2>
+          <div class="fl-app-page__s-body"><p>{{ section.settings.catchups_intro }}</p></div>
+          <div class="fl-app-page__triggers">
+            <div class="fl-app-page__trigger">
+              <div class="fl-app-page__trigger-cat">Orders</div>
+              <div class="fl-app-page__trigger-items">Cart abandoned. Subscription processing in three days. Contact subscribed but hasn't enrolled. Multiple orders but no subscription.</div>
+            </div>
+            <div class="fl-app-page__trigger">
+              <div class="fl-app-page__trigger-cat">Activity</div>
+              <div class="fl-app-page__trigger-items">Contact started a video but didn't finish. New product added. New media ready to share. Contact wrote a review.</div>
+            </div>
+            <div class="fl-app-page__trigger">
+              <div class="fl-app-page__trigger-cat">Tasks</div>
+              <div class="fl-app-page__trigger-items">Overdue task. Unresolved web chat message. Upcoming company event within two days.</div>
+            </div>
+          </div>
+        </div>
+        <div class="fl-app-page__catchup-phone">
+          <div class="fl-app-page__catchup-frame">
+            <div class="fl-app-page__catchup-screen">
+              <div class="fl-app-page__catchup-notch"></div>
+              <div class="fl-app-page__catchup-card">Sarah viewed the product video but didn't finish. Good time to follow up.</div>
+              <div class="fl-app-page__catchup-card">Marcus's subscription processes in 3 days. He's due for a check-in.</div>
+              <div class="fl-app-page__catchup-card">New enrollment: Jamie R. signed up through your Smart Link. Send a welcome message.</div>
+              <div class="fl-app-page__catchup-card">Cart abandoned by Lisa T. — she had $142 in items. Follow up?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MESSAGING ═══ -->
+  <section class="fl-app-page__section">
+    <div class="fl-app-page__s-inner fl-reveal">
+      <div class="fl-app-page__s-label">Communication</div>
+      <h2 class="fl-app-page__s-headline">{{ section.settings.messaging_headline }}</h2>
+      <div class="fl-app-page__s-body">{{ section.settings.messaging_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CUSTOMIZATION ═══ -->
+  <section class="fl-app-page__section fl-app-page__section--cream">
+    <div class="fl-app-page__s-inner fl-reveal">
+      <div class="fl-app-page__s-label">Administration</div>
+      <h2 class="fl-app-page__s-headline">{{ section.settings.custom_headline }}</h2>
+      <div class="fl-app-page__s-body">{{ section.settings.custom_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-app-page__cta">
+    <img src="{{ 'brush-texture-08.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-app-page__cta-content fl-reveal">
+      <h2 class="fl-app-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <p class="fl-app-page__cta-sub">{{ section.settings.cta_subtext }}</p>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "App & Rep Tools Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "App & Rep Tools"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "They wake up wanting to build their business. To close a sale. To follow up with the person who was almost ready last week. The Fluid App exists to support that — not to add another tool to manage."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction matters."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "See the App in action →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "Mobile + Desktop"
+    },
+    {
+      "type": "text",
+      "id": "experience_headline",
+      "label": "Headline",
+      "default": "One continuous experience across every device."
+    },
+    {
+      "type": "textarea",
+      "id": "experience_body",
+      "label": "Body",
+      "default": "<p>A rep can start on her phone, continue on her laptop, and complete a transaction without losing context. The system maintains state across devices.</p><p>The mobile app is the primary tool for most reps in the field. The Rep Portal — the desktop web version — offers more screen real estate for reps managing higher volume, running reports, or preferring a full-screen workflow. Same core features, both environments.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Share with Confidence"
+    },
+    {
+      "type": "text",
+      "id": "share_headline",
+      "label": "Headline",
+      "default": "Share with confidence"
+    },
+    {
+      "type": "textarea",
+      "id": "share_intro",
+      "label": "Intro",
+      "default": "Every piece of content shared through the App — product links, pages, media, playlists — is automatically attributed through FairShare. Reps never have to wonder if the credit will follow."
+    },
+    {
+      "type": "header",
+      "content": "CRM"
+    },
+    {
+      "type": "text",
+      "id": "crm_headline",
+      "label": "Headline",
+      "default": "CRM and contact management"
+    },
+    {
+      "type": "textarea",
+      "id": "crm_body",
+      "label": "Body",
+      "default": "<p>Reps maintain a full contact database within the App — with grouping, segmentation, and import capabilities. Smart Links power personalized follow-up workflows. The activity feed shows real-time engagement. The full interaction history is always accessible.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Catchups"
+    },
+    {
+      "type": "text",
+      "id": "catchups_headline",
+      "label": "Headline",
+      "default": "Catchups: the AI-powered business assistant"
+    },
+    {
+      "type": "textarea",
+      "id": "catchups_intro",
+      "label": "Intro",
+      "default": "Catchups is an AI-powered notification system built into the App that proactively surfaces business opportunities for reps — telling them when to reach out, what to follow up on, and what they may have missed."
+    },
+    {
+      "type": "header",
+      "content": "Messaging"
+    },
+    {
+      "type": "text",
+      "id": "messaging_headline",
+      "label": "Headline",
+      "default": "Messaging"
+    },
+    {
+      "type": "textarea",
+      "id": "messaging_body",
+      "label": "Body",
+      "default": "<p>Standard messaging is included for all reps — direct messages to contacts, company broadcast channels, and team communications.</p><p>The <strong>Co-founder (pro) tier</strong> adds:</p><p><strong>Unified Messaging:</strong> A consolidated inbox that brings together SMS, email, and direct messages in one interface.</p><p><strong>Personal business phone number:</strong> A dedicated business number allows reps to communicate professionally without giving out their personal number.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Corporate Customization"
+    },
+    {
+      "type": "text",
+      "id": "custom_headline",
+      "label": "Headline",
+      "default": "Corporate customization"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_body",
+      "label": "Body",
+      "default": "<p>Corporate teams control what reps see and how the App is organized — through two builder tools:</p><p><strong>Mobile App Builder</strong> — Designs the mobile app experience: features shown, interface organization, country- and rank-specific content variations.</p><p><strong>App Builder</strong> — Designs the Rep Portal (web version). Expected to eventually manage both web and mobile experiences from a single interface.</p><p>Updates deploy across all devices immediately. No app store approval delay.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "Tools reps are proud to show prospects."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "The direct selling companies losing their best reps often aren't losing them over compensation. They're losing them because the tools signal that the company doesn't take the field seriously. The Fluid App signals the opposite."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Book a demo →"
+    }
+  ]
+}
+{% endschema %}

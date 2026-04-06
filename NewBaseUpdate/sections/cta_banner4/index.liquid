@@ -1,0 +1,501 @@
+{% assign bg_url = '' %}
+{% assign bg_fluid_media_id = '' %}
+
+{% if section.settings.background_image %}
+  {% if section.settings.background_image.url %}
+    {% comment %} It's an object with url property {% endcomment %}
+    {% assign bg_url = section.settings.background_image.url %}
+    {% comment %} Check if it also has fluid_media_id from media picker {% endcomment %}
+    {% if section.settings.background_image.fluid_media_id %}
+      {% assign bg_fluid_media_id = section.settings.background_image.fluid_media_id %}
+      {% assign bg_embed_type = section.settings.background_image.embed_type %}
+    {% endif %}
+  {% else %}
+    {% comment %} It's a string URL {% endcomment %}
+    {% assign bg_url = section.settings.background_image %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Determine whether to use fluid widget - if fluid_media_id exists, use widget {% endcomment %}
+{% assign use_fluid_widget = false %}
+
+{% if bg_fluid_media_id != '' %}
+  {% assign use_fluid_widget = true %}
+{% endif %}
+<section class="cta-banner4-section" 
+         style="background-color: {{ section.settings.background_color | default: '#f8f8f8' }};
+               
+                background-image: url('{% unless use_fluid_widget %}{{ bg_url }}{% endunless %}');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;">
+               
+  {% if use_fluid_widget %}
+    <fluid-media-widget class="fluid-media-widget-background" media-id="{{ bg_fluid_media_id }}" responsive="true" embed-type="{{ bg_embed_type | default: 'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+  {% endif %}
+  {% if section.settings.background_image != blank %}
+    <div class="cta-banner4-overlay" 
+         style="background-color: {{ section.settings.overlay_color | default: '#000000' }}; 
+                opacity: {{ section.settings.overlay_opacity | default: 40 | divided_by: 100.0 }}; 
+                position: absolute; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                height: 100%; 
+                z-index: 1;"></div>
+  {% endif %}
+
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="cta-banner4-card">
+      <div class="cta-banner4-wrapper grid grid-cols-1 sm-desktop-grid-cols-2">
+        
+        <!-- Content Column (Left side - 50%) -->
+        <div class="cta-banner4-content flex flex-col justify-center py-7xl px-4xl">
+          <h2 class="{{ section.settings.heading_font_size }} {{ section.settings.heading_font_weight }} mb-lg" style="color: {{ section.settings.heading_color | default: '#000000' }};">
+            {{ section.settings.heading }}
+          </h2>
+          
+          <p class="{{ section.settings.text_font_size }} {{ section.settings.text_font_weight }} mb-2xl" style="color: {{ section.settings.text_color | default: '#666666' }};">
+            {{ section.settings.intro_text }}
+          </p>
+          
+          {% if section.settings.show_primary_button or section.settings.show_secondary_button %}
+            <div class="cta-banner4-buttons flex space-lg flex-wrap">
+              {% if section.settings.show_primary_button and section.settings.button_text != blank %}
+                <a href="{{ section.settings.button_link }}" 
+                   class="btn {{ section.settings.button_style | default: 'btn-bg-primary' }} {{ section.settings.button_border_radius | default: '' }}">
+                  {{ section.settings.button_text }}
+                </a>
+              {% endif %}
+              
+              {% if section.settings.show_secondary_button and section.settings.button_text_secondary != blank %}
+                <a href="{{ section.settings.button_link_secondary }}" 
+                   class="btn {{ section.settings.button_secondary_style | default: 'btn-border-white' }} {{ section.settings.button_secondary_border_radius | default: '' }}">
+                  {{ section.settings.button_text_secondary }}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+        
+        <!-- Image Column (Right side - 50%, goes to edges) -->
+        <div class="cta-banner4-image">
+          
+            {% assign img_input = section.settings.cta_banner4_image  %}
+            {% assign img_fluid_media_id = '' %}
+            
+            {% if img_input.fluid_media_id %}
+              {% assign img_fluid_media_id = img_input.fluid_media_id %}
+              {% assign img_embed_type = img_input.embed_type %}
+            {% endif %}
+
+            {% assign use_fluid_image_widget = false %}
+            
+            {% if img_fluid_media_id != blank %}
+              {% assign use_fluid_image_widget = true %}
+            {% endif %}
+
+            {% if use_fluid_image_widget %}
+              <fluid-media-widget class="fluid-media-widget-image" media-id="{{ img_fluid_media_id }}" responsive="true" embed-type="{{ img_embed_type | default:'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+            {% else %}
+              {% if img_input != blank %}
+                <div class="image-wrapper">
+                  <img src="{{ img_input | image_url }}" alt="{{ block.settings.image_alt | default: section.settings.heading }}" class="image-cover w-full h-full" loading="lazy" width="" height=""/>
+                </div>
+              {% else %}
+                <div class="image-placeholder">
+                  <div class="placeholder-content text-center" style="color: #999;">
+                    <svg width="48" height="48" fill="currentColor" viewBox="0 0 20 20" style="margin: 0 auto 12px;">
+                      <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
+                    </svg>
+                    <p style="margin: 0; font-size: 14px; font-weight: 500;">Upload an image</p>
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.cta-banner4-section {
+  padding: 64px 0;
+  position: relative;
+}
+
+.cta-banner4-section .cta-banner4-card {
+  border: 2px solid #000000;
+  border-radius: 8px;
+  background-color: #ffffff;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.cta-banner4-section .cta-banner4-wrapper {
+  min-height: 300px;
+}
+
+.cta-banner4-section .cta-banner4-content h2 {
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.cta-banner4-section .cta-banner4-content p {
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.cta-banner4-section .cta-banner4-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-banner4-section .cta-banner4-buttons .btn {
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cta-banner4-section .cta-banner4-buttons .btn:hover {
+  opacity: 0.8;
+}
+
+.cta-banner4-section .cta-banner4-image {
+  height: 100%;
+  min-height: 300px;
+}
+
+.cta-banner4-section .image-wrapper {
+  height: 100%;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  overflow: hidden;
+}
+
+.cta-banner4-section .image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cta-banner4-section .image-placeholder {
+  background-color: #e5e5e5;
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+@media (max-width: 959px) {
+  .cta-banner4-section .cta-banner4-wrapper {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  
+  .cta-banner4-section .cta-banner4-content {
+    text-align: center;
+    padding: 32px 24px;
+  }
+  
+  .cta-banner4-section .cta-banner4-buttons {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-banner4-section .cta-banner4-buttons .btn {
+    text-align: center;
+    min-width: 200px;
+  }
+  
+  .cta-banner4-section .cta-banner4-image {
+    order: -1;
+    min-height: 200px;
+  }
+  
+  .cta-banner4-section .image-wrapper {
+    border-radius: 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  
+  .cta-banner4-section .image-placeholder {
+    border-radius: 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    min-height: 200px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "CTA Banner 4",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Medium length heading goes here",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      "label": "Intro Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_primary_button",
+      "default": true,
+      "label": "Show Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "default": "Button",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "#",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_button",
+      "default": true,
+      "label": "Show Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text_secondary",
+      "default": "Button",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link_secondary",
+      "default": "#",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        { "value": "btn-bg-white", "label": "White" },
+        { "value": "btn-bg-primary", "label": "Primary" },
+        { "value": "btn-border-white", "label": "White Border" },
+        { "value": "btn-border-black", "label": "Black Border" },
+        { "value": "btn-border-primary", "label": "Primary Border" }
+      ],
+      "default": "btn-bg-primary"
+    },
+    {
+      "type": "select",
+      "id": "button_border_radius",
+      "label": "Button Border Radius",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "rounded", "label": "XS" },
+        { "value": "rounded-sm", "label": "SM" },
+        { "value": "rounded-md", "label": "MD" },
+        { "value": "rounded-lg", "label": "LG" },
+        { "value": "rounded-xl", "label": "XL" },
+        { "value": "rounded-2xl", "label": "2XL" },
+        { "value": "rounded-3xl", "label": "3XL" },
+        { "value": "rounded-4xl", "label": "4XL" },
+        { "value": "rounded-5xl", "label": "5XL" },
+        { "value": "rounded-full", "label": "Full" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "button_secondary_style",
+      "label": "Secondary Button Style",
+      "options": [
+        { "value": "btn-bg-white", "label": "White" },
+        { "value": "btn-bg-primary", "label": "Primary" },
+        { "value": "btn-border-white", "label": "White Border" },
+        { "value": "btn-border-black", "label": "Black Border" },
+        { "value": "btn-border-primary", "label": "Primary Border" }
+      ],
+      "default": "btn-border-white"
+    },
+    {
+      "type": "select",
+      "id": "button_secondary_border_radius",
+      "label": "Secondary Button Border Radius",
+      "options": [
+        { "value": "", "label": "Default" },
+        { "value": "rounded", "label": "XS" },
+        { "value": "rounded-sm", "label": "SM" },
+        { "value": "rounded-md", "label": "MD" },
+        { "value": "rounded-lg", "label": "LG" },
+        { "value": "rounded-xl", "label": "XL" },
+        { "value": "rounded-2xl", "label": "2XL" },
+        { "value": "rounded-3xl", "label": "3XL" },
+        { "value": "rounded-4xl", "label": "4XL" },
+        { "value": "rounded-5xl", "label": "5XL" },
+        { "value": "rounded-full", "label": "Full" }
+      ],
+      "default": ""
+    },
+    {
+      "type": "image_picker",
+      "id": "banner4_image",
+      "label": "Banner 4 Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text",
+      "info": "Describe the image for accessibility"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "default": "#f8f8f8",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Optional background image (will override background color)"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_color",
+      "default": "#000000",
+      "label": "Background Overlay Color",
+      "info": "Color overlay on top of background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Background Overlay Opacity",
+      "default": 40,
+      "info": "0% = transparent, 100% = solid color"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color",
+      "default": "#000000",
+      "label": "Heading Color"
+    },
+    {
+      "type": "color_background",
+      "id": "text_color",
+      "default": "#666666",
+      "label": "Text Color"
+    },
+    {
+      "type": "color_background",
+      "id": "primary_button_bg",
+      "default": "#000000",
+      "label": "Primary Button Background"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-bold"
+    },
+    {
+      "type": "select",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "options": [
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-4xl", "label": "4XL" },
+        { "value": "text-5xl", "label": "5XL" }
+      ],
+      "default": "text-lg"
+    },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "color_background",
+      "id": "heading_color",
+      "type": "color_background",
+      "id": "primary_button_text",
+      "default": "#ffffff",
+      "label": "Primary Button Text"
+    },
+    {
+      "type": "color_background",
+      "id": "secondary_button_text",
+      "default": "#000000",
+      "label": "Secondary Button Text"
+    },
+    {
+      "type": "color_background",
+      "id": "secondary_button_border",
+      "default": "#000000",
+      "label": "Secondary Button Border"
+    }
+  ]
+}
+{% endschema %} 

@@ -1,0 +1,773 @@
+{%- style -%}
+  .fl-payments-page { --accent: #82CC9A; --seg-payments: #82CC9A; }
+
+  /* ── Hero ── */
+  .fl-payments-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-payments-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-payments-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-payments-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-payments-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-payments-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-payments-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Browser Mockup ── */
+  .fl-payments-page__browser {
+    padding: clamp(60px, 8vw, 100px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-payments-page__browser-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-payments-page__browser-chrome {
+    background: #1a1a1a;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+  .fl-payments-page__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #111;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .fl-payments-page__browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .fl-payments-page__browser-dot:first-child { background: #ff5f57; }
+  .fl-payments-page__browser-dot:nth-child(2) { background: #febc2e; }
+  .fl-payments-page__browser-dot:nth-child(3) { background: #28c840; }
+  .fl-payments-page__browser-url {
+    flex: 1;
+    margin-left: 12px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.06);
+  }
+  .fl-payments-page__browser-viewport {
+    aspect-ratio: 16 / 9;
+    background: #050505;
+  }
+  .fl-payments-page__browser-viewport video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Section Base ── */
+  .fl-payments-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-payments-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-payments-page__section--cream .fl-payments-page__s-headline { color: #0a0a0a; }
+  .fl-payments-page__section--cream .fl-payments-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-payments-page__section--cream .fl-payments-page__s-body strong { color: #0a0a0a; }
+  .fl-payments-page__section--cream .fl-payments-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-payments-page__section--cream .fl-payments-page__card-title { color: #0a0a0a; }
+  .fl-payments-page__section--cream .fl-payments-page__card-body { color: #3a3a3a; }
+  .fl-payments-page__section--cream .fl-payments-page__callout { background: #fff; border-color: var(--accent); }
+  .fl-payments-page__section--cream .fl-payments-page__callout-text { color: #1a1a1a; }
+
+  .fl-payments-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-payments-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-payments-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-payments-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-payments-page__s-body p { margin-bottom: 20px; }
+  .fl-payments-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Step Flow ── */
+  .fl-payments-page__flow {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 48px;
+  }
+  .fl-payments-page__flow-step {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: clamp(20px, 2.5vw, 32px);
+    text-align: center;
+    position: relative;
+  }
+  .fl-payments-page__flow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin: 0 auto 14px;
+  }
+  .fl-payments-page__flow-dot--decline { background: #e06060; }
+  .fl-payments-page__flow-dot--approve { background: var(--accent); }
+  .fl-payments-page__flow-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--clr-text-primary);
+    margin-bottom: 4px;
+  }
+  .fl-payments-page__flow-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ── Two-column Cards ── */
+  .fl-payments-page__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: rgba(130,204,154,0.1);
+  }
+  .fl-payments-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: none;
+  }
+  .fl-payments-page__card-badge {
+    font-family: var(--ff-body);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: rgba(130,204,154,0.1);
+    border: 1px solid rgba(130,204,154,0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .fl-payments-page__card-badge--soon {
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(255,255,255,0.08);
+  }
+  .fl-payments-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-payments-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Callout ── */
+  .fl-payments-page__callout {
+    margin-top: 40px;
+    padding: clamp(28px, 3vw, 40px);
+    border-left: 3px solid var(--accent);
+    background: rgba(130,204,154,0.04);
+    border-radius: 0 12px 12px 0;
+  }
+  .fl-payments-page__callout-text {
+    font-family: var(--ff-body);
+    font-weight: 400;
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    font-style: italic;
+    color: var(--clr-text-primary);
+    line-height: 1.65;
+  }
+
+  /* ── Pill Grid ── */
+  .fl-payments-page__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .fl-payments-page__pill {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--clr-text-primary);
+    padding: 8px 18px;
+    border: 1px solid rgba(130,204,154,0.3);
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  /* ── CTA ── */
+  .fl-payments-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-payments-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-payments-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-payments-page__flow { flex-direction: column; gap: 0; }
+    .fl-payments-page__flow-arrow { transform: rotate(90deg); width: auto; padding: 8px 0; }
+    .fl-payments-page__cards { grid-template-columns: 1fr; }
+    .fl-payments-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+    .fl-payments-page__pills { justify-content: center; }
+  }
+{%- endstyle -%}
+
+<div class="fl-payments-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-payments-page__hero">
+    <img src="{{ 'brush-texture-04.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-10.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-payments-page__hero-ghost">PAYMENTS</div>
+    <div class="fl-payments-page__hero-content">
+      <div class="fl-payments-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-payments-page__hero-headline">Every transaction <span class="fl-brand-accent">matters.</span></h1>
+      <p class="fl-payments-page__hero-sub">{{ section.settings.hero_subtext }}</p>
+      <div class="fl-payments-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ BROWSER MOCKUP ═══ -->
+  <section class="fl-payments-page__browser">
+    <div class="fl-payments-page__browser-inner fl-reveal">
+      <div class="fl-payments-page__browser-chrome">
+        <div class="fl-payments-page__browser-bar">
+          <div class="fl-payments-page__browser-dot"></div>
+          <div class="fl-payments-page__browser-dot"></div>
+          <div class="fl-payments-page__browser-dot"></div>
+          <div class="fl-payments-page__browser-url"></div>
+        </div>
+        <div class="fl-payments-page__browser-viewport">
+          <video autoplay loop muted playsinline>
+            <source src="{{ 'screen-payments.mp4' | asset_url }}" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HOW IT WORKS ═══ -->
+  <section class="fl-payments-page__section">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.recovery_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.recovery_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.recovery_body }}</div>
+
+      <div class="fl-payments-page__flow">
+        <div class="fl-payments-page__flow-step">
+          <div class="fl-payments-page__flow-dot"></div>
+          <div class="fl-payments-page__flow-title">{{ section.settings.step_1 }}</div>
+        </div>
+        <div class="fl-payments-page__flow-arrow">→</div>
+        <div class="fl-payments-page__flow-step">
+          <div class="fl-payments-page__flow-dot fl-payments-page__flow-dot--decline"></div>
+          <div class="fl-payments-page__flow-title">{{ section.settings.step_2 }}</div>
+        </div>
+        <div class="fl-payments-page__flow-arrow">→</div>
+        <div class="fl-payments-page__flow-step">
+          <div class="fl-payments-page__flow-dot fl-payments-page__flow-dot--approve"></div>
+          <div class="fl-payments-page__flow-title">{{ section.settings.step_3 }}</div>
+        </div>
+      </div>
+
+      <div class="fl-payments-page__s-body" style="margin-top:48px;">{{ section.settings.decline_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ SUBSCRIPTION RECOVERY ═══ -->
+  <section class="fl-payments-page__section fl-payments-page__section--cream">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.subscriptions_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.subscriptions_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.subscriptions_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ PAYMENT ORCHESTRATION ═══ -->
+  <section class="fl-payments-page__section">
+    <img src="{{ 'brush-texture-10.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-10%;right:-14%;width:42%;opacity:0.10;">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.routing_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.routing_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.routing_body }}</div>
+
+      <div class="fl-payments-page__cards">
+        <div class="fl-payments-page__card">
+          <div class="fl-payments-page__card-badge">{{ section.settings.routing_card1_badge }}</div>
+          <div class="fl-payments-page__card-title">{{ section.settings.routing_card1_title }}</div>
+          <div class="fl-payments-page__card-body">{{ section.settings.routing_card1_body }}</div>
+        </div>
+        <div class="fl-payments-page__card">
+          <div class="fl-payments-page__card-badge fl-payments-page__card-badge--soon">{{ section.settings.routing_card2_badge }}</div>
+          <div class="fl-payments-page__card-title">{{ section.settings.routing_card2_title }}</div>
+          <div class="fl-payments-page__card-body">{{ section.settings.routing_card2_body }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NETWORK TOKENS ═══ -->
+  <section class="fl-payments-page__section fl-payments-page__section--cream">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.security_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.security_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.security_body }}</div>
+
+      <div class="fl-payments-page__callout">
+        <div class="fl-payments-page__callout-text">{{ section.settings.security_callout }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALTERNATIVE PAYMENT METHODS ═══ -->
+  <section class="fl-payments-page__section">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.global_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.global_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.global_body }}</div>
+
+      <div class="fl-payments-page__pills">
+        {%- assign apm_list = section.settings.apm_list | split: ',' -%}
+        {%- for apm in apm_list -%}
+          <span class="fl-payments-page__pill">{{ apm | strip }}</span>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MERCHANT CLASSIFICATION ═══ -->
+  <section class="fl-payments-page__section fl-payments-page__section--cream">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.merchant_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.merchant_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.merchant_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ ATTRIBUTION ═══ -->
+  <section class="fl-payments-page__section">
+    <img src="{{ 'brush-texture-04.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-14%;width:44%;opacity:0.10;">
+    <div class="fl-payments-page__s-inner fl-reveal">
+      <div class="fl-payments-page__s-label">{{ section.settings.fairshare_label }}</div>
+      <h2 class="fl-payments-page__s-headline">{{ section.settings.fairshare_headline }}</h2>
+      <div class="fl-payments-page__s-body">{{ section.settings.fairshare_body }}</div>
+
+      <div class="fl-payments-page__callout">
+        <div class="fl-payments-page__callout-text">{{ section.settings.fairshare_callout }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-payments-page__cta">
+    <img src="{{ 'brush-texture-10.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-payments-page__cta-content fl-reveal">
+      <h2 class="fl-payments-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Payments Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Fluid Payments"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtext",
+      "label": "Hero subtext",
+      "default": "In traditional e-commerce, a 2–3% payment failure rate is considered acceptable. In direct selling, there are no statistics. There are reps. There are relationships. There is the customer your rep spent three months nurturing — who finally clicked, finally decided, and then got a decline message."
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction gets its best shot."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "See it in action →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "How It Works — Recovery"
+    },
+    {
+      "type": "text",
+      "id": "recovery_label",
+      "label": "Label",
+      "default": "Recovery"
+    },
+    {
+      "type": "text",
+      "id": "recovery_headline",
+      "label": "Headline",
+      "default": "Cascading payment retries"
+    },
+    {
+      "type": "textarea",
+      "id": "recovery_body",
+      "label": "Body",
+      "default": "<p>When a transaction is declined, Fluid Payments doesn't stop. It automatically retries across multiple payment processors — in real time. Each processor has different card network rules, different bank relationships, different approval logic. What fails on one may succeed on another, immediately, while the customer is still on the page.</p><p>The customer never knows it happened. The rep's relationship stays intact.</p>"
+    },
+    {
+      "type": "text",
+      "id": "step_1",
+      "label": "Step 1",
+      "default": "Transaction attempted"
+    },
+    {
+      "type": "text",
+      "id": "step_2",
+      "label": "Step 2",
+      "default": "Processor A declines"
+    },
+    {
+      "type": "text",
+      "id": "step_3",
+      "label": "Step 3",
+      "default": "Processor B approves"
+    },
+    {
+      "type": "textarea",
+      "id": "decline_body",
+      "label": "Decline recovery body",
+      "default": "<p>When a transaction cannot be recovered immediately, Fluid Payments continues working — over days, not seconds. It responds to specific decline reason codes, uses different data elements on retry attempts, and follows an intelligent schedule calibrated for the type of card and the type of decline.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Subscription Recovery"
+    },
+    {
+      "type": "text",
+      "id": "subscriptions_label",
+      "label": "Label",
+      "default": "Subscriptions"
+    },
+    {
+      "type": "text",
+      "id": "subscriptions_headline",
+      "label": "Headline",
+      "default": "Lapsed subscription recovery"
+    },
+    {
+      "type": "textarea",
+      "id": "subscriptions_body",
+      "label": "Body",
+      "default": "<p>A lapsed subscription in direct selling isn't just a missed charge. It's a break in a customer relationship that took real effort to build. And it's a commission that disappears for a rep who had nothing to do with the payment failure.</p><p>Fluid Payments includes dedicated subscription recovery logic. If a recurring charge fails, the system works to recover it — not just flag it for manual follow-up.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Payment Orchestration"
+    },
+    {
+      "type": "text",
+      "id": "routing_label",
+      "label": "Label",
+      "default": "Routing"
+    },
+    {
+      "type": "text",
+      "id": "routing_headline",
+      "label": "Headline",
+      "default": "Payment orchestration"
+    },
+    {
+      "type": "textarea",
+      "id": "routing_body",
+      "label": "Body",
+      "default": "<p>Fluid Payments routes transactions across a multi-processor architecture using intelligent routing logic. The system evaluates transaction characteristics — amount, geography, card type, merchant classification — and routes to the processor most likely to approve.</p>"
+    },
+    {
+      "type": "text",
+      "id": "routing_card1_badge",
+      "label": "Card 1 badge",
+      "default": "Live today"
+    },
+    {
+      "type": "text",
+      "id": "routing_card1_title",
+      "label": "Card 1 title",
+      "default": "Rules-based routing"
+    },
+    {
+      "type": "textarea",
+      "id": "routing_card1_body",
+      "label": "Card 1 body",
+      "default": "Transactions are routed based on configurable rules — geography, card type, amount thresholds, and merchant classification. Routing adapts in real time as processor performance shifts."
+    },
+    {
+      "type": "text",
+      "id": "routing_card2_badge",
+      "label": "Card 2 badge",
+      "default": "Coming soon"
+    },
+    {
+      "type": "text",
+      "id": "routing_card2_title",
+      "label": "Card 2 title",
+      "default": "AI-driven orchestration"
+    },
+    {
+      "type": "textarea",
+      "id": "routing_card2_body",
+      "label": "Card 2 body",
+      "default": "Machine learning models analyze historical transaction patterns and processor behavior to optimize routing decisions automatically — improving approval rates without manual rule configuration."
+    },
+    {
+      "type": "header",
+      "content": "Network Tokens"
+    },
+    {
+      "type": "text",
+      "id": "security_label",
+      "label": "Label",
+      "default": "Security"
+    },
+    {
+      "type": "text",
+      "id": "security_headline",
+      "label": "Headline",
+      "default": "Network tokens"
+    },
+    {
+      "type": "textarea",
+      "id": "security_body",
+      "label": "Body",
+      "default": "<p>Network tokens are issued by a customer's bank, unique to the Fluid platform. Subsequent purchases from that customer are more likely to be approved and carry significantly lower fraud rates.</p><p>This technology is not yet widely adopted. Fluid has it.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "security_callout",
+      "label": "Callout",
+      "default": "The tokens are owned by Fluid's merchants — not by Fluid, not by a third-party processor."
+    },
+    {
+      "type": "header",
+      "content": "Alternative Payment Methods"
+    },
+    {
+      "type": "text",
+      "id": "global_label",
+      "label": "Label",
+      "default": "Global"
+    },
+    {
+      "type": "text",
+      "id": "global_headline",
+      "label": "Headline",
+      "default": "Alternative payment methods"
+    },
+    {
+      "type": "textarea",
+      "id": "global_body",
+      "label": "Body",
+      "default": "<p>Friction at checkout is the most expensive kind. A customer who has decided to buy and then can't complete the transaction is a customer who leaves.</p><p>Fluid Payments includes a full suite of alternative payment methods, pre-integrated and available globally.</p><p>Fluid Pay — the platform's native saved payment method — allows returning customers to check out with one tap.</p>"
+    },
+    {
+      "type": "text",
+      "id": "apm_list",
+      "label": "APM names (comma-separated)",
+      "default": "Apple Pay, PayPal, Fastlane, AliPay, GCash, iDEAL, Bancontact, Blik, P24, Fluid Pay"
+    },
+    {
+      "type": "header",
+      "content": "Merchant Classification"
+    },
+    {
+      "type": "text",
+      "id": "merchant_label",
+      "label": "Label",
+      "default": "Direct selling"
+    },
+    {
+      "type": "text",
+      "id": "merchant_headline",
+      "label": "Headline",
+      "default": "Built for direct selling merchant classification"
+    },
+    {
+      "type": "textarea",
+      "id": "merchant_body",
+      "label": "Body",
+      "default": "<p>Direct selling merchants are classified as higher-risk by payment processors. That means your baseline decline rate is already worse than a standard e-commerce merchant — before you've done anything wrong.</p><p>Fluid Payments was. The processor relationships, the routing logic, and the fraud tools are all calibrated for the direct selling context. Not adapted. Built.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Attribution"
+    },
+    {
+      "type": "text",
+      "id": "fairshare_label",
+      "label": "Label",
+      "default": "FairShare"
+    },
+    {
+      "type": "text",
+      "id": "fairshare_headline",
+      "label": "Headline",
+      "default": "Attribution embedded in the payment flow"
+    },
+    {
+      "type": "textarea",
+      "id": "fairshare_body",
+      "label": "Body",
+      "default": "<p>When a transaction completes through Fluid Payments, FairShare attribution is resolved at that exact moment. The right rep is credited automatically — not in a reconciliation run that happens later, not in a manual process that someone has to audit. It happens as part of the payment itself.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "fairshare_callout",
+      "label": "Callout",
+      "default": "No disputes. No spreadsheets. No 'why didn't I get credit for this' conversations."
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "Generic payment infrastructure treats your transactions as statistics. Fluid Payments treats them as what they are."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Book a live walkthrough →"
+    }
+  ]
+}
+{% endschema %}

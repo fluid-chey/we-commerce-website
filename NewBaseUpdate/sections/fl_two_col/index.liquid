@@ -1,0 +1,102 @@
+{%- assign bg_class = '' -%}
+{%- if section.settings.background == 'cream' -%}
+  {%- assign bg_class = 'fl-two-col--cream' -%}
+{%- endif -%}
+<section class="fl-section fl-two-col {{ bg_class }}" id="{{ section.settings.anchor }}">
+  <div class="fl-container">
+    <div class="fl-two-col__grid {% if section.settings.reversed %}fl-two-col__grid--reversed{% endif %} fl-reveal">
+      <div class="fl-two-col__text">
+        {% if section.settings.label != blank %}
+          <div class="fl-label" style="color:{{ section.settings.label_color | default: 'var(--clr-blue)' }}">{{ section.settings.label }}</div>
+        {% endif %}
+        {% if section.settings.headline != blank %}
+          <h2 class="fl-two-col__headline">{{ section.settings.headline }}</h2>
+        {% endif %}
+        <div class="fl-two-col__body">{{ section.settings.body }}</div>
+        {% if section.settings.link_text != blank %}
+          <a href="{{ section.settings.link_url }}" class="fl-btn-text" style="color:{{ section.settings.label_color | default: 'var(--clr-blue)' }}">{{ section.settings.link_text }}</a>
+        {% endif %}
+      </div>
+      <div class="fl-two-col__visual">
+        {% if section.settings.image != blank %}
+          <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.image_alt }}" loading="lazy">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Two Column",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background",
+      "options": [
+        { "value": "dark", "label": "Dark" },
+        { "value": "cream", "label": "Cream" }
+      ],
+      "default": "dark"
+    },
+    {
+      "type": "checkbox",
+      "id": "reversed",
+      "label": "Reverse layout",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label"
+    },
+    {
+      "type": "text",
+      "id": "label_color",
+      "label": "Label Color"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image Alt Text"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link Text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column"
+    }
+  ]
+}
+{% endschema %}

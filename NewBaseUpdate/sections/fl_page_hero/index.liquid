@@ -1,0 +1,55 @@
+<section class="fl-page-hero">
+  <img src="{{ 'brush-texture-01.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-10%;right:-15%;width:50%;opacity:0.08;">
+  <div class="fl-page-hero__content">
+    {% if section.settings.eyebrow != blank %}
+      <div class="fl-page-hero__eyebrow">{{ section.settings.eyebrow }}</div>
+    {% endif %}
+    <h1 class="fl-page-hero__headline">{{ section.settings.headline }}</h1>
+    {% if section.settings.subtext != blank %}
+      <p class="fl-page-hero__subtext">{{ section.settings.subtext }}</p>
+    {% endif %}
+    {% if section.settings.cta_text != blank %}
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Page Title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,701 @@
+{% comment %} Handle background_image - can be string URL or object with url/fluid_media_id {% endcomment %}
+{% assign bg_url = '' %}
+{% assign bg_fluid_media_id = '' %}
+
+{% if section.settings.background_image %}
+  {% if section.settings.background_image.url %}
+    {% comment %} It's an object with url property {% endcomment %}
+    {% assign bg_url = section.settings.background_image.url %}
+    
+    {% comment %} Check if it also has fluid_media_id from media picker {% endcomment %}
+    {% if section.settings.background_image.fluid_media_id %}
+      {% assign bg_fluid_media_id = section.settings.background_image.fluid_media_id %}
+      {% assign bg_embed_type = section.settings.background_image.embed_type %}
+    {% endif %}
+  {% else %}
+    {% comment %} It's a string URL {% endcomment %}
+    {% assign bg_url = section.settings.background_image %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Determine whether to use fluid widget - if fluid_media_id exists, use widget {% endcomment %}
+{% assign use_fluid_widget = false %}
+
+{% if bg_fluid_media_id != '' %}
+  {% assign use_fluid_widget = true %}
+{% endif %}
+
+<!-- Testimonial section -->
+<section class="testimonial-section {{ section.settings.section_padding_top_mobile | default: 'pt-7xl' }} {{ section.settings.section_padding_bottom_mobile | default: 'pb-7xl' }}" data-bg="{% unless use_fluid_widget %}{{ bg_url }}{% endunless %}" style="background-color: {{ section.settings.background_color | default: '#ffffff' }};">
+  {% if use_fluid_widget %}
+    <fluid-media-widget class="fluid-media-widget-background" media-id="{{ bg_fluid_media_id }}" responsive="true" embed-type="{{ bg_embed_type | default: 'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+  {% endif %}
+  <style>
+    @media (min-width: 1280px) {
+      .testimonial-section {
+        padding-top: {{ section.settings.section_padding_top_desktop | default: 80 }}px !important;
+        padding-bottom: {{ section.settings.section_padding_bottom_desktop | default: 80 }}px !important;
+      }
+    }
+  </style>
+  <div class="container">
+    <div class="flex flex-col justify-center align-center {{ section.settings.title_spacing_mobile | default: 'space-xl' }} {{ section.settings.title_spacing_desktop | default: 'lg:space-2xl' }} section-title">
+      <div class="{{ section.settings.title_font_size | default: 'text-h2' }} {{ section.settings.title_font_weight | default: 'font-bold' }}" style="color: {{ section.settings.title_color | default: '#000000' }};">
+        {{ section.settings.section_title | default: "Customer testimonials" }}
+      </div>
+      <p class="{{ section.settings.description_font_size | default: 'text-base' }} {{ section.settings.description_font_size_desktop | default: 'lg:text-lg' }} {{ section.settings.description_font_weight | default: 'font-normal' }}" style="color: {{ section.settings.description_color | default: '#666666' }};">
+        {{ section.settings.section_description | default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }}
+      </p>
+    </div>
+    <div class="grid grid-cols-3 {{ section.settings.content_gap_mobile | default: 'space-4xl' }} {{ section.settings.content_gap_desktop | default: 'lg:space-5xl' }} testimonial-grid">
+      {% for block in section.blocks %}
+        <div class="testimonial-col flex flex-col justify-center align-center {{ section.settings.testimonial_spacing_mobile | default: 'space-lg' }} {{ section.settings.testimonial_spacing_desktop | default: 'lg:space-2xl' }} text-center" {{ block.fluid_attributes }}>
+          <div class="company-logo">
+            <img 
+              src="{% if block.settings.company_logo %}{{ block.settings.company_logo | image_url }}{% else %}{{ 'https://ik.imagekit.io/fluid/filestack-migration/filestack_25BaNkw7SYu5hydjLRnk_2REwUeoVr' | asset_url }}{% endif %}" 
+              alt="{{ block.settings.company_name | default: 'logo' }}" 
+              height=""
+              width=""
+              loading="lazy"
+            />
+          </div>
+          <p class="{{ block.settings.testimonial_font_size | default: 'text-sm' }} {{ block.settings.testimonial_font_size_desktop | default: 'lg:text-base' }} {{ block.settings.testimonial_font_weight | default: 'font-semibold' }} testimonial-text" style="color: {{ block.settings.testimonial_color | default: '#333333' }};">
+            "{{ block.settings.testimonial_text | default: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.' }}"
+          </p>
+          <div class="author text-center flex justify-center align-center flex-col {{ section.settings.author_spacing_mobile | default: 'space-xs' }} {{ section.settings.author_spacing_desktop | default: 'lg:space-sm' }}">
+            <figure class="{{ block.settings.author_image_margin_bottom | default: 'mb-lg' }}">
+
+              {% assign img_input = block.settings.author_image %}
+              {% assign img_fluid_media_id = '' %}
+              
+              {% if img_input.fluid_media_id %}
+                {% assign img_fluid_media_id = img_input.fluid_media_id %}
+                {% assign img_embed_type = img_input.embed_type %}
+              {% endif %}
+
+              {% assign use_fluid_image_widget = false %}
+              
+              {% if img_fluid_media_id != '' %}
+                {% assign use_fluid_image_widget = true %}
+              {% endif %}
+
+              {% if use_fluid_image_widget %}
+                <fluid-media-widget class="fluid-media-widget-image" media-id="{{ img_fluid_media_id }}" responsive="true" embed-type="{{ img_embed_type | default:'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+              {% else %}
+                {% if block.settings.author_image != '' %}
+                  <img src="{{ block.settings.author_image | image_url }}" alt="{{ block.settings.author_name | default: 'Author' }}" class="image-cover" loading="lazy" width="" height=""/>
+                {% else %}
+                  <img src="{{ 'avatar.png' | asset_url }}" alt="author" class="image-cover" loading="lazy" width="" height=""/>
+                {% endif %}
+              {% endif %}
+              
+            </figure>
+            <div class="{{ block.settings.author_name_font_size | default: 'text-sm' }} {{ block.settings.author_name_font_size_desktop | default: 'lg:text-base' }} {{ block.settings.author_name_font_weight | default: 'font-semibold' }} author-name" style="color: {{ block.settings.author_name_color | default: '#000000' }};">
+              {{ block.settings.author_name | default: "Name Surname" }}
+            </div>
+            <p class="{{ block.settings.author_position_font_size | default: 'text-xs' }} {{ block.settings.author_position_font_size_desktop | default: 'lg:text-sm' }} {{ block.settings.author_position_font_weight | default: 'font-normal' }} author-position" style="color: {{ block.settings.author_position_color | default: '#666666' }};">
+              {{ block.settings.author_position | default: "Position" }}{% if block.settings.company_name %}, {{ block.settings.company_name }}{% else %}, Company name{% endif %}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonial Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Customer testimonials"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Section Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x1080px or larger"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_top_mobile",
+      "label": "Section Padding Top (Mobile)",
+      "options": [
+        { "value": "pt-0", "label": "0" },
+        { "value": "pt-xs", "label": "XS" },
+        { "value": "pt-sm", "label": "SM" },
+        { "value": "pt-md", "label": "MD" },
+        { "value": "pt-lg", "label": "LG" },
+        { "value": "pt-xl", "label": "XL" },
+        { "value": "pt-2xl", "label": "2XL" },
+        { "value": "pt-3xl", "label": "3XL" },
+        { "value": "pt-4xl", "label": "4XL" },
+        { "value": "pt-5xl", "label": "5XL" },
+        { "value": "pt-6xl", "label": "6XL" },
+        { "value": "pt-7xl", "label": "7XL" },
+        { "value": "pt-8xl", "label": "8XL" },
+        { "value": "pt-9xl", "label": "9XL" },
+        { "value": "pt-10xl", "label": "10XL" }
+      ],
+      "default": "pt-7xl"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_bottom_mobile",
+      "label": "Section Padding Bottom (Mobile)",
+      "options": [
+        { "value": "pb-0", "label": "0" },
+        { "value": "pb-xs", "label": "XS" },
+        { "value": "pb-sm", "label": "SM" },
+        { "value": "pb-md", "label": "MD" },
+        { "value": "pb-lg", "label": "LG" },
+        { "value": "pb-xl", "label": "XL" },
+        { "value": "pb-2xl", "label": "2XL" },
+        { "value": "pb-3xl", "label": "3XL" },
+        { "value": "pb-4xl", "label": "4XL" },
+        { "value": "pb-5xl", "label": "5XL" },
+        { "value": "pb-6xl", "label": "6XL" },
+        { "value": "pb-7xl", "label": "7XL" },
+        { "value": "pb-8xl", "label": "8XL" },
+        { "value": "pb-9xl", "label": "9XL" },
+        { "value": "pb-10xl", "label": "10XL" }
+      ],
+      "default": "pb-7xl"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Content Spacing"
+    },
+    {
+      "type": "select",
+      "id": "title_spacing_mobile",
+      "label": "Title & Description Spacing (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-xl"
+    },
+    {
+      "type": "select",
+      "id": "title_spacing_desktop",
+      "label": "Title & Description Spacing (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-2xl"
+    },
+    {
+      "type": "select",
+      "id": "content_gap_mobile",
+      "label": "Content Gap (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-4xl"
+    },
+    {
+      "type": "select",
+      "id": "content_gap_desktop",
+      "label": "Content Gap (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-5xl"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_spacing_mobile",
+      "label": "Testimonial Item Spacing (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-lg"
+    },
+    {
+      "type": "select",
+      "id": "testimonial_spacing_desktop",
+      "label": "Testimonial Item Spacing (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-2xl"
+    },
+    {
+      "type": "select",
+      "id": "author_spacing_mobile",
+      "label": "Author Spacing (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-xs"
+    },
+    {
+      "type": "select",
+      "id": "author_spacing_desktop",
+      "label": "Author Spacing (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-sm"
+    },
+    {
+      "type": "header",
+      "content": "Title Typography"
+    },
+    {
+      "type": "select",
+      "id": "title_font_size",
+      "label": "Title Font Size",
+      "options": [
+        { "value": "text-h1", "label": "H1" },
+        { "value": "text-h2", "label": "H2" },
+        { "value": "text-h3", "label": "H3" },
+        { "value": "text-h4", "label": "H4" },
+        { "value": "text-h5", "label": "H5" },
+        { "value": "text-h6", "label": "H6" }
+      ],
+      "default": "text-h2"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" },
+        { "value": "font-extrabold", "label": "Extra Bold" }
+      ],
+      "default": "font-bold"
+    },
+    {
+      "type": "color_background",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Description Typography"
+    },
+    {
+      "type": "select",
+      "id": "description_font_size",
+      "label": "Description Font Size (Mobile)",
+      "options": [
+        { "value": "text-sm", "label": "SM" },
+        { "value": "text-base", "label": "Base" },
+        { "value": "text-lg", "label": "LG" },
+        { "value": "text-xl", "label": "XL" },
+        { "value": "text-2xl", "label": "2XL" },
+        { "value": "text-3xl", "label": "3XL" },
+        { "value": "text-4xl", "label": "4XL" },
+        { "value": "text-5xl", "label": "5XL" }
+      ],
+      "default": "text-base"
+    },
+    {
+      "type": "select",
+      "id": "description_font_size_desktop",
+      "label": "Description Font Size (Desktop)",
+      "options": [
+        { "value": "lg:text-sm", "label": "SM" },
+        { "value": "lg:text-base", "label": "Base" },
+        { "value": "lg:text-lg", "label": "LG" },
+        { "value": "lg:text-xl", "label": "XL" },
+        { "value": "lg:text-2xl", "label": "2XL" },
+        { "value": "lg:text-3xl", "label": "3XL" },
+        { "value": "lg:text-4xl", "label": "4XL" },
+        { "value": "lg:text-5xl", "label": "5XL" }
+      ],
+      "default": "lg:text-lg"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Description Font Weight",
+      "options": [
+        { "value": "font-light", "label": "Light" },
+        { "value": "font-normal", "label": "Normal" },
+        { "value": "font-medium", "label": "Medium" },
+        { "value": "font-semibold", "label": "Semi Bold" },
+        { "value": "font-bold", "label": "Bold" }
+      ],
+      "default": "font-normal"
+    },
+    {
+      "type": "color_background",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#666666"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial_item",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "textarea",
+          "id": "testimonial_text",
+          "label": "Testimonial Text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Name Surname"
+        },
+        {
+          "type": "text",
+          "id": "author_position",
+          "label": "Author Position",
+          "default": "Position"
+        },
+        {
+          "type": "text",
+          "id": "company_name",
+          "label": "Company Name",
+          "default": "Company name"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Image"
+        },
+        {
+          "type": "select",
+          "id": "author_image_margin_bottom",
+          "label": "Author Image Margin Bottom",
+          "options": [
+            { "value": "mb-0", "label": "0" },
+            { "value": "mb-xs", "label": "XS" },
+            { "value": "mb-sm", "label": "SM" },
+            { "value": "mb-md", "label": "MD" },
+            { "value": "mb-lg", "label": "LG" },
+            { "value": "mb-xl", "label": "XL" },
+            { "value": "mb-2xl", "label": "2XL" },
+            { "value": "mb-3xl", "label": "3XL" },
+            { "value": "mb-4xl", "label": "4XL" },
+            { "value": "mb-5xl", "label": "5XL" }
+          ],
+          "default": "mb-lg"
+        },
+        {
+          "type": "image_picker",
+          "id": "company_logo",
+          "label": "Company Logo"
+        },
+        {
+          "type": "header",
+          "content": "Testimonial Text Typography"
+        },
+        {
+          "type": "select",
+          "id": "testimonial_font_size",
+          "label": "Testimonial Font Size (Mobile)",
+          "options": [
+            { "value": "text-sm", "label": "SM" },
+            { "value": "text-base", "label": "Base" },
+            { "value": "text-lg", "label": "LG" },
+            { "value": "text-xl", "label": "XL" },
+            { "value": "text-2xl", "label": "2XL" },
+            { "value": "text-3xl", "label": "3XL" },
+            { "value": "text-4xl", "label": "4XL" },
+            { "value": "text-5xl", "label": "5XL" }
+          ],
+          "default": "text-sm"
+        },
+        {
+          "type": "select",
+          "id": "testimonial_font_size_desktop",
+          "label": "Testimonial Font Size (Desktop)",
+          "options": [
+            { "value": "lg:text-sm", "label": "SM" },
+            { "value": "lg:text-base", "label": "Base" },
+            { "value": "lg:text-lg", "label": "LG" },
+            { "value": "lg:text-xl", "label": "XL" },
+            { "value": "lg:text-2xl", "label": "2XL" },
+            { "value": "lg:text-3xl", "label": "3XL" },
+            { "value": "lg:text-4xl", "label": "4XL" },
+            { "value": "lg:text-5xl", "label": "5XL" }
+          ],
+          "default": "lg:text-base"
+        },
+        {
+          "type": "select",
+          "id": "testimonial_font_weight",
+          "label": "Testimonial Font Weight",
+          "options": [
+            { "value": "font-light", "label": "Light" },
+            { "value": "font-normal", "label": "Normal" },
+            { "value": "font-medium", "label": "Medium" },
+            { "value": "font-semibold", "label": "Semi Bold" },
+            { "value": "font-bold", "label": "Bold" }
+          ],
+          "default": "font-semibold"
+        },
+        {
+          "type": "color_background",
+          "id": "testimonial_color",
+          "label": "Testimonial Color",
+          "default": "#333333"
+        },
+        {
+          "type": "header",
+          "content": "Author Name Typography"
+        },
+        {
+          "type": "select",
+          "id": "author_name_font_size",
+          "label": "Author Name Font Size (Mobile)",
+          "options": [
+            { "value": "text-xs", "label": "XS" },
+            { "value": "text-sm", "label": "SM" },
+            { "value": "text-base", "label": "Base" },
+            { "value": "text-lg", "label": "LG" },
+            { "value": "text-xl", "label": "XL" },
+            { "value": "text-2xl", "label": "2XL" }
+          ],
+          "default": "text-sm"
+        },
+        {
+          "type": "select",
+          "id": "author_name_font_size_desktop",
+          "label": "Author Name Font Size (Desktop)",
+          "options": [
+            { "value": "lg:text-xs", "label": "XS" },
+            { "value": "lg:text-sm", "label": "SM" },
+            { "value": "lg:text-base", "label": "Base" },
+            { "value": "lg:text-lg", "label": "LG" },
+            { "value": "lg:text-xl", "label": "XL" },
+            { "value": "lg:text-2xl", "label": "2XL" }
+          ],
+          "default": "lg:text-base"
+        },
+        {
+          "type": "select",
+          "id": "author_name_font_weight",
+          "label": "Author Name Font Weight",
+          "options": [
+            { "value": "font-light", "label": "Light" },
+            { "value": "font-normal", "label": "Normal" },
+            { "value": "font-medium", "label": "Medium" },
+            { "value": "font-semibold", "label": "Semi Bold" },
+            { "value": "font-bold", "label": "Bold" }
+          ],
+          "default": "font-semibold"
+        },
+        {
+          "type": "color_background",
+          "id": "author_name_color",
+          "label": "Author Name Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Author Position Typography"
+        },
+        {
+          "type": "select",
+          "id": "author_position_font_size",
+          "label": "Author Position Font Size (Mobile)",
+          "options": [
+            { "value": "text-xs", "label": "XS" },
+            { "value": "text-sm", "label": "SM" },
+            { "value": "text-base", "label": "Base" },
+            { "value": "text-lg", "label": "LG" }
+          ],
+          "default": "text-xs"
+        },
+        {
+          "type": "select",
+          "id": "author_position_font_size_desktop",
+          "label": "Author Position Font Size (Desktop)",
+          "options": [
+            { "value": "lg:text-xs", "label": "XS" },
+            { "value": "lg:text-sm", "label": "SM" },
+            { "value": "lg:text-base", "label": "Base" },
+            { "value": "lg:text-lg", "label": "LG" }
+          ],
+          "default": "lg:text-sm"
+        },
+        {
+          "type": "select",
+          "id": "author_position_font_weight",
+          "label": "Author Position Font Weight",
+          "options": [
+            { "value": "font-light", "label": "Light" },
+            { "value": "font-normal", "label": "Normal" },
+            { "value": "font-medium", "label": "Medium" },
+            { "value": "font-semibold", "label": "Semi Bold" },
+            { "value": "font-bold", "label": "Bold" }
+          ],
+          "default": "font-normal"
+        },
+        {
+          "type": "color_background",
+          "id": "author_position_color",
+          "label": "Author Position Color",
+          "default": "#666666"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Section",
+      "blocks": [
+        {
+          "type": "testimonial_item",
+          "settings": {
+            "testimonial_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+            "author_name": "Name Surname",
+            "author_position": "Position",
+            "company_name": "Company name",
+            "author_image": "https://ik.imagekit.io/fluid/filestack-migration/filestack_Aecnt3MASgOodip2XVp8_ptvi3xDbq",
+            "company_logo": "https://ik.imagekit.io/fluid/filestack-migration/filestack_25BaNkw7SYu5hydjLRnk_fxuay0FnZ"
+          }
+        },
+        {
+          "type": "testimonial_item",
+          "settings": {
+            "testimonial_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+            "author_name": "Name Surname",
+            "author_position": "Position",
+            "company_name": "Company name",
+            "author_image": "https://ik.imagekit.io/fluid/filestack-migration/filestack_Aecnt3MASgOodip2XVp8_5K0IwfhwuH",
+            "company_logo": "https://ik.imagekit.io/fluid/filestack-migration/filestack_25BaNkw7SYu5hydjLRnk_0QnUw87Dl"
+          }
+        },
+        {
+          "type": "testimonial_item",
+          "settings": {
+            "testimonial_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+            "author_name": "Name Surname",
+            "author_position": "Position",
+            "company_name": "Company name",
+            "author_image": "https://ik.imagekit.io/fluid/filestack-migration/filestack_Aecnt3MASgOodip2XVp8_w5h53vaDH",
+            "company_logo": "https://ik.imagekit.io/fluid/filestack-migration/filestack_25BaNkw7SYu5hydjLRnk_xPMMGje5B"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,64 @@
+<footer class="fl-footer" id="footer">
+  <div class="fl-footer__inner">
+    <div class="fl-footer__grid">
+      <div class="fl-footer__brand">
+        <img src="{{ 'fluid-logo.png' | asset_url }}" alt="Fluid" class="fl-footer__logo">
+        <p>{{ section.settings.tagline }}</p>
+      </div>
+      <div class="fl-footer__col">
+        <div class="fl-footer__col-title">Platform</div>
+        <ul>
+          <li><a href="/home/pages/payments">Fluid Payments</a></li>
+          <li><a href="/home/pages/fairshare">FairShare</a></li>
+          <li><a href="/home/pages/checkout">Checkout</a></li>
+          <li><a href="/home/pages/builder">Builder</a></li>
+          <li><a href="/home/pages/app">App & Rep Tools</a></li>
+          <li><a href="/home/pages/connect">Fluid Connect</a></li>
+          <li><a href="/home/pages/droplets">Droplets</a></li>
+        </ul>
+      </div>
+      <div class="fl-footer__col">
+        <div class="fl-footer__col-title">Company</div>
+        <ul>
+          <li><a href="#">About Fluid</a></li>
+          <li><a href="/home/pages/blitz-week">Blitz Week</a></li>
+          <li><a href="/home/pages/customer-stories">Customer Stories</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="fl-footer__col">
+        <div class="fl-footer__col-title">Resources</div>
+        <ul>
+          <li><a href="/home/pages/resources">Blog</a></li>
+          <li><a href="#">Platform Overview</a></li>
+          <li><a href="#">Developer Docs</a></li>
+          <li><a href="#">Droplet Marketplace</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fl-footer__bottom">
+      <div class="fl-footer__tagline">We-Commerce — Commerce built on relationships.</div>
+      <div class="fl-footer__legal-row">
+        <span>&copy; 2026 Fluid Commerce, Inc. All rights reserved.</span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "fl_footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "The only e-commerce platform built specifically for direct selling."
+    }
+  ]
+}
+{% endschema %}

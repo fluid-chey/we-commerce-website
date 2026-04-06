@@ -1,0 +1,636 @@
+{%- style -%}
+  .fl-builder-page { --accent: #C4A8D4; }
+
+  /* ── Hero ── */
+  .fl-builder-page__hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 160px 24px 100px;
+  }
+  .fl-builder-page__hero-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(120px, 16vw, 240px);
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+    color: rgba(255,255,255,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .fl-builder-page__hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 820px;
+  }
+  .fl-builder-page__eyebrow {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .fl-builder-page__hero-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.04;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .fl-builder-page__hero-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-body);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+  }
+  .fl-builder-page__tagline {
+    font-family: var(--ff-brand);
+    font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+    color: var(--accent);
+    margin-bottom: 40px;
+  }
+
+  /* ── Browser Mockup ── */
+  .fl-builder-page__browser {
+    padding: clamp(60px, 8vw, 100px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-builder-page__browser-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-builder-page__browser-chrome {
+    background: #1a1a1a;
+    border-radius: 12px 12px 0 0;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .fl-builder-page__browser-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+  .fl-builder-page__browser-dot:first-child { background: #ff5f57; }
+  .fl-builder-page__browser-dot:nth-child(2) { background: #febc2e; }
+  .fl-builder-page__browser-dot:nth-child(3) { background: #28c840; }
+  .fl-builder-page__browser-bar {
+    flex: 1;
+    height: 28px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 6px;
+    margin-left: 12px;
+  }
+  .fl-builder-page__browser-screen {
+    border-radius: 0 0 12px 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-top: none;
+  }
+  .fl-builder-page__browser-screen img {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
+
+  /* ── Section Base ── */
+  .fl-builder-page__section {
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-builder-page__section--cream {
+    background: #f5f3ef;
+    color: #1a1a1a;
+  }
+  .fl-builder-page__section--cream .fl-builder-page__s-headline { color: #0a0a0a; }
+  .fl-builder-page__section--cream .fl-builder-page__s-body { color: #3a3a3a; font-weight: 400; }
+  .fl-builder-page__section--cream .fl-builder-page__s-body strong { color: #0a0a0a; }
+  .fl-builder-page__section--cream .fl-builder-page__card { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .fl-builder-page__section--cream .fl-builder-page__card-title { color: #0a0a0a; }
+  .fl-builder-page__section--cream .fl-builder-page__card-body { color: #3a3a3a; }
+  .fl-builder-page__section--cream .fl-builder-page__pill { border-color: rgba(0,0,0,0.12); color: #1a1a1a; }
+
+  .fl-builder-page__s-inner {
+    max-width: var(--fl-content-max, 1280px);
+    margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 64px);
+  }
+  .fl-builder-page__s-label {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .fl-builder-page__s-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 720px;
+  }
+  .fl-builder-page__s-headline--lg {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+  }
+  .fl-builder-page__s-body {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    color: var(--clr-text-body);
+    line-height: 1.7;
+    max-width: 720px;
+  }
+  .fl-builder-page__s-body p { margin-bottom: 20px; }
+  .fl-builder-page__s-body strong { font-weight: 600; color: var(--clr-text-primary); }
+
+  /* ── Two-up Layout ── */
+  .fl-builder-page__two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(48px, 6vw, 80px);
+    align-items: start;
+  }
+
+  /* ── Cards Grid ── */
+  .fl-builder-page__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    background: rgba(196,168,212,0.1);
+  }
+  .fl-builder-page__card {
+    background: var(--clr-bg, #050505);
+    padding: clamp(28px, 3vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .fl-builder-page__card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent);
+    opacity: 0.8;
+  }
+  .fl-builder-page__card-title {
+    font-family: var(--ff-heading);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--clr-text-primary);
+  }
+  .fl-builder-page__card-body {
+    font-size: 0.9rem;
+    color: var(--clr-text-body);
+    line-height: 1.55;
+  }
+
+  /* ── Pills Grid ── */
+  .fl-builder-page__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .fl-builder-page__pill {
+    font-family: var(--ff-body);
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    padding: 10px 20px;
+    border: 1px solid rgba(196,168,212,0.35);
+    border-radius: 100px;
+    color: var(--clr-text-body);
+    white-space: nowrap;
+  }
+
+  /* ── Callout Card ── */
+  .fl-builder-page__callout {
+    margin-top: 32px;
+    padding: clamp(28px, 3vw, 44px);
+    border-left: 3px solid var(--accent);
+    background: rgba(196,168,212,0.06);
+    border-radius: 0 8px 8px 0;
+  }
+  .fl-builder-page__callout p {
+    font-family: var(--ff-body);
+    font-weight: 400;
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    color: var(--clr-text-primary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── CTA ── */
+  .fl-builder-page__cta {
+    padding: clamp(100px, 14vw, 200px) 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fl-builder-page__cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .fl-builder-page__cta-headline {
+    font-family: var(--ff-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .fl-builder-page__cta-sub {
+    font-family: var(--ff-body);
+    font-weight: 300;
+    color: var(--clr-text-body);
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+
+  @media (max-width: 768px) {
+    .fl-builder-page__two-up {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .fl-builder-page__hero { min-height: 70vh; padding: 120px 24px 80px; }
+    .fl-builder-page__browser-chrome { padding: 10px 14px; }
+    .fl-builder-page__browser-dot { width: 10px; height: 10px; }
+    .fl-builder-page__browser-bar { height: 24px; }
+  }
+{%- endstyle -%}
+
+<div class="fl-builder-page">
+
+  <!-- ═══ HERO ═══ -->
+  <section class="fl-builder-page__hero">
+    <img src="{{ 'brush-texture-03.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-6%;right:-10%;width:45%;opacity:0.14;">
+    <img src="{{ 'brush-texture-06.png' | asset_url }}" alt="" class="fl-brushstroke" style="bottom:-8%;left:-12%;width:40%;opacity:0.10;">
+    <div class="fl-builder-page__hero-ghost">BUILDER</div>
+    <div class="fl-builder-page__hero-content">
+      <div class="fl-builder-page__eyebrow">{{ section.settings.eyebrow }}</div>
+      <h1 class="fl-builder-page__hero-headline">Your website should move at the speed of <span class="fl-brand-accent">your business.</span></h1>
+      <div class="fl-builder-page__tagline">{{ section.settings.tagline }}</div>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary">{{ section.settings.cta_text }}</a>
+    </div>
+  </section>
+
+  <!-- ═══ BROWSER MOCKUP ═══ -->
+  <section class="fl-builder-page__browser">
+    <div class="fl-builder-page__browser-inner fl-reveal">
+      <div class="fl-builder-page__browser-chrome">
+        <span class="fl-builder-page__browser-dot"></span>
+        <span class="fl-builder-page__browser-dot"></span>
+        <span class="fl-builder-page__browser-dot"></span>
+        <span class="fl-builder-page__browser-bar"></span>
+      </div>
+      <div class="fl-builder-page__browser-screen">
+        <img src="{{ 'screen-builder.png' | asset_url }}" alt="Fluid Builder interface" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WHAT BUILDER IS ═══ -->
+  <section class="fl-builder-page__section">
+    <div class="fl-builder-page__s-inner">
+      <div class="fl-builder-page__two-up fl-reveal">
+        <div class="fl-builder-page__two-up-text">
+          <div class="fl-builder-page__s-label">{{ section.settings.what_label }}</div>
+          <h2 class="fl-builder-page__s-headline">{{ section.settings.what_headline }}</h2>
+          <div class="fl-builder-page__s-body">{{ section.settings.what_body }}</div>
+        </div>
+        <div class="fl-builder-page__two-up-visual">
+          <div class="fl-builder-page__cards">
+            <div class="fl-builder-page__card">
+              <div class="fl-builder-page__card-icon"></div>
+              <div class="fl-builder-page__card-title">{{ section.settings.what_card1_title }}</div>
+              <div class="fl-builder-page__card-body">{{ section.settings.what_card1_body }}</div>
+            </div>
+            <div class="fl-builder-page__card">
+              <div class="fl-builder-page__card-icon"></div>
+              <div class="fl-builder-page__card-title">{{ section.settings.what_card2_title }}</div>
+              <div class="fl-builder-page__card-body">{{ section.settings.what_card2_body }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DRAG AND DROP ═══ -->
+  <section class="fl-builder-page__section fl-builder-page__section--cream">
+    <div class="fl-builder-page__s-inner fl-reveal">
+      <div class="fl-builder-page__s-label">{{ section.settings.drag_label }}</div>
+      <h2 class="fl-builder-page__s-headline">{{ section.settings.drag_headline }}</h2>
+      <div class="fl-builder-page__s-body">{{ section.settings.drag_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ SECTION LIBRARY ═══ -->
+  <section class="fl-builder-page__section">
+    <div class="fl-builder-page__s-inner fl-reveal">
+      <div class="fl-builder-page__s-label">{{ section.settings.library_label }}</div>
+      <h2 class="fl-builder-page__s-headline">{{ section.settings.library_headline }}</h2>
+      <div class="fl-builder-page__s-body">{{ section.settings.library_body }}</div>
+      <div class="fl-builder-page__pills">
+        <span class="fl-builder-page__pill">Product Showcase</span>
+        <span class="fl-builder-page__pill">Testimonials</span>
+        <span class="fl-builder-page__pill">CTA Block</span>
+        <span class="fl-builder-page__pill">Enrollment Flow</span>
+        <span class="fl-builder-page__pill">FAQ</span>
+        <span class="fl-builder-page__pill">Media Display</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MULTIPLE THEMES ═══ -->
+  <section class="fl-builder-page__section fl-builder-page__section--cream">
+    <div class="fl-builder-page__s-inner fl-reveal">
+      <div class="fl-builder-page__s-label">{{ section.settings.themes_label }}</div>
+      <h2 class="fl-builder-page__s-headline">{{ section.settings.themes_headline }}</h2>
+      <div class="fl-builder-page__s-body">{{ section.settings.themes_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ FAIRSHARE ON EVERY PAGE ═══ -->
+  <section class="fl-builder-page__section">
+    <img src="{{ 'brush-texture-06.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-8%;right:-14%;width:42%;opacity:0.10;">
+    <div class="fl-builder-page__s-inner fl-reveal">
+      <div class="fl-builder-page__s-label">{{ section.settings.fairshare_label }}</div>
+      <h2 class="fl-builder-page__s-headline fl-builder-page__s-headline--lg">{{ section.settings.fairshare_headline }}</h2>
+      <div class="fl-builder-page__s-body">{{ section.settings.fairshare_body }}</div>
+      <div class="fl-builder-page__callout">
+        <p>{{ section.settings.fairshare_callout }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INTERNATIONAL ═══ -->
+  <section class="fl-builder-page__section fl-builder-page__section--cream">
+    <div class="fl-builder-page__s-inner fl-reveal">
+      <div class="fl-builder-page__s-label">{{ section.settings.intl_label }}</div>
+      <h2 class="fl-builder-page__s-headline">{{ section.settings.intl_headline }}</h2>
+      <div class="fl-builder-page__s-body">{{ section.settings.intl_body }}</div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="fl-builder-page__cta">
+    <img src="{{ 'brush-texture-03.png' | asset_url }}" alt="" class="fl-brushstroke" style="top:-12%;right:-16%;width:48%;opacity:0.12;">
+    <div class="fl-builder-page__cta-content fl-reveal">
+      <h2 class="fl-builder-page__cta-headline">{{ section.settings.cta_headline }}</h2>
+      <p class="fl-builder-page__cta-sub">{{ section.settings.cta_subtext }}</p>
+      <a href="{{ section.settings.cta_url }}" class="fl-btn-primary fl-btn-primary--lg">{{ section.settings.cta_bottom_text }}</a>
+    </div>
+  </section>
+
+</div>
+
+{% schema %}
+{
+  "name": "Builder Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Builder"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline (FLFont)",
+      "default": "Every transaction matters."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Hero CTA text",
+      "default": "Watch it work →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA url",
+      "default": "/home/pages/contact"
+    },
+    {
+      "type": "header",
+      "content": "What Builder Is"
+    },
+    {
+      "type": "text",
+      "id": "what_label",
+      "label": "Section label",
+      "default": "The tool"
+    },
+    {
+      "type": "text",
+      "id": "what_headline",
+      "label": "Headline",
+      "default": "What Builder is and isn't"
+    },
+    {
+      "type": "textarea",
+      "id": "what_body",
+      "label": "Body",
+      "default": "<p>Builder is the presentation layer for the entire Fluid platform. It controls what customers and reps see on the public website — how products look, how enrollment pages are structured, what someone experiences when they land from a rep's shared link.</p><p>It is not the source of products, pricing, subscriptions, or attribution logic. Those live in other parts of the platform. Builder determines how those elements are displayed and experienced.</p><p>Think of it this way: Fluid manages what's true. Builder manages how it looks.</p>"
+    },
+    {
+      "type": "text",
+      "id": "what_card1_title",
+      "label": "Card 1 title",
+      "default": "What it controls"
+    },
+    {
+      "type": "textarea",
+      "id": "what_card1_body",
+      "label": "Card 1 body",
+      "default": "How products look, enrollment page structure, landing pages, campaign experiences."
+    },
+    {
+      "type": "text",
+      "id": "what_card2_title",
+      "label": "Card 2 title",
+      "default": "What it doesn't"
+    },
+    {
+      "type": "textarea",
+      "id": "what_card2_body",
+      "label": "Card 2 body",
+      "default": "Products, pricing, subscriptions, attribution logic — those live elsewhere in the platform."
+    },
+    {
+      "type": "header",
+      "content": "Drag and Drop"
+    },
+    {
+      "type": "text",
+      "id": "drag_label",
+      "label": "Section label",
+      "default": "Visual editing"
+    },
+    {
+      "type": "text",
+      "id": "drag_headline",
+      "label": "Headline",
+      "default": "Drag, drop, publish."
+    },
+    {
+      "type": "textarea",
+      "id": "drag_body",
+      "label": "Body",
+      "default": "<p>Corporate teams can build and modify pages without engineering support. Anyone who can use a standard productivity tool can use Builder. Changes are visible in real time and can be reviewed before publishing.</p><p>This isn't a simplified version of a web tool that strips away real capability. It's a web tool designed so that marketing and operations teams can use its full depth without a developer in the room.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Section Library"
+    },
+    {
+      "type": "text",
+      "id": "library_label",
+      "label": "Section label",
+      "default": "Components"
+    },
+    {
+      "type": "text",
+      "id": "library_headline",
+      "label": "Headline",
+      "default": "Start from a starting line."
+    },
+    {
+      "type": "textarea",
+      "id": "library_body",
+      "label": "Body",
+      "default": "<p>Builder includes a collection of pre-built, high-converting sections — product showcases, testimonials, call-to-action blocks, enrollment flows, FAQs, media displays — that can be dropped into any page and customized.</p><p>This significantly reduces build time and ensures design quality for teams without dedicated design resources. You're not starting from a blank page. You're starting from a starting line.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Multiple Themes"
+    },
+    {
+      "type": "text",
+      "id": "themes_label",
+      "label": "Section label",
+      "default": "Version control"
+    },
+    {
+      "type": "text",
+      "id": "themes_headline",
+      "label": "Headline",
+      "default": "Multiple themes. One click to switch."
+    },
+    {
+      "type": "textarea",
+      "id": "themes_body",
+      "label": "Body",
+      "default": "<p>Companies can maintain multiple complete themes within Builder simultaneously. Only one theme is live at any point. But others can be built, previewed, and held in reserve.</p><p>Switching which theme is active does not destroy the content or configuration of other themes. Seasonal redesigns, campaign launches, full site revamps — all prepared in advance, published on schedule, without risk to what's currently live.</p><p><strong>Version history and rollback:</strong> All changes in Builder are versioned. If an edit causes a problem, previous versions are accessible and restorable. Multiple layers of protection are in place to prevent unintended content loss.</p>"
+    },
+    {
+      "type": "header",
+      "content": "FairShare on Every Page"
+    },
+    {
+      "type": "text",
+      "id": "fairshare_label",
+      "label": "Section label",
+      "default": "Attribution"
+    },
+    {
+      "type": "text",
+      "id": "fairshare_headline",
+      "label": "Headline",
+      "default": "FairShare on every page."
+    },
+    {
+      "type": "textarea",
+      "id": "fairshare_body",
+      "label": "Body",
+      "default": "<p>This is the capability most people don't expect.</p><p>FairShare attribution is applied globally through Builder. Every page built in the web editor automatically carries FairShare attribution. Every page. Not just product pages. Not just pages with a special link. Every page.</p><p>This means a rep can share the homepage. A brand story page. A product quiz. A 'Shop All' collection. A seasonal campaign landing page. And if a customer engages with it and purchases — credit follows the rep who shared it.</p><p>Corporate creates the content. Reps share it. Attribution handles itself.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "fairshare_callout",
+      "label": "Callout text",
+      "default": "Every page. Not just product pages. Not just pages with a special link. Every page."
+    },
+    {
+      "type": "header",
+      "content": "International"
+    },
+    {
+      "type": "text",
+      "id": "intl_label",
+      "label": "Section label",
+      "default": "Global"
+    },
+    {
+      "type": "text",
+      "id": "intl_headline",
+      "label": "Headline",
+      "default": "One site. Every market."
+    },
+    {
+      "type": "textarea",
+      "id": "intl_body",
+      "label": "Body",
+      "default": "<p>Builder supports multi-language content and international layout configurations. Pages can be localized for different markets without duplicating the entire site structure.</p><p>When the website is updated, every rep's attributed links and replicated site experience reflects the update automatically. A rep in one market is never left showing customers an outdated version of the site.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Closing CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_headline",
+      "label": "CTA Headline",
+      "default": "The team closest to the business can act on it directly."
+    },
+    {
+      "type": "textarea",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "Builder removes the bottleneck."
+    },
+    {
+      "type": "text",
+      "id": "cta_bottom_text",
+      "label": "CTA Button text",
+      "default": "Get a live walkthrough →"
+    }
+  ]
+}
+{% endschema %}

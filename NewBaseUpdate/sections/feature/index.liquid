@@ -1,0 +1,581 @@
+{% comment %} Handle background_image - can be string URL or object with url/fluid_media_id {% endcomment %}
+{% assign bg_url = '' %}
+{% assign bg_fluid_media_id = '' %}
+
+{% if section.settings.background_image %}
+  {% if section.settings.background_image.url %}
+    {% comment %} It's an object with url property {% endcomment %}
+    {% assign bg_url = section.settings.background_image.url %}
+    
+    {% comment %} Check if it also has fluid_media_id from media picker {% endcomment %}
+    {% if section.settings.background_image.fluid_media_id %}
+      {% assign bg_fluid_media_id = section.settings.background_image.fluid_media_id %}
+      {% assign bg_embed_type = section.settings.background_image.embed_type %}
+    {% endif %}
+  {% else %}
+    {% comment %} It's a string URL {% endcomment %}
+    {% assign bg_url = section.settings.background_image %}
+  {% endif %}
+{% endif %}
+
+{% comment %} Determine whether to use fluid widget - if fluid_media_id exists, use widget {% endcomment %}
+{% assign use_fluid_widget = false %}
+
+{% if bg_fluid_media_id != blank %}
+  {% assign use_fluid_widget = true %}
+{% endif %}
+
+<!-- Feature section-->
+<div class="feature-wrapper {{ section.settings.section_padding_top_mobile | default: 'pt-5xl' }} {{ section.settings.section_padding_bottom_mobile | default: 'pb-5xl' }}" data-bg="{% unless use_fluid_widget %}{{ bg_url }}{% endunless %}" style="background-color: {{ section.settings.background_color | default: '#ffffff' }};">
+  {% if use_fluid_widget %}
+    <fluid-media-widget class="fluid-media-widget-background" media-id="{{ bg_fluid_media_id }}" responsive="true" embed-type="{{ bg_embed_type | default: 'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+  {% endif %}
+  <style>
+    @media (min-width: 1280px) {
+      .feature-wrapper {
+        padding-top: {{ section.settings.section_padding_top_desktop | default: 80 }}px !important;
+        padding-bottom: {{ section.settings.section_padding_bottom_desktop | default: 80 }}px !important;
+      }
+    }
+  </style>
+  {% for block in section.blocks %}
+    {% assign feature_class = 'feature-section-' | append: forloop.index %}
+    <section class="feature-section {{ feature_class }}" {{ block.fluid_attributes }}>
+      <div class="container ">
+        <div class="grid {{ section.settings.content_gap_mobile | default: 'space-4xl' }} {{ section.settings.content_gap_desktop | default: 'lg:space-5xl' }} feature-grid">
+          <div class="feature-content flex justify-center h-full flex-col {{ section.settings.content_spacing_mobile | default: 'space-lg' }} {{ section.settings.content_spacing_desktop | default: 'lg:space-2xl' }} flex-1">
+            <div class="{{ block.settings.heading_font_size | default: 'text-h2' }} {{ block.settings.heading_font_weight | default: 'font-bold' }}" style="color: {{ block.settings.heading_color | default: '#000000' }};">
+              {{ block.settings.heading | default: "Medium length hero heading goes here" }}
+            </div>
+            <p class="{{ block.settings.body_font_size | default: 'text-base' }} {{ block.settings.body_font_size_desktop | default: 'lg:text-lg' }} {{ block.settings.body_font_weight | default: 'font-normal' }}" style="color: {{ block.settings.body_color | default: '#000000' }};">
+              {{ block.settings.body_text | default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat." }}
+            </p>
+            <div class="flex justify-start align-center {{ section.settings.button_gap | default: 'space-lg' }}">
+              {% if block.settings.show_button_1 %}
+                <a href="{{ block.settings.button_1_url | default: '#' }}" class="btn {{ block.settings.button_1_style | default: 'btn-bg-primary' }} {{ block.settings.button_1_border_radius | default: '' }}">
+                  {{ block.settings.button_1_text | default: "Button 1" }}
+                </a>
+              {% endif %}
+              {% if block.settings.show_button_2 %}
+                <a href="{{ block.settings.button_2_url | default: '#' }}" class="btn {{ block.settings.button_2_style | default: 'btn-border-primary' }} {{ block.settings.button_2_border_radius | default: '' }}">
+                  {{ block.settings.button_2_text | default: "Button 2" }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="feature-image-wrapper">
+            <div class="feature-image feature-image-right">
+              
+              {% assign img_input = block.settings.feature_image %}
+              {% assign img_fluid_media_id = '' %}
+              
+              {% if block.settings.feature_image.fluid_media_id %}
+                {% assign img_fluid_media_id = img_input.fluid_media_id %}
+                {% assign img_embed_type = img_input.embed_type %}
+              {% endif %}
+
+              {% assign use_fluid_image_widget = false %}
+              
+              {% if img_fluid_media_id != blank %}
+                {% assign use_fluid_image_widget = true %}
+              {% endif %}
+
+              {% if use_fluid_image_widget %}
+                <fluid-media-widget class="fluid-media-widget-image" media-id="{{ img_fluid_media_id }}" responsive="true" embed-type="{{ img_embed_type | default: 'inline' }}" data-fluid-widget="true"></fluid-media-widget>
+              {% else %}
+                {% if block.settings.feature_image != blank %}
+                  <img
+                    src="{{ block.settings.feature_image | image_url }}"
+                    alt="{{ block.settings.image_alt | default: 'feature' }}"
+                    class="image-cover"
+                    loading="lazy"
+                    width=""
+                    height=""
+                  />
+                {% else %}
+                  <img src="{{ 'feature-placeholder.png' | asset_url }}" alt="feature" class="image-cover" loading="lazy" width="" height=""/>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+
+{% schema %}
+{
+  "name": "Feature Section",
+  "tag": "section",
+  "class": "feature-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended size: 1920x1080px or larger"
+    },
+    {
+      "type": "color_background",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_top_mobile",
+      "label": "Section Padding Top (Mobile)",
+      "options": [
+        { "value": "pt-0", "label": "0" },
+        { "value": "pt-xs", "label": "XS" },
+        { "value": "pt-sm", "label": "SM" },
+        { "value": "pt-md", "label": "MD" },
+        { "value": "pt-lg", "label": "LG" },
+        { "value": "pt-xl", "label": "XL" },
+        { "value": "pt-2xl", "label": "2XL" },
+        { "value": "pt-3xl", "label": "3XL" },
+        { "value": "pt-4xl", "label": "4XL" },
+        { "value": "pt-5xl", "label": "5XL" }
+      ],
+      "default": "pt-5xl"
+    },
+    {
+      "type": "select",
+      "id": "section_padding_bottom_mobile",
+      "label": "Section Padding Bottom (Mobile)",
+      "options": [
+        { "value": "pb-0", "label": "0" },
+        { "value": "pb-xs", "label": "XS" },
+        { "value": "pb-sm", "label": "SM" },
+        { "value": "pb-md", "label": "MD" },
+        { "value": "pb-lg", "label": "LG" },
+        { "value": "pb-xl", "label": "XL" },
+        { "value": "pb-2xl", "label": "2XL" },
+        { "value": "pb-3xl", "label": "3XL" },
+        { "value": "pb-4xl", "label": "4XL" },
+        { "value": "pb-5xl", "label": "5XL" }
+      ],
+      "default": "pb-5xl"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Top (Desktop)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom_desktop",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Section Padding Bottom (Desktop)",
+      "default": 80
+    },
+    
+    {
+      "type": "header",
+      "content": "Content Spacing"
+    },
+    {
+      "type": "select",
+      "id": "content_gap_mobile",
+      "label": "Content Gap (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-4xl"
+    },
+    {
+      "type": "select",
+      "id": "content_gap_desktop",
+      "label": "Content Gap (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-5xl"
+    },
+    {
+      "type": "select",
+      "id": "content_spacing_mobile",
+      "label": "Content Spacing (Mobile)",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-lg"
+    },
+    {
+      "type": "select",
+      "id": "content_spacing_desktop",
+      "label": "Content Spacing (Desktop)",
+      "options": [
+        { "value": "lg:space-xs", "label": "XS" },
+        { "value": "lg:space-sm", "label": "SM" },
+        { "value": "lg:space-md", "label": "MD" },
+        { "value": "lg:space-lg", "label": "LG" },
+        { "value": "lg:space-xl", "label": "XL" },
+        { "value": "lg:space-2xl", "label": "2XL" },
+        { "value": "lg:space-3xl", "label": "3XL" },
+        { "value": "lg:space-4xl", "label": "4XL" },
+        { "value": "lg:space-5xl", "label": "5XL" }
+      ],
+      "default": "lg:space-2xl"
+    },
+    {
+      "type": "select",
+      "id": "button_gap",
+      "label": "Button Gap",
+      "options": [
+        { "value": "space-xs", "label": "XS" },
+        { "value": "space-sm", "label": "SM" },
+        { "value": "space-md", "label": "MD" },
+        { "value": "space-lg", "label": "LG" },
+        { "value": "space-xl", "label": "XL" },
+        { "value": "space-2xl", "label": "2XL" },
+        { "value": "space-3xl", "label": "3XL" },
+        { "value": "space-4xl", "label": "4XL" },
+        { "value": "space-5xl", "label": "5XL" }
+      ],
+      "default": "space-lg"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Medium length hero heading goes here"
+        },
+        {
+          "type": "textarea",
+          "id": "body_text",
+          "label": "Body Text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat."
+        },
+        {
+          "type": "header",
+          "content": "Heading Typography"
+        },
+        {
+          "type": "select",
+          "id": "heading_font_size",
+          "label": "Heading Font Size",
+          "options": [
+            { "value": "text-h1", "label": "H1" },
+            { "value": "text-h2", "label": "H2" },
+            { "value": "text-h3", "label": "H3" },
+            { "value": "text-h4", "label": "H4" },
+            { "value": "text-h5", "label": "H5" },
+            { "value": "text-h6", "label": "H6" }
+          ],
+          "default": "text-h2"
+        },
+        {
+          "type": "select",
+          "id": "heading_font_weight",
+          "label": "Heading Font Weight",
+          "options": [
+            { "value": "font-light", "label": "Light" },
+            { "value": "font-normal", "label": "Normal" },
+            { "value": "font-medium", "label": "Medium" },
+            { "value": "font-semibold", "label": "Semi Bold" },
+            { "value": "font-bold", "label": "Bold" },
+            { "value": "font-extrabold", "label": "Extra Bold" }
+          ],
+          "default": "font-bold"
+        },
+        {
+          "type": "color_background",
+          "id": "heading_color",
+          "label": "Heading Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Body Text Typography"
+        },
+        {
+          "type": "select",
+          "id": "body_font_size",
+          "label": "Body Font Size (Mobile)",
+          "options": [
+            { "value": "text-sm", "label": "SM" },
+            { "value": "text-base", "label": "Base" },
+            { "value": "text-lg", "label": "LG" },
+            { "value": "text-xl", "label": "XL" },
+            { "value": "text-2xl", "label": "2XL" },
+            { "value": "text-3xl", "label": "3XL" },
+            { "value": "text-4xl", "label": "4XL" },
+            { "value": "text-5xl", "label": "5XL" }
+          ],
+          "default": "text-base"
+        },
+        {
+          "type": "select",
+          "id": "body_font_size_desktop",
+          "label": "Body Font Size (Desktop)",
+          "options": [
+            { "value": "lg:text-sm", "label": "SM" },
+            { "value": "lg:text-base", "label": "Base" },
+            { "value": "lg:text-lg", "label": "LG" },
+            { "value": "lg:text-xl", "label": "XL" },
+            { "value": "lg:text-2xl", "label": "2XL" },
+            { "value": "lg:text-3xl", "label": "3XL" },
+            { "value": "lg:text-4xl", "label": "4XL" },
+            { "value": "lg:text-5xl", "label": "5XL" }
+          ],
+          "default": "lg:text-lg"
+        },
+        {
+          "type": "select",
+          "id": "body_font_weight",
+          "label": "Body Font Weight",
+          "options": [
+            { "value": "font-light", "label": "Light" },
+            { "value": "font-normal", "label": "Normal" },
+            { "value": "font-medium", "label": "Medium" },
+            { "value": "font-semibold", "label": "Semi Bold" },
+            { "value": "font-bold", "label": "Bold" }
+          ],
+          "default": "font-normal"
+        },
+        {
+          "type": "color_background",
+          "id": "body_color",
+          "label": "Body Color",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Button Settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button_1",
+          "label": "Show Button One",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_1_text",
+          "label": "Button One Text",
+          "default": "Button 1"
+        },
+        {
+          "type": "url",
+          "id": "button_1_url",
+          "label": "Button One URL",
+          "default": "#"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_button_2",
+          "label": "Show Button Two",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "Button Two Text",
+          "default": "Button 2"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "Button Two URL",
+          "default": "#"
+        },
+        {
+          "type": "header",
+          "content": "Button One Styling"
+        },
+        {
+          "type": "select",
+          "id": "button_1_style",
+          "label": "Button One Style",
+          "options": [
+            { "value": "btn-bg-white", "label": "White" },
+            { "value": "btn-bg-primary", "label": "Primary" },
+            { "value": "btn-border-white", "label": "White Border" },
+            { "value": "btn-border-black", "label": "Black Border" },
+            { "value": "btn-border-primary", "label": "Primary Border" }
+          ],
+          "default": "btn-bg-primary"
+        },
+        {
+          "type": "select",
+          "id": "button_1_border_radius",
+          "label": "Button One Border Radius",
+          "options": [
+            { "value": "", "label": "Default" },
+            { "value": "rounded", "label": "XS" },
+            { "value": "rounded-sm", "label": "SM" },
+            { "value": "rounded-md", "label": "MD" },
+            { "value": "rounded-lg", "label": "LG" },
+            { "value": "rounded-xl", "label": "XL" },
+            { "value": "rounded-2xl", "label": "2XL" },
+            { "value": "rounded-3xl", "label": "3XL" },
+            { "value": "rounded-4xl", "label": "4XL" },
+            { "value": "rounded-5xl", "label": "5XL" },
+            { "value": "rounded-full", "label": "Full" }
+          ],
+          "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Button Two Styling"
+        },
+        {
+          "type": "select",
+          "id": "button_2_style",
+          "label": "Button Two Style",
+          "options": [
+            { "value": "btn-bg-white", "label": "White" },
+            { "value": "btn-bg-primary", "label": "Primary" },
+            { "value": "btn-border-white", "label": "White Border" },
+            { "value": "btn-border-black", "label": "Black Border" },
+            { "value": "btn-border-primary", "label": "Primary Border" }
+          ],
+          "default": "btn-border-primary"
+        },
+        {
+          "type": "select",
+          "id": "button_2_border_radius",
+          "label": "Button Two Border Radius",
+          "options": [
+            { "value": "", "label": "Default" },
+            { "value": "rounded", "label": "XS" },
+            { "value": "rounded-sm", "label": "SM" },
+            { "value": "rounded-md", "label": "MD" },
+            { "value": "rounded-lg", "label": "LG" },
+            { "value": "rounded-xl", "label": "XL" },
+            { "value": "rounded-2xl", "label": "2XL" },
+            { "value": "rounded-3xl", "label": "3XL" },
+            { "value": "rounded-4xl", "label": "4XL" },
+            { "value": "rounded-5xl", "label": "5XL" },
+            { "value": "rounded-full", "label": "Full" }
+          ],
+          "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "feature_image",
+          "label": "Feature Image",
+          "info": "Recommended size: 600x400px or larger"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "feature"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Section",
+      "blocks": [
+        {
+          "type": "feature_item",
+          "settings": {
+            "heading": "Medium length hero heading goes here",
+            "body_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "heading_font_size": "text-h2",
+            "heading_font_weight": "font-bold",
+            "heading_color": "#000000",
+            "body_font_size": "text-base",
+            "body_font_size_desktop": "lg:text-lg",
+            "body_font_weight": "font-normal",
+            "body_color": "#000000",
+            "show_button_1": true,
+            "button_1_text": "Button 1",
+            "button_1_url": "#",
+            "button_1_style": "btn-bg-primary",
+            "button_1_border_radius": "",
+            "show_button_2": true,
+            "button_2_text": "Button 2",
+            "button_2_url": "#",
+            "button_2_style": "btn-border-primary",
+            "button_2_border_radius": "",
+            "feature_image": "https://ik.imagekit.io/fluid/filestack-migration/filestack_ZwL4w01GQTK1F8vPLXzA_siwwzcnKO",
+            "image_alt": "feature"
+          }
+        },
+        {
+          "type": "feature_item",
+          "settings": {
+            "heading": "Medium length hero heading goes here",
+            "body_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+            "heading_font_size": "text-h2",
+            "heading_font_weight": "font-bold",
+            "heading_color": "#000000",
+            "body_font_size": "text-base",
+            "body_font_size_desktop": "lg:text-lg",
+            "body_font_weight": "font-normal",
+            "body_color": "#000000",
+            "show_button_1": true,
+            "button_1_text": "Button 1",
+            "button_1_url": "#",
+            "button_1_style": "btn-bg-primary",
+            "button_1_border_radius": "",
+            "show_button_2": true,
+            "button_2_text": "Button 2",
+            "button_2_url": "#",
+            "button_2_style": "btn-border-primary",
+            "button_2_border_radius": "",
+            "feature_image": "https://ik.imagekit.io/fluid/filestack-migration/filestack_ZwL4w01GQTK1F8vPLXzA_35EETC5doK",
+            "image_alt": "feature"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
