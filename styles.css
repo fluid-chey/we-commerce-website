@@ -492,6 +492,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: var(--text-body);
   line-height: 1.65;
   max-width: 100%;
+  margin: 0 auto 24px;
+}
+.hero .tagline {
   margin: 0 auto 40px;
 }
 .hero__ctas {
@@ -586,6 +589,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   line-height: 1.1;
   margin: 20px 0 28px;
 }
+.problem__body {
+  margin-bottom: 32px;
+}
 .problem__body p {
   font-family: 'NeueHaas', sans-serif;
   font-weight: 300;
@@ -593,6 +599,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: var(--text-body);
   line-height: 1.65;
   margin-bottom: 20px;
+}
+.problem__body p:last-child {
+  margin-bottom: 0;
 }
 .problem__visual img {
   width: 100%;
@@ -801,6 +810,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   line-height: 1.65;
   margin-bottom: 24px;
 }
+.feature-highlight__text .tagline {
+  margin-bottom: 32px;
+}
 .feature-highlight__link {
   font-weight: 500;
   font-size: 17px;
@@ -972,6 +984,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   line-height: 1.1;
   margin: 20px 0 28px;
 }
+.ai-section__body {
+  margin-bottom: 32px;
+}
 .ai-section__body p {
   font-family: 'NeueHaas', sans-serif;
   font-weight: 300;
@@ -979,6 +994,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   color: var(--text-body);
   line-height: 1.65;
   margin-bottom: 20px;
+}
+.ai-section__body p:last-child {
+  margin-bottom: 0;
 }
 
 /* Phone mockup */
@@ -1051,7 +1069,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   font-size: clamp(18px, 1.3vw, 20px);
   color: var(--text-body);
   line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+}
+.blitz__text .tagline {
+  margin-bottom: 32px;
 }
 .blitz__timeline {
   display: flex;
@@ -1109,8 +1130,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   font-size: clamp(18px, 1.45vw, 22px);
   color: var(--text-body);
   max-width: 600px;
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
   line-height: 1.65;
+}
+.closing-cta .tagline {
+  margin: 0 auto 40px;
 }
 .closing-cta .btn-primary {
   padding: 18px 44px;
