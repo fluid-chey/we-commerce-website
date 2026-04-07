@@ -86,9 +86,9 @@ const segments = [
     tagline: 'One-click checkout experience',
     media: 'assets/images/screen-checkout.png', mediaType: 'image', chrome: true, tabTitle: 'Fluid Checkout',
     props: [
-      { text: 'Apple Pay, Google Pay & saved cards for one-tap buying', icon: 'assets/icons/icon-one-click-checkout.png' },
-      { text: 'Smart upsells and cross-sells based on cart contents', icon: 'assets/icons/icon-shop.png' },
-      { text: 'Attribution-aware — every sale credits the right rep', icon: 'assets/icons/icon-attribution.png' },
+      { text: 'Apple Pay, Google Pay & saved cards for one-tap buying', fa: 'fa-solid fa-mobile-screen-button' },
+      { text: 'Smart upsells and cross-sells based on cart contents', fa: 'fa-solid fa-cart-shopping' },
+      { text: 'Attribution-aware — every sale credits the right rep', fa: 'fa-solid fa-user-check' },
     ],
   },
   {
@@ -96,9 +96,9 @@ const segments = [
     tagline: 'Global payment processing & smart routing',
     media: 'assets/images/screen-payments.mp4', mediaType: 'video', chrome: true, tabTitle: 'Fluid Payments',
     props: [
-      { text: 'Apple Pay, cards & local methods across 130+ countries', icon: 'assets/icons/icon-global-payments.png' },
-      { text: 'Smart routing optimizes approval rates and cuts fees', icon: 'assets/icons/icon-performance.png' },
-      { text: 'Real-time settlement with automatic commission splitting', icon: 'assets/icons/icon-real-time-visibility.png' },
+      { text: 'Apple Pay, cards & local methods across 130+ countries', fa: 'fa-solid fa-globe' },
+      { text: 'Smart routing optimizes approval rates and cuts fees', fa: 'fa-solid fa-route' },
+      { text: 'Real-time settlement with automatic commission splitting', fa: 'fa-solid fa-money-bill-transfer' },
     ],
   },
   {
@@ -106,9 +106,9 @@ const segments = [
     tagline: 'Commission & compensation engine',
     media: 'assets/images/screen-fairshare.png', mediaType: 'image', chrome: true, tabTitle: 'Fluid FairShare',
     props: [
-      { text: 'Flexible comp plans — binary, unilevel & hybrid structures', icon: 'assets/icons/icon-templates.png' },
-      { text: 'Real-time commission calculations visible to the field', icon: 'assets/icons/icon-real-time-visibility.png' },
-      { text: 'Built-in compliance guardrails for 50+ global markets', icon: 'assets/icons/icon-global-payments.png' },
+      { text: 'Flexible comp plans — binary, unilevel & hybrid structures', fa: 'fa-solid fa-sitemap' },
+      { text: 'Real-time commission calculations visible to the field', fa: 'fa-solid fa-chart-line' },
+      { text: 'Built-in compliance guardrails for 50+ global markets', fa: 'fa-solid fa-shield-halved' },
     ],
   },
   {
@@ -116,9 +116,9 @@ const segments = [
     tagline: 'Integration & bi-directional data sync',
     media: 'assets/images/screen-sync.png', mediaType: 'image', chrome: true, tabTitle: 'Fluid Connect',
     props: [
-      { text: 'Bi-directional sync across checkout, commissions & inventory', icon: 'assets/icons/icon-bi-directional-sync.png' },
-      { text: 'Pre-built connectors for ERP, CRM & warehouse systems', icon: 'assets/icons/icon-builder.png' },
-      { text: 'Event-driven architecture with zero-lag propagation', icon: 'assets/icons/icon-performance.png' },
+      { text: 'Bi-directional sync across checkout, commissions & inventory', fa: 'fa-solid fa-arrows-rotate' },
+      { text: 'Pre-built connectors for ERP, CRM & warehouse systems', fa: 'fa-solid fa-plug' },
+      { text: 'Event-driven architecture with zero-lag propagation', fa: 'fa-solid fa-bolt' },
     ],
   },
   {
@@ -127,9 +127,9 @@ const segments = [
     media: ['assets/images/screen-app1.png', 'assets/images/screen-app2.png', 'assets/images/screen-app3.png'],
     mediaType: 'phones', chrome: false,
     props: [
-      { text: 'iOS & Android apps published under your brand identity', icon: 'assets/icons/icon-shop.png' },
-      { text: 'Push notifications, social sharing & in-app ordering', icon: 'assets/icons/icon-one-click-checkout.png' },
-      { text: 'Offline-capable with real-time sync on reconnect', icon: 'assets/icons/icon-bi-directional-sync.png' },
+      { text: 'iOS & Android apps published under your brand identity', fa: 'fa-brands fa-app-store-ios' },
+      { text: 'Push notifications, social sharing & in-app ordering', fa: 'fa-solid fa-bell' },
+      { text: 'Offline-capable with real-time sync on reconnect', fa: 'fa-solid fa-wifi' },
     ],
   },
   {
@@ -137,9 +137,9 @@ const segments = [
     tagline: 'Visual drag-and-drop site builder',
     media: 'assets/images/screen-builder.png', mediaType: 'image', chrome: true, tabTitle: 'Fluid Builder',
     props: [
-      { text: '100+ conversion-optimized templates with visual editor', icon: 'assets/icons/icon-templates.png' },
-      { text: 'Replicated sites for every distributor, centrally managed', icon: 'assets/icons/icon-builder.png' },
-      { text: 'Built-in A/B testing and per-page analytics', icon: 'assets/icons/icon-performance.png' },
+      { text: '100+ conversion-optimized templates with visual editor', fa: 'fa-solid fa-palette' },
+      { text: 'Replicated sites for every distributor, centrally managed', fa: 'fa-solid fa-clone' },
+      { text: 'Built-in A/B testing and per-page analytics', fa: 'fa-solid fa-flask' },
     ],
   },
   {
@@ -147,9 +147,9 @@ const segments = [
     tagline: 'Drop commerce into any website, instantly',
     media: 'assets/images/screen-droplets.png', mediaType: 'image', chrome: true, tabTitle: 'Fluid Droplets',
     props: [
-      { text: 'Embed checkout, enrollment & product widgets anywhere', icon: 'assets/icons/icon-one-click-checkout.png' },
-      { text: 'One line of code drops components into any existing site', icon: 'assets/icons/icon-builder.png' },
-      { text: 'Full brand customization with your design tokens', icon: 'assets/icons/icon-templates.png' },
+      { text: 'Embed checkout, enrollment & product widgets anywhere', fa: 'fa-solid fa-code' },
+      { text: 'One line of code drops components into any existing site', fa: 'fa-solid fa-droplet' },
+      { text: 'Full brand customization with your design tokens', fa: 'fa-solid fa-paintbrush' },
     ],
   },
 ];
@@ -315,7 +315,7 @@ function initFlywheel() {
       <div class="flywheel-card__props">
         ${seg.props.map(p => `
           <div class="flywheel-prop">
-            <div class="flywheel-prop__icon" style="background-color:${seg.color};mask-image:url(${p.icon});-webkit-mask-image:url(${p.icon})"></div>
+            <i class="${p.fa} flywheel-prop__icon" style="color:${seg.color}"></i>
             <div class="flywheel-prop__text">${p.text}</div>
           </div>
         `).join('')}
@@ -336,11 +336,42 @@ function initFlywheel() {
     });
   }
 
+  // Scroll-driven segment activation
+  let scrollLocked = false;
+  const flywheelObserver = new IntersectionObserver((entries) => {
+    if (scrollLocked) return;
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = parseInt(entry.target.getAttribute('data-seg-card'));
+        if (idx !== activeSegment) setActiveSegment(idx);
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -40% 0px',
+    threshold: 0
+  });
+
+  panel.querySelectorAll('.flywheel-card').forEach(card => {
+    flywheelObserver.observe(card);
+  });
+
+  function scrollToCard(index) {
+    const target = panel.querySelector(`[data-seg-card="${index}"]`);
+    if (!target) return;
+    scrollLocked = true;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => { scrollLocked = false; }, 800);
+  }
+
   // Click handlers on dots
   if (dotsContainer) {
     dotsContainer.addEventListener('click', (e) => {
       const dot = e.target.closest('[data-seg-dot]');
-      if (dot) setActiveSegment(parseInt(dot.getAttribute('data-seg-dot')));
+      if (dot) {
+        const idx = parseInt(dot.getAttribute('data-seg-dot'));
+        setActiveSegment(idx);
+        scrollToCard(idx);
+      }
     });
   }
 
@@ -348,7 +379,9 @@ function initFlywheel() {
   svg.addEventListener('click', (e) => {
     const seg = e.target.closest('[data-seg]');
     if (seg) {
-      setActiveSegment(parseInt(seg.getAttribute('data-seg')));
+      const idx = parseInt(seg.getAttribute('data-seg'));
+      setActiveSegment(idx);
+      scrollToCard(idx);
     }
   });
 
@@ -414,450 +447,368 @@ const catchupObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-const phoneMockup = document.querySelector('.phone-mockup');
-if (phoneMockup) catchupObserver.observe(phoneMockup);
-
 // ── Stat Count-Up ──
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const nums = entry.target.querySelectorAll('.stat-card__number[data-count]');
-      nums.forEach(el => {
-        const target = parseInt(el.getAttribute('data-count'));
-        const suffix = el.getAttribute('data-suffix') || '';
-        const prefix = el.getAttribute('data-prefix') || '';
-        let current = 0;
-        const increment = target / 40;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
+const statsGrid = document.querySelector('.stats__grid');
+if (statsGrid) {
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = parseFloat(el.getAttribute('data-count'));
+          const suffix = el.getAttribute('data-suffix') || '';
+          const prefix = el.getAttribute('data-prefix') || '';
+          const isFloat = target % 1 !== 0;
+          const duration = 1200;
+          const start = performance.now();
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+            el.textContent = prefix + (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+            if (progress < 1) requestAnimationFrame(tick);
           }
-          el.textContent = prefix + Math.round(current) + suffix;
-        }, 30);
-      });
-      statObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
+          requestAnimationFrame(tick);
+        });
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  statObserver.observe(statsGrid);
+}
 
-const statsSection = document.querySelector('.stats__grid');
-if (statsSection) statObserver.observe(statsSection);
+// ══════════════════════════════════════════════════════════════
+// HERO BENEFITS TABS
+// ══════════════════════════════════════════════════════════════
+// Three tabbed scenes inside a browser-chrome frame, each with
+// a GSAP-driven animation sequence.
+//
+// Architecture:
+//   Shared Helpers:  countUp(), initPath(), drawPath()
+//   Scene Configs:   scene1, scene2, scene3 — each with init() + build()
+//   Tab Controller:  switchTab(), resetScene(), startProgress()
+//
+// To edit a scene's animation:
+//   1. Edit its init() to set/reset starting state for any new elements
+//   2. Edit its build() to create the GSAP timeline
+//
+// init() is the single source of truth for reset state. It's called
+// before every play AND on tab-switch-away. No separate reset code.
 
-// ── Hero Benefits ──
 function initHeroBenefits() {
-  const container = document.querySelector('.hero-benefits');
+  var container = document.querySelector('.hero-benefits');
   if (!container) return;
 
-  const hasGSAP = typeof gsap !== 'undefined';
-  const tabs = container.querySelectorAll('.hero-benefits__tab');
-  const scenes = container.querySelectorAll('.hb-scene');
-  const chromeTab = container.querySelector('[data-hb-chrome-tab]');
-  const chromeAddr = container.querySelector('[data-hb-chrome-addr]');
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  var hasGSAP = typeof gsap !== 'undefined';
+  var tabs = container.querySelectorAll('.hero-benefits__tab');
+  var scenes = container.querySelectorAll('.hb-scene');
+  var chromeTab = container.querySelector('[data-hb-chrome-tab]');
+  var chromeAddr = container.querySelector('[data-hb-chrome-addr]');
+  var isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  const tabData = [
+  var tabData = [
     { label: 'Orders', addr: 'admin.fluid.app/orders' },
     { label: 'Operations', addr: 'admin.fluid.app/operations' },
     { label: 'Payment Reports', addr: 'admin.fluid.app/company-payment-reports' },
   ];
 
-  let activeTab = 0;
-  let progressTween = null;
-  let timelines = [null, null, null];
-  let hasPlayed = false;
+  var activeTab = 0;
+  var progressTween = null;
+  var timelines = [null, null, null];
+  var hasPlayed = false;
 
-  function buildTimeline1() {
-    var s = scenes[0];
-    var tl = gsap.timeline({ paused: true });
-    var phaseA = s.querySelector('.hb-s1-phase--a');
-    var phaseB = s.querySelector('.hb-s1-phase--b');
+  // ── Shared Animation Helpers ─────────────────────────────
+  // Reusable primitives that all three scenes share.
 
-    var annoCircle = s.querySelector('.hb-anno--circle');
-    var annoText = s.querySelector('.hb-anno--credit-text');
-    var inkCirclePath = s.querySelector('.hb-ink-circle path');
+  function countUp(tl, el, from, to, formatter, delay, duration, ease) {
+    if (!el) return;
+    var obj = { val: from };
+    tl.fromTo(obj, { val: from }, {
+      val: to, duration: duration, ease: ease,
+      onUpdate: function() { el.textContent = formatter(obj.val); }
+    }, delay);
+  }
 
-    var newRow = s.querySelector('.hb-s1-trow--new');
-    var existingRows = s.querySelectorAll('.hb-s1-trow--existing');
-    var statsBar = s.querySelector('.hb-s1-stats');
+  function initPath(pathEl, defaultLen) {
+    if (!pathEl) return;
+    var len = pathEl.getTotalLength ? pathEl.getTotalLength() : (defaultLen || 600);
+    gsap.set(pathEl, { strokeDasharray: len, strokeDashoffset: len });
+  }
 
-    gsap.set(phaseA, { opacity: 0, scale: 1, filter: 'none', transformOrigin: 'left center' });
-    gsap.set(phaseB, { opacity: 0, x: '40px', filter: 'blur(10px)', boxShadow: 'none' });
-    gsap.set(annoCircle, { opacity: 0, scale: 0.8, transformOrigin: 'center center' });
-    gsap.set(annoText, { opacity: 0, scale: 0.8, rotation: -12, transformOrigin: 'left center' });
-    if (inkCirclePath) {
-      var circleLen = inkCirclePath.getTotalLength ? inkCirclePath.getTotalLength() : 600;
-      gsap.set(inkCirclePath, { strokeDasharray: circleLen, strokeDashoffset: circleLen });
-    }
-    
-    // Set up the push illusion
-    gsap.set(existingRows, { y: -38 });
-    if (newRow) gsap.set(newRow, { opacity: 0 });
+  function drawPath(tl, pathEl, delay, duration, ease) {
+    if (!pathEl) return;
+    tl.to(pathEl, { strokeDashoffset: 0, duration: duration, ease: ease || 'power3.out' }, delay);
+  }
 
-    phaseA.classList.remove('hb-s1-phase--visible');
-    phaseB.classList.remove('hb-s1-phase--visible');
+  // ── Scene 1: Rep Trust ───────────────────────────────────
+  // Phase A: Orders table with "new order push" animation
+  // Phase B: Order detail with journey timeline
+  // Annotation: ink circle + "Reps get credit"
 
-    tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
-    tl.to(phaseA, { opacity: 1, duration: 0.3, onComplete: function() { phaseA.classList.add('hb-s1-phase--visible'); } }, 0.2);
+  var scene1 = {
+    init: function() {
+      var s = scenes[0];
+      gsap.set(s, { opacity: 0 });
 
-    if (statsBar) {
-      tl.from(statsBar, { opacity: 0, y: -10, duration: 0.6, ease: 'power3.out' }, 0.3);
-    }
-
-    // Fade in existing rows in their shifted position
-    tl.fromTo(existingRows, { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.04, ease: 'power2.out' }, 0.4);
-
-    // The Push
-    tl.to(existingRows, { y: 0, duration: 0.6, ease: 'expo.out' }, 2.0);
-    if (newRow) {
-      tl.fromTo(newRow, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' }, 2.05);
-      tl.fromTo(newRow, { backgroundColor: '#dbeafe' }, { backgroundColor: '#eff6ff', duration: 1.0 }, 2.05);
-    }
-
-    // Phase transition with depth
-    tl.to(phaseA, { 
-      opacity: 0.3, 
-      scale: 0.96, 
-      filter: 'blur(2px)', 
-      duration: 0.6, 
-      ease: 'power3.inOut' 
-    }, 4.0);
-
-    tl.to(phaseB, {
-      opacity: 1, 
-      x: 0, 
-      filter: 'blur(0px)',
-      duration: 0.6, 
-      ease: 'power3.inOut',
-      boxShadow: '-10px 0 30px rgba(0,0,0,0.1)',
-      onComplete: function() { phaseB.classList.add('hb-s1-phase--visible'); }
-    }, 4.1);
-
-    tl.add(function() {
-      if (chromeAddr) chromeAddr.textContent = 'admin.fluid.app/orders/4329';
-    }, 4.4);
-
-    tl.from(s.querySelector('.hb-s1-detail-header'), { opacity: 0, y: 10, duration: 0.5, ease: 'power3.out' }, 4.5);
-
-    var steps = s.querySelectorAll('.hb-tl-step');
-    steps.forEach(function(step, i) {
-      var icon = step.querySelector('.hb-tl-icon');
-      var body = step.querySelector('.hb-tl-body');
-      var conn = step.querySelector('.hb-tl-connector');
-
-      tl.fromTo(icon, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }, 4.7 + i * 0.2);
-      tl.fromTo(body, { opacity: 0, x: 10 }, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' }, 4.8 + i * 0.2);
-      
-      if (conn) {
-        gsap.set(conn, { transformOrigin: 'top center', scaleY: 0 });
-        tl.to(conn, { scaleY: 1, duration: 0.4, ease: 'power2.inOut' }, 4.9 + i * 0.2);
+      var phaseA = s.querySelector('.hb-s1-phase--a');
+      var phaseB = s.querySelector('.hb-s1-phase--b');
+      if (phaseA) {
+        phaseA.classList.remove('hb-s1-phase--visible');
+        gsap.set(phaseA, { opacity: 0, scale: 1, filter: 'none', transformOrigin: 'left center' });
       }
-    });
+      if (phaseB) {
+        phaseB.classList.remove('hb-s1-phase--visible');
+        gsap.set(phaseB, { opacity: 0, x: '40px', filter: 'blur(10px)', boxShadow: 'none' });
+      }
 
-    var metaRows = s.querySelectorAll('.hb-tl-meta__row');
-    metaRows.forEach(function(row, i) {
-      tl.fromTo(row, { opacity: 0, x: -6 }, { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out' }, 5.5 + i * 0.1);
-    });
+      var existingRows = s.querySelectorAll('.hb-s1-trow--existing');
+      var newRow = s.querySelector('.hb-s1-trow--new');
+      if (existingRows.length) gsap.set(existingRows, { y: -38 });
+      if (newRow) gsap.set(newRow, { opacity: 0 });
 
-    tl.to(annoCircle, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.2)' }, 6.2);
-    if (inkCirclePath) {
-      tl.to(inkCirclePath, { strokeDashoffset: 0, duration: 0.6, ease: 'power3.out' }, 6.2);
-    }
-    tl.to(annoText, { opacity: 1, scale: 1, rotation: -8, duration: 0.5, ease: 'back.out(1.5)' }, 6.4);
+      var annoCircle = s.querySelector('.hb-anno--circle');
+      var annoText = s.querySelector('.hb-anno--credit-text');
+      if (annoCircle) gsap.set(annoCircle, { opacity: 0, scale: 0.8, transformOrigin: 'center center' });
+      if (annoText) gsap.set(annoText, { opacity: 0, scale: 0.8, rotation: -12, transformOrigin: 'left center' });
 
-    return tl;
-  }
+      initPath(s.querySelector('.hb-ink-circle path'));
+    },
 
-  function buildTimeline2() {
-    var s = scenes[1];
-    var tl = gsap.timeline({ paused: true });
+    build: function() {
+      var s = scenes[0];
+      var tl = gsap.timeline({ paused: true });
 
-    var statuses = s.querySelectorAll('.hb-s2-status');
-    var existingRows = s.querySelectorAll('.hb-s2-row--existing');
-    var newRow = s.querySelector('.hb-s2-row--new');
-    var scanner = s.querySelector('.hb-s2-scanner');
-    var flash = s.querySelector('.hb-s2-row-flash');
-    var counter = s.querySelector('.hb-s2-counter');
+      var phaseA = s.querySelector('.hb-s1-phase--a');
+      var phaseB = s.querySelector('.hb-s1-phase--b');
+      var statsBar = s.querySelector('.hb-s1-stats');
+      var existingRows = s.querySelectorAll('.hb-s1-trow--existing');
+      var newRow = s.querySelector('.hb-s1-trow--new');
 
-    gsap.set(statuses, { opacity: 0, y: -10, filter: 'blur(4px)' });
-    gsap.set(existingRows, { opacity: 0, x: -10 });
-    gsap.set(newRow, { opacity: 0, x: -10 });
-    if (flash) gsap.set(flash, { opacity: 0, x: '-100%' });
-    gsap.set(scanner, { opacity: 0, y: -100 });
-    gsap.set(counter, { opacity: 0 });
+      // Phase A entrance
+      tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
+      tl.to(phaseA, {
+        opacity: 1, duration: 0.3,
+        onComplete: function() { phaseA.classList.add('hb-s1-phase--visible'); }
+      }, 0.2);
+      if (statsBar) tl.from(statsBar, { opacity: 0, y: -10, duration: 0.6, ease: 'power3.out' }, 0.3);
+      tl.fromTo(existingRows, { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.04, ease: 'power2.out' }, 0.4);
 
-    var newChecks = newRow ? newRow.querySelectorAll('.hb-check-wrap') : [];
-    newChecks.forEach(function(wrap) {
-      gsap.set(wrap.querySelector('.hb-check'), { scale: 0 });
-      gsap.set(wrap.querySelector('.hb-check-loader'), { opacity: 0, scale: 0 });
-    });
+      // New order pushes existing rows down
+      tl.to(existingRows, { y: 0, duration: 0.6, ease: 'expo.out' }, 2.0);
+      if (newRow) {
+        tl.fromTo(newRow, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' }, 2.05);
+        tl.fromTo(newRow, { backgroundColor: '#dbeafe' }, { backgroundColor: '#eff6ff', duration: 1.0 }, 2.05);
+      }
 
-    tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
+      // Phase B slides in over Phase A
+      tl.to(phaseA, { opacity: 0.3, scale: 0.96, filter: 'blur(2px)', duration: 0.6, ease: 'power3.inOut' }, 4.0);
+      tl.to(phaseB, {
+        opacity: 1, x: 0, filter: 'blur(0px)', duration: 0.6, ease: 'power3.inOut',
+        boxShadow: '-10px 0 30px rgba(0,0,0,0.1)',
+        onComplete: function() { phaseB.classList.add('hb-s1-phase--visible'); }
+      }, 4.1);
 
-    // Initial load sequence
-    tl.to(statuses, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.1, ease: 'back.out(1.2)' }, 0.2);
-    
-    // Existing rows stagger in
-    tl.to(existingRows, { opacity: 1, x: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' }, 0.4);
-
-    // After pause, the new row slams in
-    tl.fromTo(existingRows, { y: 0 }, { y: 43, duration: 0.6, ease: 'expo.out' }, 2.0); // push existing down
-    tl.to(newRow, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' }, 2.05);
-    tl.fromTo(newRow, { backgroundColor: '#dbeafe' }, { backgroundColor: '#eff6ff', duration: 1.0 }, 2.05);
-
-    // Swipe flash effect across the new row
-    if (flash) {
-      tl.to(flash, { opacity: 1, duration: 0.1 }, 2.1);
-      tl.to(flash, { x: '100%', duration: 0.8, ease: 'power2.out' }, 2.1);
-      tl.to(flash, { opacity: 0, duration: 0.2 }, 2.7);
-    }
-
-    // The system sync/scanner sweep
-    tl.to(scanner, { opacity: 1, duration: 0.3 }, 2.4);
-    tl.to(scanner, { y: 240, duration: 2.0, ease: 'power1.inOut' }, 2.4);
-    tl.to(scanner, { opacity: 0, duration: 0.3 }, 4.1);
-
-    // The checks sequentially resolving
-    newChecks.forEach(function(wrap, i) {
-      var loader = wrap.querySelector('.hb-check-loader');
-      var check = wrap.querySelector('.hb-check');
-      
-      tl.to(loader, { opacity: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, 2.5 + i * 0.3);
-      tl.to(loader, { opacity: 0, scale: 0.5, duration: 0.2 }, 3.0 + i * 0.3);
-      
-      tl.to(check, { 
-        scale: 1, 
-        className: '+=hb-check hb-check--done',
-        duration: 0.4, 
-        ease: 'back.out(2)' 
-      }, 3.1 + i * 0.3);
-      
       tl.add(function() {
-        check.innerHTML = '<svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
-      }, 3.1 + i * 0.3);
-    });
+        if (chromeAddr) chromeAddr.textContent = 'admin.fluid.app/orders/4329';
+      }, 4.4);
+      tl.from(s.querySelector('.hb-s1-detail-header'), { opacity: 0, y: 10, duration: 0.5, ease: 'power3.out' }, 4.5);
 
-    tl.to(counter, { opacity: 1, y: -5, duration: 0.5, ease: 'power2.out' }, 5.0);
+      // Journey timeline steps
+      s.querySelectorAll('.hb-tl-step').forEach(function(step, i) {
+        var icon = step.querySelector('.hb-tl-icon');
+        var body = step.querySelector('.hb-tl-body');
+        var conn = step.querySelector('.hb-tl-connector');
+        tl.fromTo(icon, { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }, 4.7 + i * 0.2);
+        tl.fromTo(body, { opacity: 0, x: 10 }, { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out' }, 4.8 + i * 0.2);
+        if (conn) {
+          gsap.set(conn, { transformOrigin: 'top center', scaleY: 0 });
+          tl.to(conn, { scaleY: 1, duration: 0.4, ease: 'power2.inOut' }, 4.9 + i * 0.2);
+        }
+      });
 
-    return tl;
-  }
+      s.querySelectorAll('.hb-tl-meta__row').forEach(function(row, i) {
+        tl.fromTo(row, { opacity: 0, x: -6 }, { opacity: 1, x: 0, duration: 0.3, ease: 'power2.out' }, 5.5 + i * 0.1);
+      });
 
-  function buildTimeline3() {
-    var s = scenes[2];
-    var tl = gsap.timeline({ paused: true });
+      // Annotation: ink circle + "Reps get credit"
+      var annoCircle = s.querySelector('.hb-anno--circle');
+      var annoText = s.querySelector('.hb-anno--credit-text');
+      var inkCirclePath = s.querySelector('.hb-ink-circle path');
+      tl.to(annoCircle, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.2)' }, 6.2);
+      drawPath(tl, inkCirclePath, 6.2, 0.6, 'power3.out');
+      tl.to(annoText, { opacity: 1, scale: 1, rotation: -8, duration: 0.5, ease: 'back.out(1.5)' }, 6.4);
 
-    tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
-
-    s.querySelectorAll('.hb-s3-kpi').forEach(function(k, i) {
-      tl.from(k, { opacity: 0, y: 15, duration: 0.5, ease: 'power3.out' }, 0.2 + i * 0.2);
-    });
-
-    var amountEl = s.querySelector('[data-hb-kpi-amount]');
-    var approvalEl = s.querySelector('[data-hb-kpi-approval]');
-
-    var amountObj = { val: 0 };
-    tl.fromTo(amountObj, { val: 0 }, {
-      val: 2.4, duration: 1.5, ease: 'power3.out',
-      onUpdate: function() { amountEl.textContent = '$' + amountObj.val.toFixed(1) + 'M'; }
-    }, 0.5);
-
-    var approvalObj = { val: 90 };
-    tl.fromTo(approvalObj, { val: 90 }, {
-      val: 98.7, duration: 1.2, ease: 'power3.out',
-      onUpdate: function() { approvalEl.textContent = approvalObj.val.toFixed(1) + '%'; }
-    }, 0.7);
-
-    s.querySelectorAll('.hb-s3-trend').forEach(function(t, i) {
-      tl.from(t, { opacity: 0, x: -10, duration: 0.4, ease: 'power2.out' }, 0.9 + i * 0.15);
-    });
-
-    s.querySelectorAll('.hb-grid-line').forEach(function(l, i) {
-      tl.to(l, { opacity: 1, duration: 0.4 }, 1.0 + i * 0.1);
-    });
-
-    var areaClip = s.querySelector('.hb-area-clip-rect');
-    var areaLine = s.querySelector('.hb-area-line');
-    var areaFill = s.querySelector('.hb-area-fill');
-    var scrubberWrap = s.querySelector('.hb-chart-scrubber-wrap');
-    var scrubber = s.querySelector('.hb-chart-scrubber');
-    var playhead = s.querySelector('.hb-chart-playhead');
-    var tooltip = s.querySelector('.hb-chart-tooltip');
-    var tooltipVal = s.querySelector('[data-hb-tooltip-val]');
-    
-    gsap.set(scrubberWrap, { width: '0%' });
-    gsap.set(scrubber, { opacity: 0 });
-    gsap.set(playhead, { opacity: 0, scale: 0 });
-    gsap.set(tooltip, { opacity: 0, y: 10 });
-    if (areaClip) gsap.set(areaClip, { attr: { width: 0 } });
-    if (areaLine) {
-      gsap.set(areaLine, { strokeDasharray: 'none', strokeDashoffset: 0 });
+      return tl;
     }
-    if (areaFill) gsap.set(areaFill, { opacity: 1 });
+  };
 
-    // Scrubber sweep follows the clip expansion exactly
-    if (areaClip) {
-      tl.to(areaClip, { attr: { width: 280 }, duration: 1.8, ease: 'power2.out' }, 1.2);
+  // ── Scene 2: Org Confidence ──────────────────────────────
+  // System status cards + live storefront preview with visitor counter
+
+  var scene2 = {
+    init: function() {
+      var s = scenes[1];
+      gsap.set(s, { opacity: 0 });
+
+      gsap.set(s.querySelectorAll('.hb-s2-status'), { opacity: 0, y: -10, filter: 'blur(4px)' });
+
+      var previewCard = s.querySelector('.hb-s2-preview-card');
+      if (previewCard) gsap.set(previewCard, { opacity: 0, y: 20 });
+
+      var visitorCount = s.querySelector('[data-hb-visitor-count]');
+      if (visitorCount) visitorCount.textContent = '248';
+    },
+
+    build: function() {
+      var s = scenes[1];
+      var tl = gsap.timeline({ paused: true });
+
+      var statuses = s.querySelectorAll('.hb-s2-status');
+      var previewCard = s.querySelector('.hb-s2-preview-card');
+      var visitorCount = s.querySelector('[data-hb-visitor-count]');
+
+      tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
+      tl.to(statuses, { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.1, ease: 'back.out(1.2)' }, 0.2);
+
+      if (previewCard) {
+        tl.to(previewCard, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.6);
+        countUp(tl, visitorCount, 248, 874, function(v) { return Math.round(v); }, 1.0, 4.0, 'power2.inOut');
+      }
+
+      return tl;
     }
-    tl.to(scrubber, { opacity: 1, duration: 0.2 }, 1.2);
-    tl.to(scrubberWrap, { width: '100%', duration: 1.8, ease: 'power2.out' }, 1.2);
-    tl.to(playhead, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, 2.6);
-    tl.to(tooltip, { opacity: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' }, 2.6);
+  };
 
-    var ttObj = { val: 148 };
-    tl.fromTo(ttObj, { val: 148 }, {
-      val: 240, duration: 1.8, ease: 'power2.out',
-      onUpdate: function() { if (tooltipVal) tooltipVal.textContent = '$' + Math.round(ttObj.val) + 'K'; }
-    }, 1.2);
+  // ── Scene 3: Revenue Growth ──────────────────────────────
+  // KPI cards with area chart + bar chart, markets breakdown,
+  // "Blitz Week Launch!" annotation
 
-    s.querySelectorAll('.hb-bar-grid__line').forEach(function(l, i) {
-      tl.to(l, { opacity: 1, duration: 0.4 }, 1.5 + i * 0.1);
-    });
+  var scene3 = {
+    init: function() {
+      var s = scenes[2];
+      gsap.set(s, { opacity: 0 });
 
-    s.querySelectorAll('.hb-bar').forEach(function(bar, i) {
-      tl.add(function() { bar.classList.add('hb-bar--animated'); }, 1.8 + i * 0.08);
-    });
+      var amountEl = s.querySelector('[data-hb-kpi-amount]');
+      var approvalEl = s.querySelector('[data-hb-kpi-approval]');
+      if (amountEl) amountEl.textContent = '$0.0M';
+      if (approvalEl) approvalEl.textContent = '0.0%';
 
-    var marketsSummary = s.querySelector('.hb-s3-markets-summary');
-    if (marketsSummary) {
-      tl.from(marketsSummary, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 2.4);
+      s.querySelectorAll('.hb-bar').forEach(function(b) { b.classList.remove('hb-bar--animated'); });
+      s.querySelectorAll('.hb-s3-progress__fill').forEach(function(f) { f.classList.remove('hb-s3-progress__fill--animated'); });
+
+      var areaClip = s.querySelector('.hb-area-clip-rect');
+      var areaLine = s.querySelector('.hb-area-line');
+      var areaFill = s.querySelector('.hb-area-fill');
+      if (areaClip) gsap.set(areaClip, { attr: { width: 0 } });
+      if (areaLine) gsap.set(areaLine, { strokeDasharray: 'none', strokeDashoffset: 0 });
+      if (areaFill) gsap.set(areaFill, { opacity: 1 });
+
+      var scrubberWrap = s.querySelector('.hb-chart-scrubber-wrap');
+      var scrubber = s.querySelector('.hb-chart-scrubber');
+      var playhead = s.querySelector('.hb-chart-playhead');
+      var tooltip = s.querySelector('.hb-chart-tooltip');
+      if (scrubberWrap) gsap.set(scrubberWrap, { width: '0%' });
+      if (scrubber) gsap.set(scrubber, { opacity: 0 });
+      if (playhead) gsap.set(playhead, { opacity: 0, scale: 0 });
+      if (tooltip) gsap.set(tooltip, { opacity: 0, y: 10 });
+
+      var tooltipVal = s.querySelector('[data-hb-tooltip-val]');
+      if (tooltipVal) tooltipVal.textContent = '$148K';
+
+      var m1 = s.querySelector('[data-hb-m1]');
+      var m2 = s.querySelector('[data-hb-m2]');
+      var m3 = s.querySelector('[data-hb-m3]');
+      if (m1) m1.textContent = '0';
+      if (m2) m2.textContent = '0';
+      if (m3) m3.textContent = '0';
+
+    },
+
+    build: function() {
+      var s = scenes[2];
+      var tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0);
+
+      // KPI cards stagger in
+      s.querySelectorAll('.hb-s3-kpi').forEach(function(k, i) {
+        tl.from(k, { opacity: 0, y: 15, duration: 0.5, ease: 'power3.out' }, 0.2 + i * 0.2);
+      });
+
+      // KPI counters
+      countUp(tl, s.querySelector('[data-hb-kpi-amount]'),
+        0, 2.4, function(v) { return '$' + v.toFixed(1) + 'M'; }, 0.5, 1.5, 'power3.out');
+      countUp(tl, s.querySelector('[data-hb-kpi-approval]'),
+        90, 98.7, function(v) { return v.toFixed(1) + '%'; }, 0.7, 1.2, 'power3.out');
+
+      // Trend labels
+      s.querySelectorAll('.hb-s3-trend').forEach(function(t, i) {
+        tl.from(t, { opacity: 0, x: -10, duration: 0.4, ease: 'power2.out' }, 0.9 + i * 0.15);
+      });
+
+      // Area chart: grid lines + clip reveal + scrubber sweep
+      s.querySelectorAll('.hb-grid-line').forEach(function(l, i) {
+        tl.to(l, { opacity: 1, duration: 0.4 }, 1.0 + i * 0.1);
+      });
+
+      var areaClip = s.querySelector('.hb-area-clip-rect');
+      var scrubberWrap = s.querySelector('.hb-chart-scrubber-wrap');
+      var scrubber = s.querySelector('.hb-chart-scrubber');
+      var playhead = s.querySelector('.hb-chart-playhead');
+      var tooltip = s.querySelector('.hb-chart-tooltip');
+      var tooltipVal = s.querySelector('[data-hb-tooltip-val]');
+
+      if (areaClip) tl.to(areaClip, { attr: { width: 280 }, duration: 1.8, ease: 'power2.out' }, 1.2);
+      tl.to(scrubber, { opacity: 1, duration: 0.2 }, 1.2);
+      tl.to(scrubberWrap, { width: '100%', duration: 1.8, ease: 'power2.out' }, 1.2);
+      countUp(tl, tooltipVal, 148, 240, function(v) { return '$' + Math.round(v) + 'K'; }, 1.2, 1.8, 'power2.out');
+
+      // Bar chart
+      s.querySelectorAll('.hb-bar-grid__line').forEach(function(l, i) {
+        tl.to(l, { opacity: 1, duration: 0.4 }, 1.5 + i * 0.1);
+      });
+      s.querySelectorAll('.hb-bar').forEach(function(bar, i) {
+        tl.add(function() { bar.classList.add('hb-bar--animated'); }, 1.8 + i * 0.08);
+      });
+
+      // Playhead + tooltip pop in
+      tl.to(playhead, { opacity: 1, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, 2.6);
+      tl.to(tooltip, { opacity: 1, y: 0, duration: 0.4, ease: 'back.out(1.5)' }, 2.6);
+
+      // Markets breakdown
+      var marketsSummary = s.querySelector('.hb-s3-markets-summary');
+      if (marketsSummary) tl.from(marketsSummary, { opacity: 0, y: 20, duration: 0.6, ease: 'power3.out' }, 2.4);
+
+      s.querySelectorAll('.hb-s3-market-row').forEach(function(row, i) {
+        tl.from(row, { opacity: 0, x: -10, duration: 0.4, ease: 'power2.out' }, 2.6 + i * 0.15);
+      });
+      s.querySelectorAll('.hb-s3-progress__fill').forEach(function(fill, i) {
+        tl.add(function() { fill.classList.add('hb-s3-progress__fill--animated'); }, 2.8 + i * 0.15);
+      });
+
+      countUp(tl, s.querySelector('[data-hb-m1]'),
+        0, 1.87, function(v) { return '$' + v.toFixed(2) + 'M'; }, 2.8, 1.2, 'power2.out');
+      countUp(tl, s.querySelector('[data-hb-m2]'),
+        0, 412, function(v) { return '$' + Math.round(v) + 'K'; }, 2.95, 1.2, 'power2.out');
+      countUp(tl, s.querySelector('[data-hb-m3]'),
+        0, 178, function(v) { return '$' + Math.round(v) + 'K'; }, 3.1, 1.2, 'power2.out');
+
+      return tl;
     }
+  };
 
-    s.querySelectorAll('.hb-s3-market-row').forEach(function(row, i) {
-      tl.from(row, { opacity: 0, x: -10, duration: 0.4, ease: 'power2.out' }, 2.6 + i * 0.15);
-    });
+  // ── Scene Registry ───────────────────────────────────────
 
-    s.querySelectorAll('.hb-s3-progress__fill').forEach(function(fill, i) {
-      tl.add(function() { fill.classList.add('hb-s3-progress__fill--animated'); }, 2.8 + i * 0.15);
-    });
+  var sceneConfigs = [scene1, scene2, scene3];
 
-    var m1 = s.querySelector('[data-hb-m1]');
-    var m2 = s.querySelector('[data-hb-m2]');
-    var m3 = s.querySelector('[data-hb-m3]');
-    
-    if (m1) {
-      var m1Obj = { val: 0 };
-      tl.fromTo(m1Obj, { val: 0 }, {
-        val: 1.87, duration: 1.2, ease: 'power2.out',
-        onUpdate: function() { m1.textContent = '$' + m1Obj.val.toFixed(2) + 'M'; }
-      }, 2.8);
-    }
-    if (m2) {
-      var m2Obj = { val: 0 };
-      tl.fromTo(m2Obj, { val: 0 }, {
-        val: 412, duration: 1.2, ease: 'power2.out',
-        onUpdate: function() { m2.textContent = '$' + Math.round(m2Obj.val) + 'K'; }
-      }, 2.95);
-    }
-    if (m3) {
-      var m3Obj = { val: 0 };
-      tl.fromTo(m3Obj, { val: 0 }, {
-        val: 178, duration: 1.2, ease: 'power2.out',
-        onUpdate: function() { m3.textContent = '$' + Math.round(m3Obj.val) + 'K'; }
-      }, 3.1);
-    }
-
-    var annoArrow = s.querySelector('.hb-anno--arrow');
-    var annoArrowPathList = s.querySelectorAll('.hb-ink-arrow path');
-    var annoText = s.querySelector('.hb-anno--launch-text');
-
-    gsap.set(annoArrow, { opacity: 1 });
-    gsap.set(annoText, { opacity: 0, scale: 0.8, transformOrigin: 'center center' });
-    
-    annoArrowPathList.forEach(function(p) {
-      var l = p.getTotalLength ? p.getTotalLength() : 200;
-      gsap.set(p, { strokeDasharray: l, strokeDashoffset: l });
-      tl.to(p, { strokeDashoffset: 0, duration: 0.4, ease: 'power2.out' }, 3.6);
-    });
-
-    tl.to(annoText, { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }, 4.0);
-
-    return tl;
-  }
-
-  var builders = [buildTimeline1, buildTimeline2, buildTimeline3];
+  // ── Reset & Switch ───────────────────────────────────────
 
   function resetScene(index) {
     if (timelines[index]) {
       timelines[index].kill();
       timelines[index] = null;
     }
-    if (hasGSAP) gsap.set(scenes[index], { opacity: 0 });
-
-    if (index === 0) {
-      var phaseA = scenes[0].querySelector('.hb-s1-phase--a');
-      var phaseB = scenes[0].querySelector('.hb-s1-phase--b');
-      if (phaseA) { phaseA.classList.remove('hb-s1-phase--visible'); gsap.set(phaseA, { opacity: 0, scale: 1, filter: 'none' }); }
-      if (phaseB) { phaseB.classList.remove('hb-s1-phase--visible'); gsap.set(phaseB, { opacity: 0, x: '40px', filter: 'blur(10px)', boxShadow: 'none' }); }
-      var newR = scenes[0].querySelector('.hb-s1-trow--new');
-      if (newR) gsap.set(newR, { opacity: 0 });
-      var existingR = scenes[0].querySelectorAll('.hb-s1-trow--existing');
-      if (existingR.length) gsap.set(existingR, { y: -38 });
-      var aCir = scenes[0].querySelector('.hb-anno--circle');
-      var aTxt = scenes[0].querySelector('.hb-anno--credit-text');
-      if (aCir) gsap.set(aCir, { opacity: 0, scale: 0.8 });
-      if (aTxt) gsap.set(aTxt, { opacity: 0, scale: 0.8, rotation: -12 });
-      var inkPath = scenes[0].querySelector('.hb-ink-circle path');
-      if (inkPath) {
-        var inkLen = inkPath.getTotalLength ? inkPath.getTotalLength() : 600;
-        gsap.set(inkPath, { strokeDasharray: inkLen, strokeDashoffset: inkLen });
-      }
-    }
-
-    if (index === 1) {
-      scenes[1].querySelectorAll('.hb-s2-row--new .hb-check').forEach(function(c) {
-        c.innerHTML = '';
-        c.className = 'hb-check hb-check--pending';
-        gsap.set(c, { scale: 0 });
-      });
-      scenes[1].querySelectorAll('.hb-s2-row--new .hb-check-loader').forEach(function(l) {
-        gsap.set(l, { opacity: 0 });
-      });
-      var scanner = scenes[1].querySelector('.hb-s2-scanner');
-      if (scanner) gsap.set(scanner, { opacity: 0, y: -100 });
-      var newR2 = scenes[1].querySelector('.hb-s2-row--new');
-      if (newR2) gsap.set(newR2, { height: 0, opacity: 0, overflow: 'hidden' });
-    }
-
-    if (index === 2) {
-      var amountEl = scenes[2].querySelector('[data-hb-kpi-amount]');
-      var approvalEl = scenes[2].querySelector('[data-hb-kpi-approval]');
-      if (amountEl) amountEl.textContent = '$0.0M';
-      if (approvalEl) approvalEl.textContent = '0.0%';
-
-      scenes[2].querySelectorAll('.hb-bar').forEach(function(bar) {
-        bar.classList.remove('hb-bar--animated');
-      });
-      scenes[2].querySelectorAll('.hb-s3-progress__fill').forEach(function(fill) {
-        fill.classList.remove('hb-s3-progress__fill--animated');
-      });
-
-      var areaClip = scenes[2].querySelector('.hb-area-clip-rect');
-      var areaLine = scenes[2].querySelector('.hb-area-line');
-      var areaFill = scenes[2].querySelector('.hb-area-fill');
-      if (areaClip) gsap.set(areaClip, { attr: { width: 0 } });
-      if (areaLine) {
-        gsap.set(areaLine, { strokeDasharray: 'none', strokeDashoffset: 0 });
-      }
-      if (areaFill) gsap.set(areaFill, { opacity: 1 });
-
-      var scrubberWrap = scenes[2].querySelector('.hb-chart-scrubber-wrap');
-      var scrubber = scenes[2].querySelector('.hb-chart-scrubber');
-      var playhead = scenes[2].querySelector('.hb-chart-playhead');
-      var tooltip = scenes[2].querySelector('.hb-chart-tooltip');
-      if (scrubberWrap) gsap.set(scrubberWrap, { width: '0%' });
-      if (scrubber) gsap.set(scrubber, { opacity: 0 });
-      if (playhead) gsap.set(playhead, { opacity: 0, scale: 0 });
-      if (tooltip) gsap.set(tooltip, { opacity: 0, y: 10 });
-
-      var annoArrowPathList = scenes[2].querySelectorAll('.hb-ink-arrow path');
-      var annoText = scenes[2].querySelector('.hb-anno--launch-text');
-      if (annoText) gsap.set(annoText, { opacity: 0, scale: 0.8 });
-      annoArrowPathList.forEach(function(p) {
-        var l = p.getTotalLength ? p.getTotalLength() : 200;
-        gsap.set(p, { strokeDasharray: l, strokeDashoffset: l });
-      });
-    }
+    if (hasGSAP) sceneConfigs[index].init();
   }
 
   function switchTab(index) {
@@ -884,7 +835,8 @@ function initHeroBenefits() {
     hasPlayed = true;
 
     if (!isMobile && hasGSAP) {
-      timelines[index] = builders[index]();
+      sceneConfigs[index].init();
+      timelines[index] = sceneConfigs[index].build();
       timelines[index].play();
     } else {
       scenes[index].style.opacity = '1';
@@ -892,6 +844,8 @@ function initHeroBenefits() {
 
     startProgress(index);
   }
+
+  // ── Auto-Advance Progress Bar ────────────────────────────
 
   function startProgress(index) {
     if (progressTween) progressTween.kill();
@@ -911,6 +865,8 @@ function initHeroBenefits() {
       }
     });
   }
+
+  // ── Event Binding ────────────────────────────────────────
 
   tabs.forEach(function(tab, i) {
     tab.addEventListener('click', function() { switchTab(i); });
@@ -935,10 +891,81 @@ function initHeroBenefits() {
   benefitObserver.observe(container);
 }
 
+// ── Hero Emphasis Marks (rough.js hand-drawn animation) ──
+function initHeroMarks() {
+  if (typeof rough === 'undefined') return;
+
+  const emphasis = document.querySelector('.hero__emphasis');
+  const svgLeft = document.querySelector('.hero__marks--left');
+  const svgRight = document.querySelector('.hero__marks--right');
+  const container = document.querySelector('.hero__content');
+  if (!emphasis || !svgLeft || !svgRight || !container) return;
+
+  const color = '#42b1ff';
+  const opts = { stroke: color, strokeWidth: 2.5, roughness: 0.8, bowing: 0.4 };
+
+  // viewBox coordinate system: 40 wide x 60 tall
+  // Pattern: upward angle, horizontal, downward angle
+  function drawMarks(seed) {
+    const rcL = rough.svg(svgLeft, { options: { seed: seed } });
+    const rcR = rough.svg(svgRight, { options: { seed: seed + 50 } });
+    svgLeft.innerHTML = '';
+    svgRight.innerHTML = '';
+
+    // Left side: lines radiate outward-left from text
+    svgLeft.appendChild(rcL.line(30, 18, 10, 6, opts));   // upward
+    svgLeft.appendChild(rcL.line(30, 30, 6, 30, opts));    // horizontal
+    svgLeft.appendChild(rcL.line(30, 42, 10, 54, opts));   // downward
+
+    // Right side: mirrored, radiate outward-right
+    svgRight.appendChild(rcR.line(10, 18, 30, 6, opts));   // upward
+    svgRight.appendChild(rcR.line(10, 30, 34, 30, opts));   // horizontal
+    svgRight.appendChild(rcR.line(10, 42, 30, 54, opts));   // downward
+  }
+
+  function positionMarks() {
+    var rects = emphasis.getClientRects();
+    if (!rects.length) return;
+    // Use the last rect — the actual line "direct selling." is rendered on
+    var textRect = rects[rects.length - 1];
+    var parentRect = container.getBoundingClientRect();
+
+    var textTop = textRect.top - parentRect.top;
+    var textLeft = textRect.left - parentRect.left;
+    var textH = textRect.height;
+    var textW = textRect.width;
+    var markW = textH * 0.55;
+    var markH = textH * 0.85;
+    var gap = textH * 0.1;
+    var vOffset = (textH - markH) / 2;
+
+    svgLeft.style.top = (textTop + vOffset) + 'px';
+    svgLeft.style.left = (textLeft - markW - gap) + 'px';
+    svgLeft.style.width = markW + 'px';
+    svgLeft.style.height = markH + 'px';
+
+    svgRight.style.top = (textTop + vOffset) + 'px';
+    svgRight.style.left = (textLeft + textW + gap) + 'px';
+    svgRight.style.width = markW + 'px';
+    svgRight.style.height = markH + 'px';
+  }
+
+  positionMarks();
+  window.addEventListener('resize', positionMarks);
+
+  var seed = 1;
+  drawMarks(seed);
+  setInterval(function() {
+    seed = (seed % 200) + 1;
+    drawMarks(seed);
+  }, 250);
+}
+
 // ── Init on DOMContentLoaded ──
 document.addEventListener('DOMContentLoaded', () => {
   // Re-observe reveals (for dynamically added elements)
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
   initFlywheel();
   initHeroBenefits();
+  initHeroMarks();
 });
