@@ -122,7 +122,7 @@ Always reference CSS variables, not raw hex values, when the variable exists.
 |-------|--------|------|-------|
 | `.headline-lg` | 900 | `clamp(44px, 6vw, 72px)` | uppercase, `letter-spacing: -0.02em`, `line-height: 1.05` |
 | `.headline` | 900 | `clamp(36px, 5vw, 64px)` | uppercase, `letter-spacing: -0.02em`, `line-height: 1.08` |
-| `.label` | 500 | `12px` | uppercase, `letter-spacing: 0.14em`, colored by section accent |
+| `.eyebrow` | 500 | `12px` | uppercase, `letter-spacing: 0.14em`, color via `--eyebrow-color` (default `--blue`). Variants: `.eyebrow--sm` (10px), `.eyebrow--lg` (13px) |
 | `.tagline` | normal | contextual | `flfontbold`, accent color, sentence case |
 | `.body-text` | 300 | `clamp(16px, 1.25vw, 20px)` | `--text-body`, `line-height: 1.65` |
 | `.body-text-sm` | 400 | `14px` | `--text-secondary`, `line-height: 1.55` |

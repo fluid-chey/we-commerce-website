@@ -13,7 +13,7 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="#" class="nav__logo">
-        <img src="assets/logos/fluid-logo.png" alt="Fluid">
+        <img src="assets/logos/wecommerce-logo.svg" alt="We-Commerce">
       </a>
       <ul class="nav__links">
         <li><a href="#solution">Platform</a></li>
@@ -42,27 +42,13 @@
   </div>
 
   <!-- ════════════════ HERO ════════════════ -->
-  <section class="hero" id="hero">
-    <!-- Floating data cards -->
-    <div class="hero__data-cards">
-      <div class="data-card" style="top:12%;left:6%;--drift-x:15px;--drift-y:-20px;--drift-duration:8s;">$142.50 — order confirmed</div>
-      <div class="data-card" style="top:22%;right:8%;--drift-x:-10px;--drift-y:14px;--drift-duration:10s;">Rep: Sarah M.</div>
-      <div class="data-card" style="top:65%;left:4%;--drift-x:18px;--drift-y:12px;--drift-duration:12s;">Commission: $28.50</div>
-      <div class="data-card" style="top:75%;right:5%;--drift-x:-14px;--drift-y:-16px;--drift-duration:9s;">Apple Pay</div>
-      <div class="data-card" style="top:35%;left:2%;--drift-x:10px;--drift-y:-25px;--drift-duration:14s;">Network token saved</div>
-      <div class="data-card" style="top:50%;right:3%;--drift-x:-20px;--drift-y:10px;--drift-duration:11s;">Subscription renewed</div>
-      <div class="data-card" style="top:8%;left:35%;--drift-x:8px;--drift-y:20px;--drift-duration:13s;">FairShare: attributed</div>
-      <div class="data-card" style="top:85%;left:25%;--drift-x:-12px;--drift-y:-18px;--drift-duration:7s;">Enrollment complete</div>
-      <div class="data-card" style="top:18%;right:30%;--drift-x:16px;--drift-y:12px;--drift-duration:15s;">3 retries → approved</div>
-      <div class="data-card" style="top:70%;right:28%;--drift-x:-8px;--drift-y:-22px;--drift-duration:6s;">Sync: real-time</div>
-    </div>
-
+  <section class="hero theme-light" id="hero">
     <!-- Brushstrokes -->
     <img src="assets/brushstrokes/brush-texture-01.png" alt="" class="brushstroke" style="top:-10%;left:-15%;width:60%;opacity:0.10;">
     <img src="assets/brushstrokes/brush-texture-03.png" alt="" class="brushstroke" style="bottom:-15%;right:-10%;width:50%;opacity:0.10;">
 
     <div class="hero__content">
-      <div class="hero__eyebrow">We-Commerce</div>
+      <div class="eyebrow eyebrow--lg hero__eyebrow">We-Commerce</div>
       <h1 class="hero__headline">The only e-commerce platform built specifically for direct selling.</h1>
       <p class="hero__subtext">Every e-commerce platform was built for a stranger clicking buy and leaving. Your business isn't that. It's a rep who spent three months building a relationship. A customer who finally clicked the link. A transaction that isn't just a sale — it's proof that someone's effort mattered.</p>
       <div class="hero__ctas">
@@ -70,11 +56,382 @@
         <a href="#solution" class="btn-text">See how it works →</a>
       </div>
     </div>
+
+    <!-- Hero Benefit Tabs -->
+    <div class="hero-benefits">
+      <div class="hero-benefits__tabs">
+        <button class="hero-benefits__tab hero-benefits__tab--active" data-benefit-tab="0">
+          <svg class="hero-benefits__tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="none"><path d="M8 1.5l1.8 3.7 4.1.6-3 2.9.7 4.1L8 10.9l-3.6 1.9.7-4.1-3-2.9 4.1-.6L8 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          <span>Rep Trust</span>
+          <span class="hero-benefits__progress"></span>
+        </button>
+        <button class="hero-benefits__tab" data-benefit-tab="1">
+          <svg class="hero-benefits__tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="none"><rect x="1" y="5" width="5" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="10" y="5" width="5" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M6 8h4" stroke="currentColor" stroke-width="1.3"/></svg>
+          <span>Org. Confidence</span>
+          <span class="hero-benefits__progress"></span>
+        </button>
+        <button class="hero-benefits__tab" data-benefit-tab="2">
+          <svg class="hero-benefits__tab-icon" viewBox="0 0 16 16" width="16" height="16" fill="none"><path d="M2 13l4-5 3 3 5-8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 3h3v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Revenue Growth</span>
+          <span class="hero-benefits__progress"></span>
+        </button>
+      </div>
+      <div class="hero-benefits__frame">
+        <div class="browser-chrome browser-chrome--benefits">
+          <div class="browser-chrome__bar">
+            <div class="browser-chrome__dots"><span></span><span></span><span></span></div>
+            <div class="browser-chrome__tab" data-hb-chrome-tab>Rep Dashboard</div>
+          </div>
+          <div class="browser-chrome__addr">
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.79 1 2 2.79 2 5v2c0 .55.45 1 1 1h1V5c0-1.1.9-2 2-2s2 .9 2 2v3h1c.55 0 1-.45 1-1V5c0-2.21-1.79-4-4-4z" fill="rgba(255,255,255,0.25)"/><rect x="4" y="7" width="4" height="4" rx="1" fill="rgba(255,255,255,0.25)"/></svg>
+            <span data-hb-chrome-addr>app.fluid.app/dashboard</span>
+          </div>
+          <div class="browser-chrome__body browser-chrome__body--benefits">
+
+            <!-- Scene 1: Rep Trust (Phase A: Orders + Phase B: Journey) -->
+            <div class="hb-scene hb-scene--active" data-scene="0">
+              <div class="hb-sidebar">
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon hb-sidebar__icon--active"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__avatar"></div>
+              </div>
+              <div class="hb-main">
+                <!-- Phase A: Orders list -->
+                <div class="hb-s1-phase hb-s1-phase--a">
+                  <div class="hb-card hb-s1-stats-card">
+                    <div class="hb-s1-stats">
+                      <div class="hb-s1-stat hb-s1-stat--primary"><div class="hb-s1-stat__label">Total Orders <span class="hb-s1-stat__range">3/8/26 – 4/6/26 ▾</span></div><div class="hb-s1-stat__value">1,046</div></div>
+                      <div class="hb-s1-stat"><div class="hb-s1-stat__label">Total Sales</div><div class="hb-s1-stat__value">$1,124,843</div></div>
+                      <div class="hb-s1-stat"><div class="hb-s1-stat__label">Avg Order Amount</div><div class="hb-s1-stat__value">$1,075</div></div>
+                      <div class="hb-s1-stat"><div class="hb-s1-stat__label">Total CV</div><div class="hb-s1-stat__value">0</div></div>
+                      <div class="hb-s1-stat"><div class="hb-s1-stat__label">Avg CV</div><div class="hb-s1-stat__value">0</div></div>
+                    </div>
+                  </div>
+                  <div class="hb-card hb-s1-orders-card">
+                    <table class="hb-table hb-table--orders">
+                      <thead>
+                        <tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Payment</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr class="hb-s1-trow hb-s1-trow--new"><td class="hb-s1-order-id">#4329</td><td class="hb-s1-customer">Sarah M.</td><td>$189.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Visa ••7742</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4328</td><td class="hb-s1-customer">James W.</td><td>$64.00</td><td><span class="hb-badge hb-badge--blue"><span class="hb-badge__dot"></span>Processing</span></td><td class="hb-td-muted">Apple Pay</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4327</td><td class="hb-s1-customer">Maria L.</td><td>$142.50</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">MC ••3190</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4326</td><td class="hb-s1-customer">David K.</td><td>$89.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Visa ••4821</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4325</td><td class="hb-s1-customer">Lisa P.</td><td>$210.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">MC ••8812</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4324</td><td class="hb-s1-customer">Tom R.</td><td>$56.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Visa ••2204</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4323</td><td class="hb-s1-customer">Rachel H.</td><td>$118.50</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Apple Pay</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4322</td><td class="hb-s1-customer">Kevin M.</td><td>$312.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Visa ••1150</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4321</td><td class="hb-s1-customer">Ana G.</td><td>$97.50</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">MC ••6034</td></tr>
+                        <tr class="hb-s1-trow hb-s1-trow--existing"><td class="hb-s1-order-id">#4320</td><td class="hb-s1-customer">Brian S.</td><td>$145.00</td><td><span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></td><td class="hb-td-muted">Apple Pay</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Phase B: Order journey timeline -->
+                <div class="hb-s1-phase hb-s1-phase--b">
+                  <div class="hb-breadcrumb">Orders › #4329 › Journey</div>
+                  <div class="hb-s1-detail-header">
+                    <div class="hb-s1-detail-header__title">Order #4329</div>
+                    <div class="hb-s1-detail-header__meta">Sarah M. · $189.00 · <span class="hb-badge hb-badge--green"><span class="hb-badge__dot"></span>Completed</span></div>
+                  </div>
+                  <div class="hb-card hb-s1-journey-card">
+                    <div class="hb-card__title">Order Journey</div>
+                    <div class="hb-timeline-v2">
+                      <div class="hb-tl-step">
+                        <div class="hb-tl-icon"><svg viewBox="0 0 20 20" width="14" height="14" fill="none"><path d="M6 2a2 2 0 0 0-2 2v1H3a1 1 0 0 0 0 2h1v2H3a1 1 0 0 0 0 2h1v2H3a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H6z" fill="#6b7280"/></svg></div>
+                        <div class="hb-tl-connector"></div>
+                        <div class="hb-tl-body">
+                          <div class="hb-tl-row"><span class="hb-tl-title">Cart created</span><span class="hb-tl-time">4/3/2026, 11:50 PM</span></div>
+                        </div>
+                      </div>
+                      <div class="hb-tl-step">
+                        <div class="hb-tl-icon"><svg viewBox="0 0 20 20" width="14" height="14" fill="none"><path d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm1 11H9v-2h2v2zm0-4H9V6h2v3z" fill="#6b7280"/></svg></div>
+                        <div class="hb-tl-connector"></div>
+                        <div class="hb-tl-body">
+                          <div class="hb-tl-row"><span class="hb-tl-title">Checkout completed</span><span class="hb-tl-time">4/3/2026, 11:51 PM</span></div>
+                        </div>
+                      </div>
+                      <div class="hb-tl-step hb-tl-step--credit">
+                        <div class="hb-tl-icon hb-tl-icon--green"><svg viewBox="0 0 20 20" width="14" height="14" fill="none"><path d="M10 2a4 4 0 0 0-4 4c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4zM4 16c0-2.67 5.33-4 6-4s6 1.33 6 4v1H4v-1z" fill="#16a34a"/></svg></div>
+                        <div class="hb-tl-connector"></div>
+                        <div class="hb-tl-body">
+                          <div class="hb-tl-row"><span class="hb-tl-title hb-tl-title--credit">Credited to Jessica R.</span><span class="hb-tl-time">4/3/2026, 11:52 PM</span></div>
+                          <div class="hb-tl-meta">
+                            <div class="hb-tl-meta__row"><span class="hb-tl-meta__label">Commission</span><span class="hb-tl-meta__value hb-tl-meta__value--green">$28.35</span></div>
+                            <div class="hb-tl-meta__row"><span class="hb-tl-meta__label">Rep</span><span class="hb-tl-meta__value">Jessica R. (via Smart Link)</span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="hb-tl-step hb-tl-step--final">
+                        <div class="hb-tl-icon hb-tl-icon--green"><svg viewBox="0 0 20 20" width="14" height="14" fill="none"><path d="M16.7 5.3a1 1 0 0 1 0 1.4l-8 8a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L8 12.6l7.3-7.3a1 1 0 0 1 1.4 0z" fill="#16a34a"/></svg></div>
+                        <div class="hb-tl-body">
+                          <div class="hb-tl-row"><span class="hb-tl-title">Order completed</span><span class="hb-tl-time">4/3/2026, 11:52 PM</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Annotation overlay — own layer, does not affect UI layout -->
+              <div class="hb-annotations">
+                <div class="hb-anno hb-anno--circle">
+                  <svg class="hb-ink-circle" viewBox="0 0 200 50" fill="none" preserveAspectRatio="none">
+                    <path d="M10,28 C6,10 40,2 100,4 C160,6 194,14 196,26 C198,38 162,47 100,46 C38,45 6,40 10,28" stroke="#111" stroke-width="5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="hb-anno hb-anno--credit-text">
+                  <span class="hb-anno__text">Reps get credit</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 2: Org Confidence -->
+            <div class="hb-scene" data-scene="1">
+              <div class="hb-sidebar">
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon hb-sidebar__icon--active"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__avatar"></div>
+              </div>
+              <div class="hb-main">
+                <div class="hb-page-header">
+                  <div class="hb-page-header__title">Operations</div>
+                  <div class="hb-page-header__search"><span class="hb-search-icon">⌕</span> Filter systems…</div>
+                </div>
+                <div class="hb-card hb-s2-statuses-card">
+                  <div class="hb-s2-statuses">
+                    <div class="hb-s2-status hb-s2-status--live">
+                      <div class="hb-s2-micro-anim">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <rect x="3" y="6" width="18" height="12" rx="2" stroke="#9ca3af" stroke-width="1.5"/>
+                          <path d="M3 10h18" stroke="#9ca3af" stroke-width="1.5"/>
+                          <path d="M7 14h3" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+                          <circle cx="17" cy="14" r="1.5" fill="#22c55e"/>
+                          <circle cx="17" cy="14" r="1.5" fill="#22c55e" class="anim-payment-pulse"/>
+                        </svg>
+                      </div>
+                      <div class="hb-s2-status__info"><div class="hb-s2-status__name">Payments</div><div class="hb-s2-status__detail">Connected · Stripe</div></div>
+                    </div>
+                    <div class="hb-s2-status hb-s2-status--live">
+                      <div class="hb-s2-micro-anim">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M12 17v-4" stroke="#e5e7eb" stroke-width="1.5" stroke-linecap="round"/>
+                          <path d="M7 17v-2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="#e5e7eb" stroke-width="1.5" stroke-linecap="round"/>
+                          <circle cx="7" cy="18" r="1.5" fill="#d1d5db"/>
+                          <circle cx="12" cy="18" r="1.5" fill="#d1d5db"/>
+                          <circle cx="17" cy="18" r="1.5" fill="#d1d5db"/>
+                          <circle cx="12" cy="7" r="2" fill="#d1d5db"/>
+                          <circle cx="7" cy="18" r="1.5" fill="#22c55e" class="anim-fs-node-1"/>
+                          <circle cx="12" cy="18" r="1.5" fill="#22c55e" class="anim-fs-node-2"/>
+                          <circle cx="17" cy="18" r="1.5" fill="#22c55e" class="anim-fs-node-3"/>
+                          <circle cx="12" cy="7" r="2" fill="#22c55e" class="anim-fs-node-top"/>
+                          <circle cx="12" cy="7" r="2" fill="#22c55e" class="anim-fs-pulse-top"/>
+                          <path d="M12 17v-4" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" class="anim-fs-line-2"/>
+                          <path d="M7 17v-2a2 2 0 0 1 2-2h3" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" class="anim-fs-line-1"/>
+                          <path d="M17 17v-2a2 2 0 0 0-2-2h-3" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round" class="anim-fs-line-3"/>
+                        </svg>
+                      </div>
+                      <div class="hb-s2-status__info"><div class="hb-s2-status__name">FairShare</div><div class="hb-s2-status__detail">Engine Active</div></div>
+                    </div>
+                    <div class="hb-s2-status hb-s2-status--live">
+                      <div class="hb-s2-micro-anim">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <rect x="4" y="7" width="4" height="10" rx="1" stroke="#9ca3af" stroke-width="1.5"/>
+                          <line x1="5" y1="10" x2="7" y2="10" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+                          <rect x="16" y="7" width="4" height="10" rx="1" stroke="#9ca3af" stroke-width="1.5"/>
+                          <line x1="17" y1="10" x2="19" y2="10" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round"/>
+                          <path d="M9 10h6" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2 2"/>
+                          <path d="M9 14h6" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="2 2"/>
+                          <circle cx="9" cy="10" r="1.5" fill="#22c55e" class="anim-sync-pkt-1"/>
+                          <circle cx="15" cy="14" r="1.5" fill="#22c55e" class="anim-sync-pkt-2"/>
+                        </svg>
+                      </div>
+                      <div class="hb-s2-status__info"><div class="hb-s2-status__name">Sync</div><div class="hb-s2-status__detail">Exigo · Last: 2s ago</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hb-card hb-s2-pipeline-card">
+                  <table class="hb-table hb-table--orders">
+                    <thead><tr><th>Order</th><th>Checkout</th><th>Payment</th><th>Attribution</th><th>Sync</th></tr></thead>
+                    <tbody>
+                      <tr class="hb-s2-row hb-s2-row--new">
+                        <td><span class="hb-s2-order-id">#4829</span> Emma T.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--pending"></span><div class="hb-check-loader"></div></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--pending"></span><div class="hb-check-loader"></div></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--pending"></span><div class="hb-check-loader"></div></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--pending"></span><div class="hb-check-loader"></div></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4828</span> Jake R.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4827</span> Amy T.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4826</span> Mark S.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4825</span> Jessica K.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4824</span> Chris P.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4823</span> Liam N.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4822</span> Olivia M.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                      <tr class="hb-s2-row hb-s2-row--existing">
+                        <td><span class="hb-s2-order-id">#4821</span> Noah W.</td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                        <td><div class="hb-check-wrap"><span class="hb-check hb-check--done"><svg viewBox="0 0 12 12" width="8" height="8" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></div></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- Processing scanner overlay -->
+                  <div class="hb-s2-scanner"></div>
+                  <!-- Flash overlay for new row -->
+                  <div class="hb-s2-row-flash"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Scene 3: Revenue Growth — Payment Reports -->
+            <div class="hb-scene" data-scene="2">
+              <div class="hb-sidebar">
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__icon hb-sidebar__icon--active"></div>
+                <div class="hb-sidebar__icon"></div>
+                <div class="hb-sidebar__avatar"></div>
+              </div>
+              <div class="hb-main">
+                <div class="hb-page-header">
+                  <div class="hb-page-header__title">Payment Reports</div>
+                </div>
+                <div class="hb-s3-kpis">
+                  <div class="hb-card hb-s3-kpi">
+                    <div class="hb-s3-kpi__label">Transaction Amount</div>
+                    <div class="hb-s3-kpi__value"><span data-hb-kpi-amount>$2.4M</span></div>
+                    <div class="hb-s3-trend hb-s3-trend--up"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M6 2l3 3M6 2L3 5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></svg> <span>+12.3%</span> from previous period</div>
+                    <div class="hb-s3-chart-area">
+                      <svg viewBox="0 0 280 80" preserveAspectRatio="none" class="hb-area-svg">
+                        <defs>
+                          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#2563eb" stop-opacity="0.15"/>
+                            <stop offset="100%" stop-color="#2563eb" stop-opacity="0.01"/>
+                          </linearGradient>
+                          <clipPath id="areaClip">
+                            <rect class="hb-area-clip-rect" x="0" y="0" width="0" height="80"/>
+                          </clipPath>
+                        </defs>
+                        <line x1="0" y1="20" x2="280" y2="20" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,4" class="hb-grid-line hb-grid-line-1"/>
+                        <line x1="0" y1="40" x2="280" y2="40" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,4" class="hb-grid-line hb-grid-line-2"/>
+                        <line x1="0" y1="60" x2="280" y2="60" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="4,4" class="hb-grid-line hb-grid-line-3"/>
+                        <g clip-path="url(#areaClip)">
+                          <path d="M0,65 C20,60 40,55 70,45 C100,35 120,40 150,30 C180,20 200,25 230,15 C250,10 270,12 280,8" fill="none" stroke="#2563eb" stroke-width="2.5" class="hb-area-line"/>
+                          <path d="M0,65 C20,60 40,55 70,45 C100,35 120,40 150,30 C180,20 200,25 230,15 C250,10 270,12 280,8 L280,80 L0,80 Z" fill="url(#areaGrad)" class="hb-area-fill"/>
+                        </g>
+                      </svg>
+                      <!-- Scrubber / playhead elements -->
+                      <div class="hb-chart-scrubber-wrap">
+                        <div class="hb-chart-scrubber"></div>
+                        <div class="hb-chart-playhead"><div class="hb-chart-playhead__dot"></div><div class="hb-chart-playhead__pulse"></div></div>
+                        <div class="hb-chart-tooltip"><div class="hb-chart-tooltip__val" data-hb-tooltip-val>$148K</div><div class="hb-chart-tooltip__date">Apr 4</div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hb-card hb-s3-kpi">
+                    <div class="hb-s3-kpi__label">Approval Rate</div>
+                    <div class="hb-s3-kpi__value"><span data-hb-kpi-approval>98.7%</span></div>
+                    <div class="hb-s3-trend hb-s3-trend--up"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M6 2l3 3M6 2L3 5" stroke="#16a34a" stroke-width="1.5" stroke-linecap="round"/></svg> <span>+1.2%</span> vs last month</div>
+                    <div class="hb-s3-chart-bars">
+                      <!-- Base grids for bar chart -->
+                      <div class="hb-bar-grid">
+                        <div class="hb-bar-grid__line"></div>
+                        <div class="hb-bar-grid__line"></div>
+                        <div class="hb-bar-grid__line"></div>
+                      </div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:85%"></div><div class="hb-bar hb-bar--red" style="--bar-h:2%"></div></div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:88%"></div><div class="hb-bar hb-bar--red" style="--bar-h:3%"></div></div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:82%"></div><div class="hb-bar hb-bar--red" style="--bar-h:4%"></div></div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:90%"></div><div class="hb-bar hb-bar--red" style="--bar-h:2%"></div></div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:92%"></div><div class="hb-bar hb-bar--red" style="--bar-h:1%"></div></div>
+                      <div class="hb-bar-group"><div class="hb-bar hb-bar--green" style="--bar-h:95%"></div><div class="hb-bar hb-bar--red" style="--bar-h:1%"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="hb-card hb-s3-markets-summary">
+                  <div class="hb-card__title">Revenue by Market</div>
+                  <div class="hb-s3-market-row"><span class="hb-s3-market-name">United States</span><div class="hb-s3-progress"><div class="hb-s3-progress__fill hb-s3-progress__fill--blue" style="--prog:78%"></div></div><span class="hb-s3-market-val" data-hb-m1>0</span></div>
+                  <div class="hb-s3-market-row"><span class="hb-s3-market-name">Mexico</span><div class="hb-s3-progress"><div class="hb-s3-progress__fill hb-s3-progress__fill--orange" style="--prog:42%"></div></div><span class="hb-s3-market-val" data-hb-m2>0</span></div>
+                  <div class="hb-s3-market-row"><span class="hb-s3-market-name">Germany</span><div class="hb-s3-progress"><div class="hb-s3-progress__fill hb-s3-progress__fill--green" style="--prog:18%"></div></div><span class="hb-s3-market-val" data-hb-m3>0</span></div>
+                </div>
+              </div>
+
+              <!-- Annotation overlay for Scene 3 -->
+              <div class="hb-annotations hb-annotations--s3">
+                <div class="hb-anno hb-anno--arrow">
+                  <svg class="hb-ink-arrow" viewBox="0 0 100 100" fill="none" preserveAspectRatio="xMidYMid meet">
+                    <path d="M80,10 C60,20 40,40 20,70" stroke="#111" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M20,70 L35,72 M20,70 L25,55" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="hb-anno hb-anno--launch-text">
+                  <span class="hb-anno__text">Blitz Week Launch!</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ════════════════ TRUST STRIP ════════════════ -->
   <section class="trust-strip">
-    <div class="trust-strip__eyebrow">Trusted by direct selling leaders</div>
+    <div class="eyebrow eyebrow--sm trust-strip__eyebrow" style="--eyebrow-color:var(--text-secondary)">Trusted by direct selling leaders</div>
     <div class="trust-strip__track">
       <div class="trust-strip__set">
         <img src="assets/logos/thermomix-logo.png" alt="Thermomix" class="trust-strip__logo" data-logo="thermomix">
@@ -103,7 +460,7 @@
     <div class="container">
       <div class="problem__grid reveal">
         <div class="problem__text">
-          <div class="label problem__label">The Problem</div>
+          <div class="eyebrow" style="--eyebrow-color:var(--orange)">The Problem</div>
           <h2 class="problem__headline">The problem isn't one thing. It's everything not connecting.</h2>
           <div class="problem__body">
             <p>You know what this feels like. The payment processor doesn't talk to the commission engine. Attribution breaks and the wrong rep gets credit. A sync drops and suddenly commissions are wrong. A promo code doesn't fire because two systems have conflicting data.</p>
@@ -149,7 +506,7 @@
     <div class="container">
       <div class="feature-highlight__grid reveal">
         <div class="feature-highlight__text">
-          <div class="feature-highlight__label" style="color:var(--seg-payments)">Payments</div>
+          <div class="eyebrow" style="--eyebrow-color:var(--seg-payments)">Payments</div>
           <h3 class="feature-highlight__headline">Every transaction deserves to go through.</h3>
           <p class="feature-highlight__body">When a transaction fails in direct selling, it isn't a stranger shrugging and buying elsewhere. It's your rep's sister. The customer she spent three months nurturing. Fluid Payments is built so that transaction goes through — with cascading retries across multiple processors, decline recovery, network tokens, and a full suite of alternative payment methods for global markets.</p>
           <a href="#" class="feature-highlight__link" style="color:var(--seg-payments)">Learn about Fluid Payments →</a>
@@ -178,7 +535,7 @@
     <div class="container">
       <div class="feature-highlight__grid reversed reveal">
         <div class="feature-highlight__text">
-          <div class="feature-highlight__label" style="color:var(--seg-fairshare)">FairShare</div>
+          <div class="eyebrow" style="--eyebrow-color:var(--seg-fairshare)">FairShare</div>
           <h3 class="feature-highlight__headline">Credit goes to the rep who showed up.</h3>
           <p class="feature-highlight__body">Attribution isn't a technical problem. It's a trust problem. When reps don't believe they'll get credit, they stop sharing. FairShare tracks the full customer journey — not just the last click — and ensures credit goes to the rep who actually showed up. Automatically. Every time.</p>
           <a href="#" class="feature-highlight__link" style="color:var(--seg-fairshare)">Learn about FairShare →</a>
@@ -207,7 +564,7 @@
     <div class="container">
       <div class="feature-highlight__grid reveal">
         <div class="feature-highlight__text">
-          <div class="feature-highlight__label" style="color:var(--seg-checkout)">Checkout</div>
+          <div class="eyebrow" style="--eyebrow-color:var(--seg-checkout)">Checkout</div>
           <h3 class="feature-highlight__headline">Built for the full complexity of direct selling commerce.</h3>
           <p class="feature-highlight__body">Most e-commerce platforms were built for guest checkout. About half of your transactions aren't that. Enrollments, subscriptions, logged-in orders, multi-market pricing, Order on Behalf Of — Fluid Checkout handles all of it natively. No plugins, no custom code, no workarounds.</p>
           <a href="#" class="feature-highlight__link" style="color:var(--seg-checkout)">Learn about Checkout →</a>
@@ -308,7 +665,7 @@
     <div class="container">
       <div class="ai-section__grid reveal">
         <div class="ai-section__text">
-          <div class="label ai-section__label">Artificial Intelligence</div>
+          <div class="eyebrow">Artificial Intelligence</div>
           <h2 class="ai-section__headline">AI that makes your reps better — not redundant.</h2>
           <div class="ai-section__body">
             <p>The "WE" in We-Commerce is not an accident. Direct selling works because real people share products with other real people they actually know and trust. That relationship is the product. You cannot automate it. You should not try.</p>
@@ -337,7 +694,7 @@
     <div class="container">
       <div class="blitz__grid reveal">
         <div class="blitz__text">
-          <div class="label blitz__label">Blitz Week</div>
+          <div class="eyebrow" style="--eyebrow-color:var(--green)">Blitz Week</div>
           <h2 class="blitz__headline">Live in four days.</h2>
           <p class="blitz__body">The biggest reason direct selling companies stay on broken platforms: they believe switching will take six months and cost everything. We built Blitz Week to prove them wrong.</p>
           <p class="blitz__body">Fluid launches new clients through an intensive four-day on-site engagement at our headquarters in Lehi, Utah. Your team works side-by-side with our executives, developers, and creative team. By Thursday afternoon, you have a live, production-ready platform.</p>
@@ -419,6 +776,7 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
