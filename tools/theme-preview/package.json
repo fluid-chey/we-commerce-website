@@ -1,0 +1,13 @@
+{
+  "name": "wecommerce-theme-preview",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "preview": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "liquidjs": "^10.21.1"
+  }
+}

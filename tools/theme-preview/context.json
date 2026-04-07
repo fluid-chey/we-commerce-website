@@ -1,0 +1,11 @@
+{
+  "company": {
+    "name": "Preview Company",
+    "base_url": "http://localhost:3333",
+    "logo_url": "",
+    "checkout_v2_enabled": true,
+    "currency": "USD",
+    "currency_symbol": "$"
+  },
+  "sections": {}
+}

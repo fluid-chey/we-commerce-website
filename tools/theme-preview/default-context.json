@@ -1,0 +1,29 @@
+{
+  "company": {
+    "name": "Preview Company",
+    "base_url": "http://localhost:3333",
+    "logo_url": "",
+    "checkout_v2_enabled": true,
+    "currency": "USD",
+    "currency_symbol": "$"
+  },
+  "cart": {
+    "items": [],
+    "item_count": 0,
+    "total_price": 0,
+    "requires_shipping": false,
+    "note": ""
+  },
+  "cart_url": "/cart",
+  "affiliate": null,
+  "contact": null,
+  "current_country_iso": "US",
+  "current_country_name": "United States",
+  "current_selected_locale": "en",
+  "current_language_name": "English",
+  "fluid_credit": "preview",
+  "collections": [],
+  "products": [],
+  "enrollment_packs": [],
+  "sections": {}
+}
