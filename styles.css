@@ -501,6 +501,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   display: flex;
   gap: 16px;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
